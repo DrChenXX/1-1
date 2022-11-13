@@ -10,7 +10,6 @@ import lombok.Data;
  */
 
 @Data
-@NoArgsConstructor
 public class Yonghu {
 
 	/**
