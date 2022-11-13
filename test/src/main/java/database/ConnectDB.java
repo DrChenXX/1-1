@@ -31,6 +31,8 @@ public class ConnectDB implements Callable {
     public void call(){
 
     }
+
+    // 查方法
     public static List<Map<String, Object>> getList(String sql) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Connection conn = null;
