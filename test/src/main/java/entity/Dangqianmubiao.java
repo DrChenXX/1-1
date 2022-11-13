@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class Dangqianmubiao {
-
+	// 当前目标 表
 	/**
 	 * table name:ID
 	 * table type:varchar(10)

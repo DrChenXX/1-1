@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class Dangqianduizhibiaodian {
-
+	// 当前课程对应指标点 表
 	/**
 	 * table name:ID
 	 * table type:varchar(10)

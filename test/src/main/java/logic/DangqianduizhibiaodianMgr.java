@@ -1,7 +1,9 @@
 package logic;
 
 import database.ConnectDB;
+import entity.Dangqianduizhibiaodian;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,34 +16,194 @@ public class DangqianduizhibiaodianMgr {
      * CONTENT
      * CHENGJI
      */
-    // 根据课程ID查课程对指标点的支持
-    public static void SearchKechengID(String ID) {
+
+    // 增加单条信息
+    public static void add(Dangqianduizhibiaodian d) {
+        String sql =
+                "INSERT INTO T_DANGQIANDUIZHIBIAODIAN(ID,DANGQIANKECHENG_ID,ZHIBIAODIAN_ID,YUAN_ID,CONTENT,CHENGJI) "+
+                        "VALUES('"+
+                        d.getId()+ "','"+
+                        d.getDangqiankechengId() + "','" +
+                        d.getZhibiaodianId()+ "','" +
+                        d.getYuanId() + "','" +
+                        d.getContent() + "'," +
+                        d.getChengji() + ")";
+        boolean check;
+        check = ConnectDB.addContent(sql);
+        if(check){
+            System.out.println("增操作成功");
+        } else {
+            System.out.println("增操作失败");
+        }
+    }
+    // 增加多条信息
+    public static void add(List<Dangqianduizhibiaodian> ds) {
+        List<String> sqls = new ArrayList<String>();
+        for (Dangqianduizhibiaodian d :ds){
+            String sql =
+                    "INSERT INTO T_DANGQIANDUIZHIBIAODIAN(ID,DANGQIANKECHENG_ID,ZHIBIAODIAN_ID,YUAN_ID,CONTENT,CHENGJI) "+
+                            "VALUES('"+
+                            d.getId()+ "','"+
+                            d.getDangqiankechengId() + "','" +
+                            d.getZhibiaodianId()+ "','" +
+                            d.getYuanId() + "','" +
+                            d.getContent() + "'," +
+                            d.getChengji() + ")";
+            sqls.add(sql);
+        }
+        boolean check;
+        check = ConnectDB.addContent(sqls);
+        if(check){
+            System.out.println("增操作成功");
+        } else {
+            System.out.println("增操作失败");
+        }
+    }
+
+    // 通过ID删除
+    public static void deleteByID(String ID) {
+        String sql = "DELETE FROM T_DANGQIANDUIZHIBIAODIAN WHERE ID = " + ID;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+    // 通过当前课程ID删除
+    public static void deleteByDangqiankechengID(String ID) {
+        String sql = "DELETE FROM T_DANGQIANDUIZHIBIAODIAN WHERE DANGQIANKECHENG_ID = " + ID;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+    // 通过指标点ID删除
+    public static void deleteByZhibiaodianID(String ID) {
+        String sql = "DELETE FROM T_DANGQIANDUIZHIBIAODIAN WHERE ZHIBIAODIAN_ID = " + ID;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+    // 通过YUAN_ID删除
+    public static void deleteByYuanID(String ID){
+        String sql = "DELETE FROM T_DANGQIANDUIZHIBIAODIAN WHERE YUAN_ID = " + ID;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+    // 删除所有ID
+    public static void deleteAll(){
+        List<Dangqianduizhibiaodian> list = getAll();
+        List<String> sqls = new ArrayList<String>();
+        for(Dangqianduizhibiaodian d : list) {
+            String sql = "DELETE FROM T_DANGQIANDUIZHIBIAODIAN WHERE ID = "+ d.getId();
+            sqls.add(sql);
+        }
+        boolean check;
+        check = ConnectDB.deleteContent(sqls);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+
+    // 根据ID查
+    public static Dangqianduizhibiaodian getByID(String ID) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_DANGQIANDUIZHIBIAODIAN WHERE ID = " + ID);
+        Dangqianduizhibiaodian d = new Dangqianduizhibiaodian(
+                String.valueOf(list.get(0).get("ID")),
+                String.valueOf(list.get(0).get("DANGQIANKECHENG_ID")),
+                String.valueOf(list.get(0).get("ZHIBIAODIAN_ID")),
+                String.valueOf(list.get(0).get("YUAN_ID")),
+                String.valueOf(list.get(0).get("CONTENT")),
+                Integer.parseInt(String.valueOf(list.get(0).get("CHENGJI")))
+        );
+        return d;
+    }
+    // 根据当前课程查
+    public static List<Dangqianduizhibiaodian> getByDangqiankechengID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_DANGQIANDUIZHIBIAODIAN WHERE DANGQIANKECHENG_ID = " + ID);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).get("ID"));
-            System.out.println(list.get(i).get("DANGQIANKECHENG_ID"));
-            System.out.println(list.get(i).get("ZHIBIAODIAN_ID"));
-            System.out.println(list.get(i).get("YUAN_ID"));
-            System.out.println(list.get(i).get("CONTENT"));
-            System.out.println(list.get(i).get("CHENGJI"));
+        List<Dangqianduizhibiaodian> result = new ArrayList<Dangqianduizhibiaodian>();
+        for (Map<String,Object> map : list) {
+            Dangqianduizhibiaodian d = new Dangqianduizhibiaodian(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("DANGQIANKECHENG_ID")),
+                    String.valueOf(map.get("ZHIBIAODIAN_ID")),
+                    String.valueOf(map.get("YUAN_ID")),
+                    String.valueOf(map.get("CONTENT")),
+                    Integer.parseInt(String.valueOf(map.get("CHENGJI")))
+            );
+            result.add(d);
         }
+        return result;
     }
-
-    public static void SearchZhibiaodianID(String ID) {
+    // 根据指标点查
+    public static List<Dangqianduizhibiaodian> getByZhibiaodianID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_DANGQIANDUIZHIBIAODIAN WHERE ZHIBIAODIAN_ID = " + ID);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).get("ID"));
-            System.out.println(list.get(i).get("DANGQIANKECHENG_ID"));
-            System.out.println(list.get(i).get("ZHIBIAODIAN_ID"));
-            System.out.println(list.get(i).get("YUAN_ID"));
-            System.out.println(list.get(i).get("CONTENT"));
-            System.out.println(list.get(i).get("CHENGJI"));
+        List<Dangqianduizhibiaodian> result = new ArrayList<Dangqianduizhibiaodian>();
+        for (Map<String,Object> map : list) {
+            Dangqianduizhibiaodian d = new Dangqianduizhibiaodian(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("DANGQIANKECHENG_ID")),
+                    String.valueOf(map.get("ZHIBIAODIAN_ID")),
+                    String.valueOf(map.get("YUAN_ID")),
+                    String.valueOf(map.get("CONTENT")),
+                    Integer.parseInt(String.valueOf(map.get("CHENGJI")))
+            );
+            result.add(d);
         }
+        return result;
     }
-
-    public static void Add(int n) {
-
+    // 根据YUAN_ID查
+    public static List<Dangqianduizhibiaodian> getByYuanID(String ID) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_DANGQIANDUIZHIBIAODIAN WHERE YUAN_ID = " + ID);
+        List<Dangqianduizhibiaodian> result = new ArrayList<Dangqianduizhibiaodian>();
+        for (Map<String,Object> map : list) {
+            Dangqianduizhibiaodian d = new Dangqianduizhibiaodian(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("DANGQIANKECHENG_ID")),
+                    String.valueOf(map.get("ZHIBIAODIAN_ID")),
+                    String.valueOf(map.get("YUAN_ID")),
+                    String.valueOf(map.get("CONTENT")),
+                    Integer.parseInt(String.valueOf(map.get("CHENGJI")))
+            );
+            result.add(d);
+        }
+        return result;
+    }
+    // 查整个列表
+    public static List<Dangqianduizhibiaodian> getAll(){
+        List<Map<String,Object>> list = ConnectDB.getList("SELECT * FROM T_DANGQIANDUIZHIBIAODIAN");
+        List<Dangqianduizhibiaodian> result = new ArrayList<Dangqianduizhibiaodian>();
+        for (Map<String,Object> map : list) {
+            Dangqianduizhibiaodian d = new Dangqianduizhibiaodian(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("DANGQIANKECHENG_ID")),
+                    String.valueOf(map.get("ZHIBIAODIAN_ID")),
+                    String.valueOf(map.get("YUAN_ID")),
+                    String.valueOf(map.get("CONTENT")),
+                    Integer.parseInt(String.valueOf(map.get("CHENGJI")))
+            );
+            result.add(d);
+        }
+        return result;
     }
 }

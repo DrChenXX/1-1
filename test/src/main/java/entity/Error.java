@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 
 @Data
 public class Error {
-
+	// 错误 表
 	/**
 	 * table name:ID
 	 * table type:varchar(10)

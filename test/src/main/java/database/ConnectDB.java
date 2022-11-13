@@ -29,54 +29,7 @@ public class ConnectDB {
     }
 
 
-    public static List<Map<String, Object>> getList(String sql) {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Connection conn = null;
-        Statement sta = null;
-        ResultSet rs = null;
-        try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            sta = conn.createStatement();
-            rs = sta.executeQuery(sql);
-            ResultSetMetaData md = rs.getMetaData();
-            int columnCount = md.getColumnCount();
-            while (rs.next()) {
-                Map<String, Object> rowData = new HashMap<String, Object>();
-                for (int i = 1; i <= columnCount; i++) {
-                    rowData.put(md.getColumnName(i), rs.getObject(i));
-                }
-                list.add(rowData);
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            if(rs!=null){
-                try{
-                    rs.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if(sta!=null){
-                try {
-                    sta.close();
-                }catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(conn!=null){
-                try {
-                    conn.close();
-                } catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-        return list;
-    }
+
 
     // 增加单个元素
     public static boolean addContent(String sql){
@@ -245,6 +198,56 @@ public class ConnectDB {
             }
         }
         return true;
+    }
+
+    // 查找，返回List
+    public static List<Map<String, Object>> getList(String sql) {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        Connection conn = null;
+        Statement sta = null;
+        ResultSet rs = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            sta = conn.createStatement();
+            rs = sta.executeQuery(sql);
+            ResultSetMetaData md = rs.getMetaData();
+            int columnCount = md.getColumnCount();
+            while (rs.next()) {
+                Map<String, Object> rowData = new HashMap<String, Object>();
+                for (int i = 1; i <= columnCount; i++) {
+                    rowData.put(md.getColumnName(i), rs.getObject(i));
+                }
+                list.add(rowData);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                try{
+                    rs.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(sta!=null){
+                try {
+                    sta.close();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try {
+                    conn.close();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return list;
     }
 
 }

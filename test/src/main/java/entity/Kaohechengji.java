@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class Kaohechengji {
-
+	// 考核成绩 表
 	/**
 	 * table name:ID
 	 * table type:varchar(10)

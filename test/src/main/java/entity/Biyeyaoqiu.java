@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class Biyeyaoqiu {
-
+	// 毕业要求 表
 	/**
 	 * table name:ID
 	 * table type:varchar(10)
