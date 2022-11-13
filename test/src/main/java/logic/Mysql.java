@@ -2,7 +2,7 @@ package logic;
 
 import java.sql.*;
 
-public class BiyeyaoqiuMgr {
+public class Mysql {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://43.139.96.180:3306/Protest?characterEncoding=utf-8&rewriteBatchedStatement=true";
 
@@ -47,11 +47,9 @@ public class BiyeyaoqiuMgr {
             conn.close();
         }catch (SQLException se){
             // 处理 JDBC 错误
-            System.out.println("2");
             se.printStackTrace();
         }catch (Exception e){
             // 处理 Class.forName 错误
-            System.out.println("3");
             e.printStackTrace();
         }finally {
             // 关闭资源
