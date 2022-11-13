@@ -1,5 +1,6 @@
 package com.example.test;
 
+import logic.DangqianduizhibiaodianMgr;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,6 +11,6 @@ class TestApplicationTests {
     void contextLoads() {
     }
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        DangqianduizhibiaodianMgr.SearchZhibiaodianID("1");
     }
 }
