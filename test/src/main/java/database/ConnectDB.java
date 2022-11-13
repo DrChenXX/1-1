@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ConnectDB implements Callable {
+public class ConnectDB {
     private static ConnectDB instance;
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -18,32 +18,30 @@ public class ConnectDB implements Callable {
     static final String PASS = "Cxy_20020208";
 
 
-    private ConnectDB(){
+    private ConnectDB() {
     }
 
-    public static ConnectDB GetInstance(){
-        if(instance==null){
+    public static ConnectDB GetInstance() {
+        if (instance == null) {
             instance = new ConnectDB();
         }
         return instance;
     }
 
-    public void call(){
 
-    }
     public static List<Map<String, Object>> getList(String sql) {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Connection conn = null;
         Statement sta = null;
         ResultSet rs = null;
-        try{
+        try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             sta = conn.createStatement();
             rs = sta.executeQuery(sql);
             ResultSetMetaData md = rs.getMetaData();
             int columnCount = md.getColumnCount();
-            while(rs.next()) {
+            while (rs.next()) {
                 Map<String, Object> rowData = new HashMap<String, Object>();
                 for (int i = 1; i <= columnCount; i++) {
                     rowData.put(md.getColumnName(i), rs.getObject(i));
@@ -54,42 +52,199 @@ public class ConnectDB implements Callable {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if(rs!=null){
+                try{
+                    rs.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(sta!=null){
+                try {
+                    sta.close();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try {
+                    conn.close();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
         }
         return list;
     }
-//    public static ResultSet getResultSet(String sql) {
-//        Connection connection = null;
-//        try {
-//            //加载mysql的驱动类
-//            Class.forName(JDBC_DRIVER);
-//            //获取数据库连接
-//            connection = DriverManager.getConnection(DB_URL, USER, PASS);
-//            PreparedStatement prst = connection.prepareStatement(sql);
-//            //结果集
-//            ResultSet rs = prst.executeQuery();
-//            prst.close();
-//            return rs;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }finally {
-//            if (connection != null) {
-//                try {
-//                    connection.close();
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//        return null;
-//    }
 
-//    public static void main(String[] args) {
-//        List<Map<String, Object>> list = queryAll("SELECT * FROM T_ERROR");
-//        for (String s : list.get(0).keySet()) {
-//            System.out.println(s);
-//        }
-//        System.out.println(list.get(0).get("ID"));
-//        System.out.println(list.get(0).get("SHIJIAN"));
-//        System.out.println(list.get(0).get("CONTENT"));
-//    }
+    // 增加单个元素
+    public static boolean addContent(String sql){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            connection.setAutoCommit(false);
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+            return false;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+            if(connection!=null){
+                try {
+                    connection.commit();
+                    connection.close();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // 增加多个元素
+    public static boolean addContent(List<String> sqls) {
+        Connection connection = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            connection.setAutoCommit(false);
+            for (String sql: sqls){
+                PreparedStatement preparedStatement = null;
+                try {
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.executeUpdate();
+
+                }catch (SQLException e){
+                    e.printStackTrace();
+                    return false;
+                }finally {
+                    if(preparedStatement!=null){
+                        try{
+                            preparedStatement.close();
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                            return false;
+                        }
+                    }
+
+                }
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(connection!=null){
+                try {
+                    connection.commit();
+                    connection.close();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean deleteContent(String sql) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            connection.setAutoCommit(false);
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+            return false;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+            if(connection!=null){
+                try {
+                    connection.commit();
+                    connection.close();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public  static  boolean deleteContent(List<String> sqls) {
+        Connection connection = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            connection.setAutoCommit(false);
+            for (String sql: sqls){
+                PreparedStatement preparedStatement = null;
+                try {
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.executeUpdate();
+
+                }catch (SQLException e){
+                    e.printStackTrace();
+                    return false;
+                }finally {
+                    if(preparedStatement!=null){
+                        try{
+                            preparedStatement.close();
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                            return false;
+                        }
+                    }
+
+                }
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(connection!=null){
+                try {
+                    connection.commit();
+                    connection.close();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
