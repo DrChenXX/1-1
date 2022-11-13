@@ -40,4 +40,8 @@ public class DangqianduizhibiaodianMgr {
             System.out.println(list.get(i).get("CHENGJI"));
         }
     }
+
+    public static void Add(int n) {
+
+    }
 }

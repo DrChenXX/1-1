@@ -1,8 +1,6 @@
 package com.example.test;
 
-import entity.Biyeyaoqiu;
-import logic.BiyeyaoqiuMgr;
-import logic.ErrorMgr;
+import logic.DangqianduizhibiaodianMgr;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +11,6 @@ class TestApplicationTests {
     void contextLoads() {
     }
     public static void main(String[] args) {
-        BiyeyaoqiuMgr.SearchPeiyangID("1");
+        DangqianduizhibiaodianMgr.SearchZhibiaodianID("1");
     }
 }
