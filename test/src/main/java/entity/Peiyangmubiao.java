@@ -64,7 +64,7 @@ public class Peiyangmubiao {
 	}
 
 	@Override
-	public String toString() {
+	public String  toString() {
 		return "Peiyangmubiao{" +
 				"id='" + id + '\'' +
 				", peiyangfanganId='" + peiyangfanganId + '\'' +
