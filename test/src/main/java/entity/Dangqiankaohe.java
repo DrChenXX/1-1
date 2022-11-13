@@ -110,4 +110,16 @@ public class Dangqiankaohe {
 	public void setZhanbi(Integer zhanbi) {
 		this.zhanbi = zhanbi;
 	}
+
+	@Override
+	public String toString() {
+		return "Dangqiankaohe{" +
+				"id='" + id + '\'' +
+				", content='" + content + '\'' +
+				", dangqiankechengId='" + dangqiankechengId + '\'' +
+				", dangqianmubiaoId='" + dangqianmubiaoId + '\'' +
+				", kaoheId='" + kaoheId + '\'' +
+				", zhanbi=" + zhanbi +
+				'}';
+	}
 }

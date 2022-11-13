@@ -62,4 +62,13 @@ public class Biyeyaoqiu {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Biyeyaoqiu{" +
+				"id='" + id + '\'' +
+				", peiyangfanganId='" + peiyangfanganId + '\'' +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

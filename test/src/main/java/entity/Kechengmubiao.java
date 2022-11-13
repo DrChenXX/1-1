@@ -62,4 +62,13 @@ public class Kechengmubiao {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Kechengmubiao{" +
+				"id='" + id + '\'' +
+				", kechengId='" + kechengId + '\'' +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

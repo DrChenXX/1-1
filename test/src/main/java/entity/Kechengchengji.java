@@ -78,4 +78,14 @@ public class Kechengchengji {
 	public void setChengji(Integer chengji) {
 		this.chengji = chengji;
 	}
+
+	@Override
+	public String toString() {
+		return "Kechengchengji{" +
+				"id='" + id + '\'' +
+				", dangqiankechengId='" + dangqiankechengId + '\'' +
+				", dangqianmubiaoId='" + dangqianmubiaoId + '\'' +
+				", chengji=" + chengji +
+				'}';
+	}
 }

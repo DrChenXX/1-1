@@ -63,4 +63,13 @@ public class Peiyangfangan {
 	public void setVersion(String version) {
 		this.version = version;
 	}
+
+	@Override
+	public String toString() {
+		return "Peiyangfangan{" +
+				"id='" + id + '\'' +
+				", zhuanyeId='" + zhuanyeId + '\'' +
+				", version='" + version + '\'' +
+				'}';
+	}
 }

@@ -110,4 +110,16 @@ public class Kecheng {
 	public void setXuefen(Integer xuefen) {
 		this.xuefen = xuefen;
 	}
+
+	@Override
+	public String toString() {
+		return "Kecheng{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", teacherId='" + teacherId + '\'' +
+				", peiyangfanganId='" + peiyangfanganId + '\'' +
+				", kaikeshijian='" + kaikeshijian + '\'' +
+				", xuefen=" + xuefen +
+				'}';
+	}
 }

@@ -79,4 +79,14 @@ public class Yonghu {
 	public void setYouxiang(String youxiang) {
 		this.youxiang = youxiang;
 	}
+
+	@Override
+	public String toString() {
+		return "Yonghu{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", dianhua='" + dianhua + '\'' +
+				", youxiang='" + youxiang + '\'' +
+				'}';
+	}
 }

@@ -78,4 +78,14 @@ public class Dangqianmubiao {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Dangqianmubiao{" +
+				"id='" + id + '\'' +
+				", dangqiankechengId='" + dangqiankechengId + '\'' +
+				", mubiaoId='" + mubiaoId + '\'' +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

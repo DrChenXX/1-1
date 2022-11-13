@@ -78,4 +78,15 @@ public class Mubiaoduizhibiaodian {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Mubiaoduizhibiaodian{" +
+				"id='" + id + '\'' +
+				", kechengmubiaoId='" + kechengmubiaoId + '\'' +
+				", zhibiaodianId='" + zhibiaodianId + '\'' +
+				", content='" + content + '\'' +
+				'}';
+	}
 }
+

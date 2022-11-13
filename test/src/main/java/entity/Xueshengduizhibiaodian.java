@@ -79,4 +79,14 @@ public class Xueshengduizhibiaodian {
 	public void setChengji(Integer chengji) {
 		this.chengji = chengji;
 	}
+
+	@Override
+	public String toString() {
+		return "Xueshengduizhibiaodian{" +
+				"id='" + id + '\'' +
+				", xueshengId='" + xueshengId + '\'' +
+				", zhibiaodianId='" + zhibiaodianId + '\'' +
+				", chengji=" + chengji +
+				'}';
+	}
 }

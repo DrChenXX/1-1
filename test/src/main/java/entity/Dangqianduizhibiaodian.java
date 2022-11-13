@@ -110,4 +110,16 @@ public class Dangqianduizhibiaodian {
 	public void setChengji(Integer chengji) {
 		this.chengji = chengji;
 	}
+
+	@Override
+	public String toString() {
+		return "Dangqianduizhibiaodian{" +
+				"id='" + id + '\'' +
+				", dangqiankechengId='" + dangqiankechengId + '\'' +
+				", zhibiaodianId='" + zhibiaodianId + '\'' +
+				", yuanId='" + yuanId + '\'' +
+				", content='" + content + '\'' +
+				", chengji=" + chengji +
+				'}';
+	}
 }

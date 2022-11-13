@@ -79,4 +79,14 @@ public class Xuesheng {
 	public void setGrade(Integer grade) {
 		this.grade = grade;
 	}
+
+	@Override
+	public String toString() {
+		return "Xuesheng{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", zhuanyeId='" + zhuanyeId + '\'' +
+				", grade=" + grade +
+				'}';
+	}
 }

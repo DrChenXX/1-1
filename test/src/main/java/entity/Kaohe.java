@@ -94,4 +94,15 @@ public class Kaohe {
 	public void setZhanbi(Integer zhanbi) {
 		this.zhanbi = zhanbi;
 	}
+
+	@Override
+	public String toString() {
+		return "Kaohe{" +
+				"id='" + id + '\'' +
+				", content='" + content + '\'' +
+				", kechengId='" + kechengId + '\'' +
+				", kechengmubiaoId='" + kechengmubiaoId + '\'' +
+				", zhanbi=" + zhanbi +
+				'}';
+	}
 }

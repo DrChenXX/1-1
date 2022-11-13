@@ -78,4 +78,14 @@ public class Kechengduizhibiaodian {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Kechengduizhibiaodian{" +
+				"column4='" + column4 + '\'' +
+				", kechengId='" + kechengId + '\'' +
+				", zhibiaodianId='" + zhibiaodianId + '\'' +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

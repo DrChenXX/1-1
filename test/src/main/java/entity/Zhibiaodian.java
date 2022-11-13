@@ -63,4 +63,13 @@ public class Zhibiaodian {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Zhibiaodian{" +
+				"id='" + id + '\'' +
+				", biyeyaoqiuId='" + biyeyaoqiuId + '\'' +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

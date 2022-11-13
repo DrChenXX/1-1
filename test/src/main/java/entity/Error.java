@@ -64,4 +64,13 @@ public class Error {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "Error{" +
+				"id='" + id + '\'' +
+				", shijian=" + shijian +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

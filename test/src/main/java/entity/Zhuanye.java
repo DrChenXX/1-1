@@ -63,4 +63,13 @@ public class Zhuanye {
 	public void setFuzerenId(String fuzerenId) {
 		this.fuzerenId = fuzerenId;
 	}
+
+	@Override
+	public String toString() {
+		return "Zhuanye{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", fuzerenId='" + fuzerenId + '\'' +
+				'}';
+	}
 }
