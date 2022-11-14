@@ -11,13 +11,13 @@ import lombok.Data;
 
 @Data
 public class Kechengduizhibiaodian {
-
+	// 课程 对 指标点 表
 	/**
 	 * table name:Column_4
 	 * table type:varchar(10)
 	 * table comment:null
 	 */
-	private String column4;
+	private String Id;
 
 	/**
 	 * table name:KECHENG_ID
@@ -40,19 +40,19 @@ public class Kechengduizhibiaodian {
 	 */
 	private String content;
 
-	public Kechengduizhibiaodian(String column4, String kechengId, String zhibiaodianId, String content) {
-		this.column4 = column4;
+	public Kechengduizhibiaodian(String Id, String kechengId, String zhibiaodianId, String content) {
+		this.Id = Id;
 		this.kechengId = kechengId;
 		this.zhibiaodianId = zhibiaodianId;
 		this.content = content;
 	}
 
-	public String getColumn4() {
-		return column4;
+	public String getId() {
+		return Id;
 	}
 
 	public void setColumn4(String column4) {
-		this.column4 = column4;
+		this.Id = column4;
 	}
 
 	public String getKechengId() {
@@ -82,7 +82,7 @@ public class Kechengduizhibiaodian {
 	@Override
 	public String toString() {
 		return "Kechengduizhibiaodian{" +
-				"column4='" + column4 + '\'' +
+				"column4='" + Id + '\'' +
 				", kechengId='" + kechengId + '\'' +
 				", zhibiaodianId='" + zhibiaodianId + '\'' +
 				", content='" + content + '\'' +
