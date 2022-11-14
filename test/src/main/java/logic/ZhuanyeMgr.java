@@ -1,7 +1,6 @@
 package logic;
 
 import database.ConnectDB;
-import entity.Kecheng;
 import entity.Zhuanye;
 
 import java.util.ArrayList;
