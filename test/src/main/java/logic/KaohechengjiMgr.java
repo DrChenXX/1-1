@@ -1,7 +1,6 @@
 package logic;
 
 import database.ConnectDB;
-import entity.Error;
 import entity.Kaohechengji;
 import org.springframework.core.KotlinDetector;
 

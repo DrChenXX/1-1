@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class Kecheng {
-
+	// 课程 表
 	/**
 	 * table name:ID
 	 * table type:varchar(15)
