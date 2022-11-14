@@ -1,0 +1,146 @@
+package com.example.test.logic;
+
+import com.example.test.database.ConnectDB;
+import com.example.test.entity.Zhuanye;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class ZhuanyeMgr {
+    /**
+     * ID
+     * NAME
+     * FUZEREN_ID
+     */
+
+    public static void add(Zhuanye z) {
+        String sql =
+                "INSERT INTO T_ZHUANYE(ID,NAME,FUZEREN_ID) "+
+                        "VALUES('"+
+                        z.getId() + "','" +
+                        z.getName() + "','" +
+                        z.getFuzerenId() + "')";
+        boolean check;
+        check = ConnectDB.addContent(sql);
+        if (check){
+            System.out.println("增操作成功");
+        } else {
+            System.out.println("增操作失败");
+        }
+    }
+
+    public static void add(List<Zhuanye> zs) {
+        List<String> sqls = new ArrayList<String>();
+        for (Zhuanye z : zs){
+            String sql =
+                    "INSERT INTO T_ZHUANYE(ID,NAME,FUZEREN_ID) "+
+                            "VALUES('"+
+                            z.getId() + "','" +
+                            z.getName() + "','" +
+                            z.getFuzerenId() + "')";
+            sqls.add(sql);
+        }
+        boolean check;
+        check = ConnectDB.addContent(sqls);
+        if(check){
+            System.out.println("增操作成功");
+        } else {
+            System.out.println("增操作失败");
+        }
+    }
+
+    public static void deleteByID(String ID) {
+        String sql = "DELETE FROM T_ZHUANYE WHERE ID = " + ID;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+
+    public static void deleteByName(String NAME) {
+        String sql = "DELETE FROM T_ZHUANYE WHERE NAME = " + NAME;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+
+    public static void deleteAll(){
+        List<Zhuanye> list = getAll();
+        List<String> sqls = new ArrayList<String>();
+        for(Zhuanye z : list) {
+            String sql = "DELETE FROM T_ZHUANYE WHERE ID = "+ z.getId();
+            sqls.add(sql);
+        }
+        boolean check;
+        check = ConnectDB.deleteContent(sqls);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
+
+    public static Zhuanye getByID(String ID) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_ZHUANYE WHERE ID = " + ID);
+        Zhuanye z = new Zhuanye(
+                String.valueOf(list.get(0).get("ID")),
+                String.valueOf(list.get(0).get("NAME")),
+                String.valueOf(list.get(0).get("FUZEREN_ID"))
+        );
+        return z;
+    }
+
+    public static List<Zhuanye> getByNAME(String NAME) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_ZHUANYE WHERE NAME = " + NAME);
+        List <Zhuanye> result = new ArrayList<Zhuanye>();
+        for (Map<String,Object> map : list) {
+            Zhuanye z = new Zhuanye(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("FUZEREN_ID"))
+            );
+            result.add(z);
+        }
+        return result;
+    }
+
+    public static List<Zhuanye> getByFUZERENID(String ID) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_ZHUANYE WHERE FUZEREN_ID = " + ID);
+        List <Zhuanye> result = new ArrayList<Zhuanye>();
+        for (Map<String,Object> map : list) {
+            Zhuanye z = new Zhuanye(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("FUZEREN_ID"))
+            );
+            result.add(z);
+        }
+        return result;
+    }
+
+    public static List<Zhuanye> getAll() {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_ZHUANYE");
+        List<Zhuanye> result = new ArrayList<Zhuanye>();
+        for (Map<String,Object> map : list) {
+            Zhuanye z = new Zhuanye(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("FUZEREN_ID"))
+            );
+            result.add(z);
+        }
+        return result;
+    }
+}

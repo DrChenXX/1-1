@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import database.ConnectDB;
+import com.example.test.database.ConnectDB;
 
 @SpringBootTest
 public class DatabaseBasicOperationsTests {
