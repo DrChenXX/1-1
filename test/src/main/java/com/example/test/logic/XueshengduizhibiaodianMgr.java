@@ -120,10 +120,10 @@ public class XueshengduizhibiaodianMgr {
         List<Xueshengduizhibiaodian> result = new ArrayList<Xueshengduizhibiaodian>();
         for (Map<String, Object> map : list) {
             Xueshengduizhibiaodian x = new Xueshengduizhibiaodian(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("FUZEREN_ID")),
-                    Integer.parseInt(String.valueOf(list.get(0).get("CHENGJI")))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("FUZEREN_ID")),
+                    Integer.parseInt(String.valueOf(map.get("CHENGJI")))
             );
             result.add(x);
         }
@@ -136,10 +136,10 @@ public class XueshengduizhibiaodianMgr {
         List<Xueshengduizhibiaodian> result = new ArrayList<Xueshengduizhibiaodian>();
         for (Map<String, Object> map : list) {
             Xueshengduizhibiaodian x = new Xueshengduizhibiaodian(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("FUZEREN_ID")),
-                    Integer.parseInt(String.valueOf(list.get(0).get("CHENGJI")))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("FUZEREN_ID")),
+                    Integer.parseInt(String.valueOf(map.get("CHENGJI")))
             );
             result.add(x);
         }
