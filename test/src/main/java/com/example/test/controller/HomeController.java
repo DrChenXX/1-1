@@ -30,12 +30,8 @@ public class HomeController implements UserController {
     @ResponseBody
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     public RestResponse login(LoginRequest request) {
-        System.out.println("111" + request);
-        if (homeService.login(request)) {
-            return new RestResponse().success("登陆成功");
-        } else {
-            return new RestResponse().fail("登陆失败");
-        }
+        System.out.println(request);
+        return homeService.login(request);
     }
 
     @RequestMapping(path = "hi", method = RequestMethod.GET)

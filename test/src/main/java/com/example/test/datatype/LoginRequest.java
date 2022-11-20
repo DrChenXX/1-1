@@ -1,9 +1,9 @@
 package com.example.test.datatype;
 
 public class LoginRequest {
-    String username;
-    String password;
-    String token;
+    private String username;
+    private String password;
+    private String token;
 
     public LoginRequest() {
     }

@@ -1,6 +1,7 @@
 package com.example.test.model.service;
 
 import com.example.test.datatype.LoginRequest;
+import com.example.test.datatype.RestResponse;
 import com.example.test.interfaces.UserService;
 import com.example.test.model.dao.logic.YonghuMgr;
 import com.example.test.model.entity.Yonghu;
@@ -20,16 +21,16 @@ public class HomeService implements UserService {
         return  "homeService";
     }
 
-    public boolean login(LoginRequest data) {
+    public RestResponse login(LoginRequest data) {
         Yonghu yonghu = yonghuMgr.getByID(data.getUsername());
         if(yonghu==null) {
-            return false;
+            return new RestResponse().fail("错误的用户名");
         }
         String password = yonghu.getPassword();
         if (data.getPassword().equals(password)) {
-            return true;
+            return new RestResponse().success("登陆成功");
         } else {
-            return false;
+            return new RestResponse().fail("登陆失败");
         }
     }
 
