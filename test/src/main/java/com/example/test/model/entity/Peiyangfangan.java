@@ -20,6 +20,13 @@ public class Peiyangfangan {
 	private String id;
 
 	/**
+	 * table name:NAME
+	 * table type:varchar(30)
+	 * table comment:null
+	 */
+	private String name;
+
+	/**
 	 * table name:ZHUANYE_ID
 	 * table type:varchar(10)
 	 * table comment:null
@@ -33,8 +40,9 @@ public class Peiyangfangan {
 	 */
 	private String version;
 
-	public Peiyangfangan(String id, String zhuanyeId, String version) {
+	public Peiyangfangan(String id, String name, String zhuanyeId, String version) {
 		this.id = id;
+		this.name = name;
 		this.zhuanyeId = zhuanyeId;
 		this.version = version;
 	}
@@ -46,6 +54,10 @@ public class Peiyangfangan {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public String getName() { return name;}
+
+	public void setName(String name) { this.name = name; }
 
 	public String getZhuanyeId() {
 		return zhuanyeId;

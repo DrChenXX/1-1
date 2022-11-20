@@ -10,6 +10,7 @@ import java.util.Map;
 public class YonghuMgr {
     /**
      * ID
+     * PASSWORD
      * NAME
      * DIANHUA
      * YOUXIANG
@@ -17,9 +18,10 @@ public class YonghuMgr {
 
     public static void add(Yonghu y) {
         String sql =
-                "INSERT INTO T_YONGHU(ID,NAME,DIANHUA,YOUXIANG) "+
+                "INSERT INTO T_YONGHU(ID,PASSWORD,NAME,DIANHUA,YOUXIANG) "+
                         "VALUES('"+
                         y.getId() + "','" +
+                        y.getPassword() + "','" +
                         y.getName() + "','" +
                         y.getDianhua() + "','" +
                         y.getYouxiang() + "')";
@@ -36,9 +38,10 @@ public class YonghuMgr {
         List<String> sqls = new ArrayList<String>();
         for (Yonghu y : ys) {
             String sql =
-                    "INSERT INTO T_YONGHU(ID,NAME,DIANHUA,YOUXIANG) "+
+                    "INSERT INTO T_YONGHU(ID,PASSWORD,NAME,DIANHUA,YOUXIANG) "+
                             "VALUES('"+
                             y.getId() + "','" +
+                            y.getPassword() + "','" +
                             y.getName() + "','" +
                             y.getDianhua() + "','" +
                             y.getYouxiang() + "')";
@@ -96,6 +99,7 @@ public class YonghuMgr {
         list = ConnectDB.getList("SELECT * FROM T_YONGHU WHERE ID = " + ID);
         Yonghu y = new Yonghu(
                 String.valueOf(list.get(0).get("ID")),
+                String.valueOf(list.get(0).get("PASSWORD")),
                 String.valueOf(list.get(0).get("NAME")),
                 String.valueOf(list.get(0).get("DIANHUA")),
                 String.valueOf(list.get(0).get("YOUXIANG"))
@@ -110,6 +114,7 @@ public class YonghuMgr {
         for (Map<String,Object> map : list) {
             Yonghu y = new Yonghu(
                     String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("PASSWORD")),
                     String.valueOf(map.get("NAME")),
                     String.valueOf(map.get("DIANHUA")),
                     String.valueOf(map.get("YOUXIANG"))
@@ -126,6 +131,7 @@ public class YonghuMgr {
         for (Map<String, Object> map : list) {
             Yonghu y = new Yonghu(
                     String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("PASSWORD")),
                     String.valueOf(map.get("NAME")),
                     String.valueOf(map.get("DIANHUA")),
                     String.valueOf(map.get("YOUXIANG"))
