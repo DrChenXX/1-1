@@ -1,11 +1,13 @@
 package com.example.test.model.service;
 
+import com.example.test.interfaces.UserService;
 import org.springframework.stereotype.Service;
 
 
 @Service("teacherService")
-public class TeacherService {
+public class TeacherService implements UserService {
 
+    @Override
     public String name() {
         System.out.println("teacherService");
         return "teacherService";
