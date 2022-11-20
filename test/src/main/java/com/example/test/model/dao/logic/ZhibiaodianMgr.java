@@ -105,9 +105,9 @@ public class ZhibiaodianMgr {
         List <Zhibiaodian> result = new ArrayList<Zhibiaodian>();
         for (Map<String, Object> map : list) {
             Zhibiaodian z = new Zhibiaodian(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("BIYEYAOQIU_ID")),
-                    String.valueOf(list.get(0).get("CONTENT"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("BIYEYAOQIU_ID")),
+                    String.valueOf(map.get("CONTENT"))
             );
             result.add(z);
         }

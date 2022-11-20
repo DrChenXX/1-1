@@ -13,7 +13,7 @@ import lombok.Data;
 public class Kechengduizhibiaodian {
 	// 课程 对 指标点 表
 	/**
-	 * table name:Column_4
+	 * table name:ID
 	 * table type:varchar(10)
 	 * table comment:null
 	 */
@@ -82,7 +82,7 @@ public class Kechengduizhibiaodian {
 	@Override
 	public String toString() {
 		return "Kechengduizhibiaodian{" +
-				"column4='" + Id + '\'' +
+				"id='" + Id + '\'' +
 				", kechengId='" + kechengId + '\'' +
 				", zhibiaodianId='" + zhibiaodianId + '\'' +
 				", content='" + content + '\'' +

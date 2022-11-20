@@ -20,6 +20,14 @@ public class Yonghu {
 	private String id;
 
 	/**
+	 * table name:PASSWORD
+	 * table type:varchar(30)
+	 * table comment:null
+	 */
+	private String password;
+
+
+	/**
 	 * table name:NAME
 	 * table type:varchar(10)
 	 * table comment:null
@@ -40,8 +48,9 @@ public class Yonghu {
 	 */
 	private String youxiang;
 
-	public Yonghu(String id, String name, String dianhua, String youxiang) {
+	public Yonghu(String id, String password,String name, String dianhua, String youxiang) {
 		this.id = id;
+		this.password = password;
 		this.name = name;
 		this.dianhua = dianhua;
 		this.youxiang = youxiang;
@@ -54,6 +63,10 @@ public class Yonghu {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public String getPassword() { return password; }
+
+	public void setPassword() { this.password = password; }
 
 	public String getName() {
 		return name;
@@ -83,6 +96,7 @@ public class Yonghu {
 	public String toString() {
 		return "Yonghu{" +
 				"id='" + id + '\'' +
+				", password='" + password + '\'' +
 				", name='" + name + '\'' +
 				", dianhua='" + dianhua + '\'' +
 				", youxiang='" + youxiang + '\'' +
