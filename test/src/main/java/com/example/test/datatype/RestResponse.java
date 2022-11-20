@@ -1,6 +1,5 @@
 package com.example.test.datatype;
 
-import javax.lang.model.type.NullType;
 import java.io.Serializable;
 
 // 统一json返回接口
