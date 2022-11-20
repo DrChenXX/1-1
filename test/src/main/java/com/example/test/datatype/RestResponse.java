@@ -53,16 +53,16 @@ public class RestResponse<T> implements Serializable {
         return "RestResponse{" + "code=" + status + ", msg='" + msg + '\'' +", data=" + data +'}';
     }
 
-    public static <T> RestResponse<T> success(String msg) {
-        return new RestResponse<T>(200,msg,null);
+    public static RestResponse success(String msg) {
+        return new RestResponse(200,msg);
     }
 
     public static <T> RestResponse<T> success(String msg, T data) {
         return new RestResponse<T>(200,msg,data);
     }
 
-    public static <T> RestResponse<T> fail(String msg) {
-        return new RestResponse<T>(500,msg,null);
+    public static RestResponse fail(String msg) {
+        return new RestResponse(500,msg);
     }
 
     public static <T> RestResponse<T> fail(String msg, T data) {

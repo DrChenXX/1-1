@@ -1,5 +1,6 @@
 package com.example.test.model.service;
 
+import com.example.test.datatype.LoginRequest;
 import com.example.test.interfaces.UserService;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,9 @@ public class HomeService implements UserService {
         return  "homeService";
     }
 
+    public boolean login(LoginRequest data) {
+
+        return true;
+    }
 
 }
