@@ -10,7 +10,7 @@ import java.util.Map;
 public class KechengMgr {
 
     // 增加单条信息
-    public static void add(Kecheng k) {
+    public void add(Kecheng k) {
         String sql =
                 "INSERT INTO T_KECHENG(ID,NAME,TEACHER_ID,PEIYANGFANGAN_ID,KAIKESHIJIAN,XUEFEN) "+
                         "VALUES('"+
@@ -29,7 +29,7 @@ public class KechengMgr {
         }
     }
     // 增加多条信息
-    public static void add(List<Kecheng> ks) {
+    public void add(List<Kecheng> ks) {
         List<String> sqls = new ArrayList<String>();
         for (Kecheng k : ks){
             String sql =
@@ -53,7 +53,7 @@ public class KechengMgr {
     }
 
     // 通过ID删除
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_KECHENG WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -64,7 +64,7 @@ public class KechengMgr {
         }
     }
     // 通过老师ID删除
-    public static void deleteByTeacherID(String ID) {
+    public void deleteByTeacherID(String ID) {
         String sql = "DELETE FROM T_KECHENG WHERE TEACHER_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -75,7 +75,7 @@ public class KechengMgr {
         }
     }
     // 通往过培养方案ID删除
-    public static void deleteByPeiyangfanganID(String ID) {
+    public void deleteByPeiyangfanganID(String ID) {
         String sql = "DELETE FROM T_KECHENG WHERE PEIYANGFANGAN_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -86,7 +86,7 @@ public class KechengMgr {
         }
     }
     // 删除所有ID
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Kecheng> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Kecheng k : list) {
@@ -103,7 +103,7 @@ public class KechengMgr {
     }
 
     // 通过ID查
-    public static Kecheng getByID(String ID) {
+    public Kecheng getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENG WHERE ID = " + ID);
         Kecheng k = new Kecheng(
@@ -117,7 +117,7 @@ public class KechengMgr {
         return k;
     }
     // 通过老师ID查
-    public static List<Kecheng> getByTeacherID(String ID) {
+    public List<Kecheng> getByTeacherID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENG WHERE TEACHER_ID = " + ID);
         List<Kecheng> result = new ArrayList<Kecheng>();
@@ -135,7 +135,7 @@ public class KechengMgr {
         return result;
     }
     // 通过培养方案ID查
-    public static List<Kecheng> getByPeiyangfanganID(String ID) {
+    public List<Kecheng> getByPeiyangfanganID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENG WHERE PEIYANGFANGAN_ID = " + ID);
         List<Kecheng> result = new ArrayList<Kecheng>();
@@ -153,7 +153,7 @@ public class KechengMgr {
         return result;
     }
     // 查所有ID
-    public static List<Kecheng> getAll() {
+    public List<Kecheng> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENG");
         List<Kecheng> result = new ArrayList<Kecheng>();

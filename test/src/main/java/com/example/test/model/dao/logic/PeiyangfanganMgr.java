@@ -15,7 +15,7 @@ public class PeiyangfanganMgr {
      * VERSION
      */
 
-    public static void add(Peiyangfangan p) {
+    public void add(Peiyangfangan p) {
         String sql =
                 "INSERT INTO T_PEIYANGFANGAN(ID,NAME,ZHUANYE_ID,VERSION) "+
                         "VALUES('"+
@@ -32,7 +32,7 @@ public class PeiyangfanganMgr {
         }
     }
 
-    public static void add(List<Peiyangfangan> ps) {
+    public void add(List<Peiyangfangan> ps) {
         List<String> sqls = new ArrayList<String>();
         for (Peiyangfangan p : ps) {
             String sql =
@@ -53,7 +53,7 @@ public class PeiyangfanganMgr {
         }
     }
 
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_PEIYANGFANGAN WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -64,7 +64,7 @@ public class PeiyangfanganMgr {
         }
     }
 
-    public static void deleteByZHUANYEID(String ID) {
+    public void deleteByZHUANYEID(String ID) {
         String sql = "DELETE FROM T_PEIYANGFANGAN WHERE ZHUANYE_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -75,7 +75,7 @@ public class PeiyangfanganMgr {
         }
     }
 
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Peiyangfangan> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Peiyangfangan p : list) {
@@ -91,7 +91,7 @@ public class PeiyangfanganMgr {
         }
     }
 
-    public static Peiyangfangan getByID(String ID) {
+    public Peiyangfangan getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN WHERE ID = " + ID);
         Peiyangfangan p = new Peiyangfangan(
@@ -103,7 +103,7 @@ public class PeiyangfanganMgr {
         return p;
     }
 
-    public static List<Peiyangfangan> getByName(String NAME) {
+    public List<Peiyangfangan> getByName(String NAME) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN WHERE NAME = " + NAME);
         List <Peiyangfangan> result = new ArrayList<Peiyangfangan>();
@@ -119,7 +119,7 @@ public class PeiyangfanganMgr {
         return result;
     }
 
-    public static List<Peiyangfangan> getByZHUANYEID(String ID) {
+    public List<Peiyangfangan> getByZHUANYEID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN WHERE PEIYANGFANGAN_ID = " + ID);
         List <Peiyangfangan> result = new ArrayList<Peiyangfangan>();
@@ -135,7 +135,7 @@ public class PeiyangfanganMgr {
         return result;
     }
 
-    public static List<Peiyangfangan> getAll() {
+    public List<Peiyangfangan> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN");
         List<Peiyangfangan> result = new ArrayList<Peiyangfangan>();

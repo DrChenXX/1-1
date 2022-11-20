@@ -10,7 +10,7 @@ import java.util.Map;
 public class KaoheMgr {
 
     // 增加单条信息
-    public static void add(Kaohe k) {
+    public void add(Kaohe k) {
         String sql =
                 "INSERT INTO T_KAOHE(ID,CONTENT,KECHENG_ID,KECHENGMUBIAO_ID,ZHANBI) "+
                         "VALUES('"+
@@ -28,7 +28,7 @@ public class KaoheMgr {
         }
     }
     // 增加多条信息
-    public static void add(List<Kaohe> ks) {
+    public void add(List<Kaohe> ks) {
         List<String> sqls = new ArrayList<String>();
         for (Kaohe k : ks){
             String sql =
@@ -51,7 +51,7 @@ public class KaoheMgr {
     }
 
     // 通过ID删除
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_KAOHE WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -62,7 +62,7 @@ public class KaoheMgr {
         }
     }
     // 通过课程ID删除
-    public static void deleteByKechengID(String ID) {
+    public void deleteByKechengID(String ID) {
         String sql = "DELETE FROM T_KAOHE WHERE KECHENG_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -73,7 +73,7 @@ public class KaoheMgr {
         }
     }
     // 通过课程目标ID删除
-    public static void deleteByKechengmubiaoID(String ID) {
+    public void deleteByKechengmubiaoID(String ID) {
         String sql = "DELETE FROM T_KAOHE WHERE KECHENGMUBIAO_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -84,7 +84,7 @@ public class KaoheMgr {
         }
     }
     // 删除所有ID
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Kaohe> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Kaohe k : list) {
@@ -101,7 +101,7 @@ public class KaoheMgr {
     }
 
     // 通过ID查
-    public static Kaohe getByID(String ID) {
+    public Kaohe getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KAOHE WHERE ID = " + ID);
         Kaohe k = new Kaohe(
@@ -114,7 +114,7 @@ public class KaoheMgr {
         return k;
     }
     // 通过课程ID查
-    public static List<Kaohe> getByKechengID(String ID) {
+    public List<Kaohe> getByKechengID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KAOHE WHERE KECHENG_ID = " + ID);
         List<Kaohe> result = new ArrayList<Kaohe>();
@@ -131,7 +131,7 @@ public class KaoheMgr {
         return result;
     }
     // 通过课程目标ID查
-    public static List<Kaohe> getByKechengmubiaoID(String ID) {
+    public List<Kaohe> getByKechengmubiaoID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KAOHE WHERE KECHENGMUBIAO_ID = " + ID);
         List<Kaohe> result = new ArrayList<Kaohe>();
@@ -148,7 +148,7 @@ public class KaoheMgr {
         return result;
     }
     // 查全部ID
-    public static List<Kaohe> getAll() {
+    public List<Kaohe> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KAOHE");
         List<Kaohe> result = new ArrayList<Kaohe>();

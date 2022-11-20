@@ -14,7 +14,7 @@ public class ZhuanyeMgr {
      * FUZEREN_ID
      */
 
-    public static void add(Zhuanye z) {
+    public void add(Zhuanye z) {
         String sql =
                 "INSERT INTO T_ZHUANYE(ID,NAME,FUZEREN_ID) "+
                         "VALUES('"+
@@ -30,7 +30,7 @@ public class ZhuanyeMgr {
         }
     }
 
-    public static void add(List<Zhuanye> zs) {
+    public void add(List<Zhuanye> zs) {
         List<String> sqls = new ArrayList<String>();
         for (Zhuanye z : zs){
             String sql =
@@ -50,7 +50,7 @@ public class ZhuanyeMgr {
         }
     }
 
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_ZHUANYE WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -61,7 +61,7 @@ public class ZhuanyeMgr {
         }
     }
 
-    public static void deleteByName(String NAME) {
+    public void deleteByName(String NAME) {
         String sql = "DELETE FROM T_ZHUANYE WHERE NAME = " + NAME;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -72,7 +72,7 @@ public class ZhuanyeMgr {
         }
     }
 
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Zhuanye> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Zhuanye z : list) {
@@ -88,7 +88,7 @@ public class ZhuanyeMgr {
         }
     }
 
-    public static Zhuanye getByID(String ID) {
+    public Zhuanye getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHUANYE WHERE ID = " + ID);
         Zhuanye z = new Zhuanye(
@@ -99,7 +99,7 @@ public class ZhuanyeMgr {
         return z;
     }
 
-    public static List<Zhuanye> getByNAME(String NAME) {
+    public List<Zhuanye> getByNAME(String NAME) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHUANYE WHERE NAME = " + NAME);
         List <Zhuanye> result = new ArrayList<Zhuanye>();
@@ -114,7 +114,7 @@ public class ZhuanyeMgr {
         return result;
     }
 
-    public static List<Zhuanye> getByFUZERENID(String ID) {
+    public List<Zhuanye> getByFUZERENID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHUANYE WHERE FUZEREN_ID = " + ID);
         List <Zhuanye> result = new ArrayList<Zhuanye>();
@@ -129,7 +129,7 @@ public class ZhuanyeMgr {
         return result;
     }
 
-    public static List<Zhuanye> getAll() {
+    public List<Zhuanye> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHUANYE");
         List<Zhuanye> result = new ArrayList<Zhuanye>();

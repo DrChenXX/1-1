@@ -15,7 +15,7 @@ public class XueshengduizhibiaodianMgr {
      * CHENGJI
      */
 
-    public static void add(Xueshengduizhibiaodian x) {
+    public void add(Xueshengduizhibiaodian x) {
         String sql =
                 "INSERT INTO T_XUESHENGDUIZHIBIAODIAN(ID,XUESHENG_ID,ZHIBIAODIAN_ID,CHENGJI) "+
                         "VALUES('"+
@@ -32,7 +32,7 @@ public class XueshengduizhibiaodianMgr {
         }
     }
 
-    public static void add(List<Xueshengduizhibiaodian> xs) {
+    public void add(List<Xueshengduizhibiaodian> xs) {
         List<String> sqls = new ArrayList<String>();
         for (Xueshengduizhibiaodian x : xs){
             String sql =
@@ -53,7 +53,7 @@ public class XueshengduizhibiaodianMgr {
         }
     }
 
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_XUESHENGDUIZHIBIAODIAN WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -64,7 +64,7 @@ public class XueshengduizhibiaodianMgr {
         }
     }
 
-    public static void deleteByXUESHENGID(String ID) {
+    public void deleteByXUESHENGID(String ID) {
         String sql = "DELETE FROM T_XUESHENGDUIZHIBIAODIAN WHERE XUESHENG_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -75,7 +75,7 @@ public class XueshengduizhibiaodianMgr {
         }
     }
 
-    public static void deleteByZHIBIAODIANID(String ID) {
+    public void deleteByZHIBIAODIANID(String ID) {
         String sql = "DELETE FROM T_XUESHENGDUIZHIBIAODIAN WHERE ZHIBIAODIAN_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -86,7 +86,7 @@ public class XueshengduizhibiaodianMgr {
         }
     }
 
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Xueshengduizhibiaodian> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Xueshengduizhibiaodian x : list) {
@@ -102,7 +102,7 @@ public class XueshengduizhibiaodianMgr {
         }
     }
 
-    public static Xueshengduizhibiaodian getByID(String ID) {
+    public Xueshengduizhibiaodian getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENGDUIZHIBIAODIAN WHERE ID = " + ID);
         Xueshengduizhibiaodian x = new Xueshengduizhibiaodian(
@@ -114,7 +114,7 @@ public class XueshengduizhibiaodianMgr {
         return x;
     }
 
-    public static List<Xueshengduizhibiaodian> getByXUESHENGID(String ID) {
+    public List<Xueshengduizhibiaodian> getByXUESHENGID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENGDUIZHIBIAODIAN WHERE XUESHENG_ID = " + ID);
         List<Xueshengduizhibiaodian> result = new ArrayList<Xueshengduizhibiaodian>();
@@ -130,7 +130,7 @@ public class XueshengduizhibiaodianMgr {
         return result;
     }
 
-    public static List<Xueshengduizhibiaodian> getByZHIBIAODIANID(String ID) {
+    public List<Xueshengduizhibiaodian> getByZHIBIAODIANID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENGDUIZHIBIAODIAN WHERE ZHIBIAODIAN_ID = " + ID);
         List<Xueshengduizhibiaodian> result = new ArrayList<Xueshengduizhibiaodian>();
@@ -146,7 +146,7 @@ public class XueshengduizhibiaodianMgr {
         return result;
     }
 
-    public static List<Xueshengduizhibiaodian> getAll() {
+    public List<Xueshengduizhibiaodian> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENGDUIZHIBIAODIAN");
         List<Xueshengduizhibiaodian> result = new ArrayList<Xueshengduizhibiaodian>();

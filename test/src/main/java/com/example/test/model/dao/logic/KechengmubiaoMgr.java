@@ -10,7 +10,7 @@ import java.util.Map;
 public class KechengmubiaoMgr {
 
     // 增加单条信息
-    public static void add(Kechengmubiao k) {
+    public void add(Kechengmubiao k) {
         String sql =
                 "INSERT INTO T_KECHENGMUBIAO(ID,KECHENG_ID,CONTENT) "+
                         "VALUES('"+
@@ -26,7 +26,7 @@ public class KechengmubiaoMgr {
         }
     }
     // 增加多条信息
-    public static void add(List<Kechengmubiao> ks) {
+    public void add(List<Kechengmubiao> ks) {
         List<String> sqls = new ArrayList<String>();
         for (Kechengmubiao k : ks){
             String sql =
@@ -47,7 +47,7 @@ public class KechengmubiaoMgr {
     }
 
     // 通过ID删除
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_KECHENGMUBIAO WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -58,7 +58,7 @@ public class KechengmubiaoMgr {
         }
     }
     // 通过课程ID删除
-    public static void deleteByKechengID(String ID) {
+    public void deleteByKechengID(String ID) {
         String sql = "DELETE FROM T_KECHENGMUBIAO WHERE KECHENG_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -69,7 +69,7 @@ public class KechengmubiaoMgr {
         }
     }
     // 删除所有ID
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Kechengmubiao> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Kechengmubiao k : list) {
@@ -86,7 +86,7 @@ public class KechengmubiaoMgr {
     }
 
     // 通过ID查
-    public static Kechengmubiao getByID(String ID) {
+    public Kechengmubiao getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGMUBIAO WHERE ID = " + ID);
         Kechengmubiao k = new Kechengmubiao(
@@ -97,7 +97,7 @@ public class KechengmubiaoMgr {
         return k;
     }
     // 通过课程ID查
-    public static List<Kechengmubiao> getByKechengID(String ID) {
+    public List<Kechengmubiao> getByKechengID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGMUBIAO WHERE KECHENG_ID = " + ID);
         List<Kechengmubiao> result = new ArrayList<Kechengmubiao>();
@@ -112,7 +112,7 @@ public class KechengmubiaoMgr {
         return result;
     }
     // 查所有ID
-    public static List<Kechengmubiao> getAll() {
+    public List<Kechengmubiao> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGMUBIAO");
         List<Kechengmubiao> result = new ArrayList<Kechengmubiao>();

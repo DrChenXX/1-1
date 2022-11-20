@@ -11,7 +11,7 @@ import java.util.Map;
 public class ErrorMgr {
 
     // 增加单条信息
-    public static void add(Error e) {
+    public void add(Error e) {
         String sql =
                 "INSERT INTO T_ERROR(ID,SHIJIAN,CONTENT) "+
                         "VALUES('"+
@@ -27,7 +27,7 @@ public class ErrorMgr {
         }
     }
     // 增加多条信息
-    public static void add(List<Error> es) {
+    public void add(List<Error> es) {
         List<String> sqls = new ArrayList<String>();
         for (Error e : es){
             String sql =
@@ -48,7 +48,7 @@ public class ErrorMgr {
     }
 
     // 通过ID删除
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_ERROR WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -59,7 +59,7 @@ public class ErrorMgr {
         }
     }
     // 删除所有ID
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Error> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Error e : list) {
@@ -76,7 +76,7 @@ public class ErrorMgr {
     }
 
     // 通过ID查
-    public static Error getByID(String ID) {
+    public Error getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ERROR WHERE ID = " + ID);
         Error e = new Error(
@@ -87,7 +87,7 @@ public class ErrorMgr {
         return e;
     }
     // 查全部ID
-    public static List<Error> getAll() {
+    public List<Error> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ERROR");
         List<Error> result = new ArrayList<Error>();

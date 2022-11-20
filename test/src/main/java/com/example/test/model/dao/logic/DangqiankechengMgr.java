@@ -10,7 +10,7 @@ import java.util.Map;
 public class DangqiankechengMgr {
 
     // 增加单条信息
-    public static void add(Dangqiankecheng d) {
+    public void add(Dangqiankecheng d) {
         String sql =
                 "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN) "+
                         "VALUES('"+
@@ -29,7 +29,7 @@ public class DangqiankechengMgr {
         }
     }
     // 增加多条信息
-    public static void add(List<Dangqiankecheng> ds) {
+    public void add(List<Dangqiankecheng> ds) {
         List<String> sqls = new ArrayList<String>();
         for (Dangqiankecheng d :ds){
             String sql =
@@ -53,7 +53,7 @@ public class DangqiankechengMgr {
     }
 
     // 通过ID删除
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_DANGQIANKECHENG WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -64,7 +64,7 @@ public class DangqiankechengMgr {
         }
     }
     // 通过课程ID删除
-    public static void deleteByKechengID(String ID) {
+    public void deleteByKechengID(String ID) {
         String sql = "DELETE FROM T_DANGQIANKECHENG WHERE KECHENG_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -75,7 +75,7 @@ public class DangqiankechengMgr {
         }
     }
     // 通过老师ID删除
-    public static void deleteByTeacherID(String ID) {
+    public void deleteByTeacherID(String ID) {
         String sql = "DELETE FROM T_DANGQIANKECHENG WHERE TEACHER_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -86,7 +86,7 @@ public class DangqiankechengMgr {
         }
     }
     // 删除所有ID
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Dangqiankecheng> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Dangqiankecheng d : list) {
@@ -103,7 +103,7 @@ public class DangqiankechengMgr {
     }
 
     // 通过ID查
-    public static Dangqiankecheng getByID(String ID) {
+    public Dangqiankecheng getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_DANGQIANKECHENG WHERE ID = " + ID);
         Dangqiankecheng d = new Dangqiankecheng(
@@ -117,7 +117,7 @@ public class DangqiankechengMgr {
         return d;
     }
     // 通过课程ID查
-    public static List<Dangqiankecheng> getByKechengID(String ID) {
+    public List<Dangqiankecheng> getByKechengID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_DANGQIANKECHENG WHERE KECHENG_ID = " + ID);
         List<Dangqiankecheng> result = new ArrayList<Dangqiankecheng>();
@@ -135,7 +135,7 @@ public class DangqiankechengMgr {
         return result;
     }
     // 通过老师ID查
-    public static List<Dangqiankecheng> getByTeacherID(String ID) {
+    public List<Dangqiankecheng> getByTeacherID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_DANGQIANKECHENG WHERE TEACHER_ID = " + ID);
         List<Dangqiankecheng> result = new ArrayList<Dangqiankecheng>();
@@ -153,7 +153,7 @@ public class DangqiankechengMgr {
         return result;
     }
     // 查全部ID
-    public static List<Dangqiankecheng> getAll() {
+    public List<Dangqiankecheng> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_DANGQIANKECHENG");
         List<Dangqiankecheng> result = new ArrayList<Dangqiankecheng>();

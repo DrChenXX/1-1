@@ -14,7 +14,7 @@ public class ZhibiaodianMgr {
      * CONTENT
      */
 
-    public static void add(Zhibiaodian z) {
+    public void add(Zhibiaodian z) {
         String sql =
                 "INSERT INTO T_ZHIBIAODIAN(ID,BIYEYAOQIU_ID,CONTENT) "+
                         "VALUES('"+
@@ -30,7 +30,7 @@ public class ZhibiaodianMgr {
         }
     }
 
-    public static void add(List<Zhibiaodian> zs) {
+    public void add(List<Zhibiaodian> zs) {
         List<String> sqls = new ArrayList<String>();
         for (Zhibiaodian z : zs) {
             String sql =
@@ -50,7 +50,7 @@ public class ZhibiaodianMgr {
         }
     }
 
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_ZHIBIAODIAN WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -61,7 +61,7 @@ public class ZhibiaodianMgr {
         }
     }
 
-    public static void deleteByBIYEYAOQIUID(String ID) {
+    public void deleteByBIYEYAOQIUID(String ID) {
         String sql = "DELETE FROM T_ZHIBIAODIAN WHERE BIYEYAOQIU_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -72,7 +72,7 @@ public class ZhibiaodianMgr {
         }
     }
 
-    public static void deleteAll() {
+    public void deleteAll() {
         List<Zhibiaodian> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for (Zhibiaodian z : list) {
@@ -88,7 +88,7 @@ public class ZhibiaodianMgr {
         }
     }
 
-    public static Zhibiaodian getByID(String ID) {
+    public Zhibiaodian getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHIBIAODIAN WHERE ID = " + ID);
         Zhibiaodian z = new Zhibiaodian(
@@ -99,7 +99,7 @@ public class ZhibiaodianMgr {
         return z;
     }
 
-    public static List<Zhibiaodian> getByBIYEYAOQIUID(String ID) {
+    public List<Zhibiaodian> getByBIYEYAOQIUID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHIBIAODIAN WHERE BIYEYAOQIU_ID = " + ID);
         List <Zhibiaodian> result = new ArrayList<Zhibiaodian>();
@@ -114,7 +114,7 @@ public class ZhibiaodianMgr {
         return result;
     }
 
-    public static List<Zhibiaodian> getAll() {
+    public List<Zhibiaodian> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_ZHIBIAODIAN");
         List<Zhibiaodian> result = new ArrayList<Zhibiaodian>();

@@ -15,7 +15,7 @@ public class XueshengMgr {
      * GRADE
      */
 
-    public static void add(Xuesheng x) {
+    public void add(Xuesheng x) {
         String sql =
                 "INSERT INTO T_XUESHENG(ID,NAME,ZHUANYE_ID,GRADE) "+
                         "VALUES('"+
@@ -32,7 +32,7 @@ public class XueshengMgr {
         }
     }
 
-    public static void add(List<Xuesheng> xs) {
+    public void add(List<Xuesheng> xs) {
         List<String> sqls = new ArrayList<String>();
         for (Xuesheng x : xs) {
             String sql =
@@ -53,7 +53,7 @@ public class XueshengMgr {
         }
     }
 
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_XUESHENG WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -64,7 +64,7 @@ public class XueshengMgr {
         }
     }
 
-    public static void deleteByName(String NAME) {
+    public void deleteByName(String NAME) {
         String sql = "DELETE FROM T_XUESHENG WHERE NAME = " + NAME;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -75,7 +75,7 @@ public class XueshengMgr {
         }
     }
 
-    public static void deleteByZHUANYEID(String ID) {
+    public void deleteByZHUANYEID(String ID) {
         String sql = "DELETE FROM T_XUESHENG WHERE ZHUANYE_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -86,7 +86,7 @@ public class XueshengMgr {
         }
     }
 
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Xuesheng> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Xuesheng x : list) {
@@ -102,7 +102,7 @@ public class XueshengMgr {
         }
     }
 
-    public static Xuesheng getByID(String ID) {
+    public Xuesheng getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENG WHERE ID = " + ID);
         Xuesheng x = new Xuesheng(
@@ -114,7 +114,7 @@ public class XueshengMgr {
         return x;
     }
 
-    public static List<Xuesheng> getByNAME(String NAME) {
+    public List<Xuesheng> getByNAME(String NAME) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENG WHERE NAME = " + NAME);
         List <Xuesheng> result = new ArrayList<Xuesheng>();
@@ -130,7 +130,7 @@ public class XueshengMgr {
         return result;
     }
 
-    public static List<Xuesheng> getByZHUANYEID(String ID) {
+    public List<Xuesheng> getByZHUANYEID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENG WHERE ZHUANYE_ID = " + ID);
         List <Xuesheng> result = new ArrayList<Xuesheng>();
@@ -146,7 +146,7 @@ public class XueshengMgr {
         return result;
     }
 
-    public static List<Xuesheng> getAll() {
+    public List<Xuesheng> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_XUESHENG");
         List<Xuesheng> result = new ArrayList<Xuesheng>();

@@ -10,7 +10,7 @@ import java.util.Map;
 public class KechengduizhibiaodianMgr {
 
     // 增加单条信息
-    public static void add(Kechengduizhibiaodian k) {
+    public void add(Kechengduizhibiaodian k) {
         String sql =
                 "INSERT INTO T_KECHENGDUIZHIBIAODIAN(ID,KECHENG_ID,ZHIBIAODIAN_ID,CONTENT) "+
                         "VALUES('"+
@@ -27,7 +27,7 @@ public class KechengduizhibiaodianMgr {
         }
     }
     // 增加多条信息
-    public static void add(List<Kechengduizhibiaodian> ks) {
+    public void add(List<Kechengduizhibiaodian> ks) {
         List<String> sqls = new ArrayList<String>();
         for (Kechengduizhibiaodian k : ks){
             String sql =
@@ -49,7 +49,7 @@ public class KechengduizhibiaodianMgr {
     }
 
     // 通过ID删除
-    public static void deleteByID(String ID) {
+    public void deleteByID(String ID) {
         String sql = "DELETE FROM T_KECHENGDUIZHIBIAODIAN WHERE ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -60,7 +60,7 @@ public class KechengduizhibiaodianMgr {
         }
     }
     // 通过课程ID删除
-    public static void deleteByKechengID(String ID) {
+    public void deleteByKechengID(String ID) {
         String sql = "DELETE FROM T_KECHENGDUIZHIBIAODIAN WHERE KECHENG_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -71,7 +71,7 @@ public class KechengduizhibiaodianMgr {
         }
     }
     // 通过指标点ID删除
-    public static void deleteByZhibiaodianID(String ID) {
+    public void deleteByZhibiaodianID(String ID) {
         String sql = "DELETE FROM T_KECHENGDUIZHIBIAODIAN WHERE ZHIBIAODIAN_ID = " + ID;
         boolean check;
         check = ConnectDB.deleteContent(sql);
@@ -82,7 +82,7 @@ public class KechengduizhibiaodianMgr {
         }
     }
     // 删除所有ID
-    public static void deleteAll(){
+    public void deleteAll(){
         List<Kechengduizhibiaodian> list = getAll();
         List<String> sqls = new ArrayList<String>();
         for(Kechengduizhibiaodian k : list) {
@@ -99,7 +99,7 @@ public class KechengduizhibiaodianMgr {
     }
 
     // 通过ID查
-    public static Kechengduizhibiaodian getByID(String ID) {
+    public Kechengduizhibiaodian getByID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGDUIZHIBIAODIAN WHERE ID = " + ID);
         Kechengduizhibiaodian k = new Kechengduizhibiaodian(
@@ -111,7 +111,7 @@ public class KechengduizhibiaodianMgr {
         return k;
     }
     // 通过课程ID查
-    public static List<Kechengduizhibiaodian> getByKechengID(String ID) {
+    public List<Kechengduizhibiaodian> getByKechengID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGDUIZHIBIAODIAN WHERE KECHENG_ID = " + ID);
         List<Kechengduizhibiaodian> result = new ArrayList<Kechengduizhibiaodian>();
@@ -127,7 +127,7 @@ public class KechengduizhibiaodianMgr {
         return result;
     }
     // 通过指标点ID查
-    public static List<Kechengduizhibiaodian> getByZhibiaodianID(String ID) {
+    public List<Kechengduizhibiaodian> getByZhibiaodianID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGDUIZHIBIAODIAN WHERE ZHIBIAODIAN_ID = " + ID);
         List<Kechengduizhibiaodian> result = new ArrayList<Kechengduizhibiaodian>();
@@ -143,7 +143,7 @@ public class KechengduizhibiaodianMgr {
         return result;
     }
     // 查所有ID
-    public static List<Kechengduizhibiaodian> getAll() {
+    public List<Kechengduizhibiaodian> getAll() {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_KECHENGDUIZHIBIAODIAN");
         List<Kechengduizhibiaodian> result = new ArrayList<Kechengduizhibiaodian>();
