@@ -103,6 +103,22 @@ public class PeiyangfanganMgr {
         return p;
     }
 
+    public static List<Peiyangfangan> getByName(String NAME) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN WHERE NAME = " + NAME);
+        List <Peiyangfangan> result = new ArrayList<Peiyangfangan>();
+        for (Map<String, Object> map : list) {
+            Peiyangfangan p = new Peiyangfangan(
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("NAME")),
+                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
+                    String.valueOf(list.get(0).get("VERSION"))
+            );
+            result.add(p);
+        }
+        return result;
+    }
+
     public static List<Peiyangfangan> getByZHUANYEID(String ID) {
         List<Map<String, Object>> list;
         list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN WHERE PEIYANGFANGAN_ID = " + ID);
