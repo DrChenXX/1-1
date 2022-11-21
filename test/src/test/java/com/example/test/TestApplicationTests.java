@@ -1,7 +1,7 @@
 package com.example.test;
 
-import com.example.test.interfaces.model.dao.logic.YonghuMgr;
-import com.example.test.interfaces.model.entity.Yonghu;
+import com.example.test.model.dao.logic.YonghuMgr;
+import com.example.test.model.entity.Yonghu;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
