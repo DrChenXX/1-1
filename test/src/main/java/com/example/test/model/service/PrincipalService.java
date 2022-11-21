@@ -2,8 +2,10 @@ package com.example.test.model.service;
 
 import com.example.test.datatype.*;
 import com.example.test.interfaces.UserService;
+import com.example.test.model.dao.logic.BiyeyaoqiuMgr;
 import com.example.test.model.dao.logic.PeiyangmubiaoMgr;
 import com.example.test.model.dao.logic.YonghuMgr;
+import com.example.test.model.dao.logic.ZhibiaodianMgr;
 import com.example.test.model.entity.Peiyangmubiao;
 import com.example.test.model.entity.Yonghu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,10 @@ public class PrincipalService implements UserService {
     private YonghuMgr yonghuMgr;
     @Autowired
     private PeiyangmubiaoMgr peiyangmubiaoMgr;
+    @Autowired
+    private BiyeyaoqiuMgr biyeyaoqiuMgr;
+    @Autowired
+    private ZhibiaodianMgr zhibiaodianMgr;
 
     @Override
     public String name() {
