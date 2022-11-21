@@ -1,23 +1,23 @@
 package com.example.test.datatype;
 
-public class SearchPeiyangfanganResponse {
-    private int number;
+public class SearchPeiyangmubiaoResponse {
+    private int id;
     private String content;
 
-    public SearchPeiyangfanganResponse() {
+    public SearchPeiyangmubiaoResponse() {
     }
 
-    public SearchPeiyangfanganResponse(int number, String content) {
-        this.number = number;
+    public SearchPeiyangmubiaoResponse(int number, String content) {
+        this.id = number;
         this.content = content;
     }
 
-    public int getNumber() {
-        return number;
+    public int getId() {
+        return id;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getContent() {
@@ -31,7 +31,7 @@ public class SearchPeiyangfanganResponse {
     @Override
     public String toString() {
         return "SearchPeiyangfanganResponse{" +
-                "number=" + number +
+                "number=" + id +
                 ", content='" + content + '\'' +
                 '}';
     }

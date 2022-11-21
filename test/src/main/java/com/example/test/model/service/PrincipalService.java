@@ -6,8 +6,10 @@ import com.example.test.model.dao.logic.BiyeyaoqiuMgr;
 import com.example.test.model.dao.logic.PeiyangmubiaoMgr;
 import com.example.test.model.dao.logic.YonghuMgr;
 import com.example.test.model.dao.logic.ZhibiaodianMgr;
+import com.example.test.model.entity.Biyeyaoqiu;
 import com.example.test.model.entity.Peiyangmubiao;
 import com.example.test.model.entity.Yonghu;
+import com.example.test.model.entity.Zhibiaodian;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,17 +69,39 @@ public class PrincipalService implements UserService {
         if (peiyangmubiaos.isEmpty()) {
             return new RestResponse().fail("没有找到对应培养目标");
         }
-        List<SearchPeiyangfanganResponse> responses = new ArrayList<SearchPeiyangfanganResponse>();
+        List<SearchPeiyangmubiaoResponse> responses = new ArrayList<SearchPeiyangmubiaoResponse>();
         int n = 1;
         for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
-            responses.add(new SearchPeiyangfanganResponse(n,peiyangmubiao.getContent()));
+            responses.add(new SearchPeiyangmubiaoResponse(n,peiyangmubiao.getContent()));
             n++;
         }
         return new RestResponse().success("已找到对应的培养目标",responses);
     }
 
+    //todo:性能问题
     public RestResponse searchBiyeyaoqiu(SearchBiyeyaoqiuRequest request) {
-        return null;
+        List<SearchBiyeyaoqiuResponse> responses = new ArrayList<SearchBiyeyaoqiuResponse>();
+        List<Biyeyaoqiu> biyeyaoqius = biyeyaoqiuMgr.getByPeiyangfanganID(request.getPeiyangfangan());
+        List<Zhibiaodian> zhibiaodians = zhibiaodianMgr.getAll();
+        int i = 1;
+        for (Biyeyaoqiu biyeyaoqiu : biyeyaoqius) {
+            List<SearchZhibiaodianResponse> rs = new ArrayList<SearchZhibiaodianResponse>();
+            int n = 1;
+            for(Zhibiaodian zhibiaodian : zhibiaodians) {
+                if(zhibiaodian.getBiyeyaoqiuId().equals(biyeyaoqiu.getId())) {
+                    rs.add(new SearchZhibiaodianResponse(n,zhibiaodian.getContent()));
+                    n++;
+                }
+
+            }
+            responses.add(new SearchBiyeyaoqiuResponse(i,biyeyaoqiu.getContent(),rs));
+            i++;
+        }
+        if (!responses.isEmpty()) {
+            return new RestResponse<>().success("已找到对应毕业要求",responses);
+        } else {
+            return new RestResponse().fail("未找到对应毕业要求");
+        }
     }
 
 
