@@ -7,7 +7,7 @@ import com.example.test.model.dao.logic.YonghuMgr;
 import com.example.test.model.entity.Yonghu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service("homeService")
 public class HomeService implements UserService {
@@ -20,6 +20,7 @@ public class HomeService implements UserService {
         System.out.println("homeService");
         return  "homeService";
     }
+
 
     public RestResponse login(LoginRequest data) {
         Yonghu yonghu = yonghuMgr.getByID(data.getUsername());

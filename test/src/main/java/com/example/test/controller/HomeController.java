@@ -8,10 +8,7 @@ import com.example.test.model.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -29,12 +26,13 @@ public class HomeController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public RestResponse login(LoginRequest request) {
+    public RestResponse login(String username,String password,String token) {
+        LoginRequest request = new LoginRequest(username,password,token);
         System.out.println(request);
         return homeService.login(request);
     }
 
-    @RequestMapping(path = "hi", method = RequestMethod.GET)
+    @RequestMapping(path = "hi", method = RequestMethod.POST)
     public String index() {
         return "hello world";
     }

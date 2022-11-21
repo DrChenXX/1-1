@@ -1,10 +1,10 @@
 package com.example.test.model.service;
 
-import com.example.test.datatype.RestResponse;
-import com.example.test.datatype.SearchTeacherRequest;
-import com.example.test.datatype.SearchTeacherResponse;
+import com.example.test.datatype.*;
 import com.example.test.interfaces.UserService;
+import com.example.test.model.dao.logic.PeiyangmubiaoMgr;
 import com.example.test.model.dao.logic.YonghuMgr;
+import com.example.test.model.entity.Peiyangmubiao;
 import com.example.test.model.entity.Yonghu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,8 @@ public class PrincipalService implements UserService {
 
     @Autowired
     private YonghuMgr yonghuMgr;
+    @Autowired
+    private PeiyangmubiaoMgr peiyangmubiaoMgr;
 
     @Override
     public String name() {
@@ -53,6 +55,25 @@ public class PrincipalService implements UserService {
         }
 
     }
+
+    public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getPeiyangfangan());
+        if (peiyangmubiaos.isEmpty()) {
+            return new RestResponse().fail("没有找到对应培养目标");
+        }
+        List<SearchPeiyangfanganResponse> responses = new ArrayList<SearchPeiyangfanganResponse>();
+        int n = 1;
+        for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
+            responses.add(new SearchPeiyangfanganResponse(n,peiyangmubiao.getContent()));
+            n++;
+        }
+        return new RestResponse().success("已找到对应的培养目标",responses);
+    }
+
+    public RestResponse searchBiyeyaoqiu(SearchBiyeyaoqiuRequest request) {
+        return null;
+    }
+
 
 
 }
