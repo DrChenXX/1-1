@@ -1,9 +1,6 @@
 package com.example.test.controller;
 
-import com.example.test.datatype.LoginRequest;
-import com.example.test.datatype.RestResponse;
-import com.example.test.datatype.SearchPeiyangmubiaoRequest;
-import com.example.test.datatype.SearchTeacherRequest;
+import com.example.test.datatype.*;
 import com.example.test.interfaces.UserController;
 import com.example.test.model.service.PrincipalService;
 import com.example.test.model.service.TeacherService;
@@ -36,6 +33,13 @@ public class PrincipalController implements UserController {
     public RestResponse searchPeiyangfangan(@RequestBody SearchPeiyangmubiaoRequest request) {
         System.out.println(request);
         return principalService.searchPeiyangmubiao(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/biyeyaoqiu", method = RequestMethod.POST)
+    public RestResponse searchBiyeyaoqiu(@RequestBody SearchBiyeyaoqiuRequest request) {
+        System.out.println(request);
+        return principalService.searchBiyeyaoqiu(request);
     }
 
     @RequestMapping(path = "hi", method = RequestMethod.GET)

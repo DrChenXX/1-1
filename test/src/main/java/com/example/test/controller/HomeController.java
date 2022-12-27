@@ -25,9 +25,8 @@ public class HomeController implements UserController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public RestResponse login(String username,String password,String token) {
-        LoginRequest request = new LoginRequest(username,password,token);
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public RestResponse login(@RequestBody LoginRequest request) {
         System.out.println(request);
         return homeService.login(request);
     }
