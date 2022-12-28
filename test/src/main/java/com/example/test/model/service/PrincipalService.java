@@ -27,6 +27,8 @@ public class PrincipalService implements UserService {
     private BiyeyaoqiuMgr biyeyaoqiuMgr;
     @Autowired
     private ZhibiaodianMgr zhibiaodianMgr;
+    @Autowired
+    private KechengzhibiaodianMgr
 
     @Override
     public String name() {
