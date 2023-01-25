@@ -83,9 +83,64 @@ public class TeacherService implements UserService {
         }
         return new RestResponse().success("",responses);
     }
+
     //feedback
+    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
+        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
+        if (peiyangmubiaos.isEmpty()) {
+            return new RestResponse().fail("");
+        }
+        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
+        int n = 1;
+        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
+            responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
+            n++;
+        }
+        return new RestResponse().success("",responses);
+    }
 
     //save
+    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
+        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
+        if (peiyangmubiaos.isEmpty()) {
+            return new RestResponse().fail("");
+        }
+        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
+        int n = 1;
+        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
+            responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
+            n++;
+        }
+        return new RestResponse().success("",responses);
+    }
+
+    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
+        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
+        if (peiyangmubiaos.isEmpty()) {
+            return new RestResponse().fail("");
+        }
+        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
+        int n = 1;
+        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
+            responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
+            n++;
+        }
+        return new RestResponse().success("",responses);
+    }
+
+    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
+        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
+        if (peiyangmubiaos.isEmpty()) {
+            return new RestResponse().fail("");
+        }
+        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
+        int n = 1;
+        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
+            responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
+            n++;
+        }
+        return new RestResponse().success("",responses);
+    }
 
     public RestResponse searchKechengmubiao (SearchKechengmubiaoRequest request) {
         List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
