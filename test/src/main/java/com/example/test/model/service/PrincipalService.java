@@ -22,6 +22,7 @@ public class PrincipalService implements UserService {
     @Autowired
     private ZhibiaodianMgr zhibiaodianMgr;
 
+    @Autowired
     private PeiyangfanganMgr peiyangfanganMgr;
 
 
