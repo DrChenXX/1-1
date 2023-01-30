@@ -2,14 +2,8 @@ package com.example.test.model.service;
 
 import com.example.test.datatype.*;
 import com.example.test.interfaces.UserService;
-import com.example.test.model.dao.logic.BiyeyaoqiuMgr;
-import com.example.test.model.dao.logic.PeiyangmubiaoMgr;
-import com.example.test.model.dao.logic.YonghuMgr;
-import com.example.test.model.dao.logic.ZhibiaodianMgr;
-import com.example.test.model.entity.Biyeyaoqiu;
-import com.example.test.model.entity.Peiyangmubiao;
-import com.example.test.model.entity.Yonghu;
-import com.example.test.model.entity.Zhibiaodian;
+import com.example.test.model.dao.logic.*;
+import com.example.test.model.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +21,8 @@ public class PrincipalService implements UserService {
     private BiyeyaoqiuMgr biyeyaoqiuMgr;
     @Autowired
     private ZhibiaodianMgr zhibiaodianMgr;
+
+    private PeiyangfanganMgr peiyangfanganMgr;
 
 
     @Override
@@ -103,6 +99,33 @@ public class PrincipalService implements UserService {
         } else {
             return new RestResponse().fail("未找到对应毕业要求");
         }
+    }
+
+    public RestResponse searchPeiyangfangan(SearchPeiyangfanganRequest request) {
+        List<Peiyangfangan> fangans = peiyangfanganMgr.getAll();
+        System.out.println(fangans);
+        List<SearchPeiyangfanganResponse> responses = new ArrayList<SearchPeiyangfanganResponse>();
+        if (fangans == null) {
+            return new RestResponse<>().fail("没有找到培养方案");
+        }
+
+        for (Peiyangfangan fangan : fangans) {
+            if (request.getUserid()!="") {
+                if(!fangan.getId().equals(request.getUserid())) {
+                    continue;
+                }
+            }
+            responses.add(new SearchPeiyangfanganResponse(
+                    fangan.getId(),fangan.getName(),"zhuanyemingcheng",
+                    fangan.getZhuanyeId(),fangan.getVersion(),"yuanxi","是","完成"));
+        }
+
+        if(!responses.isEmpty()) {
+            return new RestResponse<>().success("找到了培养方案列表",responses);
+        } else {
+            return new RestResponse<>().fail("没有找到培养方案");
+        }
+
     }
 
 
