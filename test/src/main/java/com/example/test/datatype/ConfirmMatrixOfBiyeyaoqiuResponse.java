@@ -2,51 +2,49 @@ package com.example.test.datatype;
 
 import java.util.List;
 
-//重写中 未完成
 public class ConfirmMatrixOfBiyeyaoqiuResponse {
-    private int id;
-    private String neirong;
-    private List<SearchZhibiaodianResponse> zhibiaodian;
+    private String zhichengdian;
+    private boolean zhicheng;
+    //private List<ConfirmMatrixOfBiyeyaoqiuResponse> zhichengguanxi;
 
-    public SearchBiyeyaoqiuResponse() {
+    public ConfirmMatrixOfBiyeyaoqiuResponse() {
     }
 
-    public SearchBiyeyaoqiuResponse(int id, String neirong, List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.id = id;
-        this.neirong = neirong;
-        this.zhibiaodian = zhibiaodian;
+    public ConfirmMatrixOfBiyeyaoqiuResponse(String zhichengdian, boolean zhicheng , List<ConfirmMatrixOfBiyeyaoqiuResponse> zhichengguanxi) {
+        this.zhichengdian = zhichengdian;
+        this.zhicheng = zhicheng;
+        //this.zhichengguanxi = zhichengguanxi;
     }
 
-    public int getId() {
-        return id;
+    public int getZhichengdian() {
+        return zhichengdian;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setZhichengdian(String zhichengdian) {
+        this.zhichengdian = zhichengdian;
     }
 
-    public String getNeirong() {
-        return neirong;
+    public String getZhicheng() {
+        return zhicheng;
     }
 
-    public void setNeirong(String neirong) {
-        this.neirong = neirong;
+    public void setZhicheng(boolean) {
+        this.zhicheng = zhicheng;
     }
 
-    public List<SearchZhibiaodianResponse> getZhibiaodian() {
-        return zhibiaodian;
-    }
-
-    public void setZhibiaodian(List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.zhibiaodian = zhibiaodian;
-    }
+//    public List<ConfirmMatrixOfBiyeyaoqiuResponse> getZhichengguanxi() {
+//        return zhichengguanxi;
+//    }
+//
+//    public void setZhibiaodian(List<SearchZhibiaodianResponse> zhibiaodian) {
+//        this.zhibiaodian = zhibiaodian;
+//    }
 
     @Override
     public String toString() {
-        return "SearchBiyeyaoqiuResponse{" +
-                "id=" + id +
-                ", neirong='" + neirong + '\'' +
-                ", zhibiaodian=" + zhibiaodian +
+        return "ConfirmMatrixOfBiyeyaoqiuResponse{" +
+                "zhichengdian=" + zhichengdian+
+                ", zhicheng='" + zhicheng + '\'' +
                 '}';
     }
 }

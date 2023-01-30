@@ -10,7 +10,7 @@ public class ConfirmMatrixOfBiyeyaoqiuRequest {
         this.kechengid = kechengid;
     }
 
-    public String getMatrixOfBiyeyaoqiu() {
+    public String getKechengid() {
         return kechengid;
     }
 
