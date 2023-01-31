@@ -1,23 +1,23 @@
 package com.example.test.datatype;
 
-public class FeedbackMatrixOfBiyeyaoqiuRequest {
+public class UploadZhibiaodianRequest {
     private String kechengid;
 
-    public FeedbackMatrixOfBiyeyaoqiuRequest() {
+    public UploadZhibiaodian() {
     }
 
-    public FeedbackMatrixOfBiyeyaoqiuRequest(String kechengid) {
+    public UploadZhibiaodianRequest(String kechengid) {
         this.kechengid = kechengid;
     }
 
-    public String getMatrixOfBiyeyaoqiu() {
+    public String getKechengid() {
         return kechengid;
     }
 
     @Override
     public String toString() {
-        return "FeedbackMatrixOfBiyeyaoqiuRequest{" +
-                "feedbackMatrixOfBiyeyaoqiuRequest='" + kechengid + '\'' +
+        return "UploadZhibiaodian{" +
+                "UploadZhibiaodian='" + kechengid + '\'' +
                 '}';
     }
 }

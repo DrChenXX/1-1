@@ -1,12 +1,12 @@
 package com.example.test.datatype;
 
-public class FeedbackMatrixOfBiyeyaoqiuRequest {
+public class SearchKaohefangshiRequest {
     private String kechengid;
 
-    public FeedbackMatrixOfBiyeyaoqiuRequest() {
+    public SearchKaohefangshiRequest() {
     }
 
-    public FeedbackMatrixOfBiyeyaoqiuRequest(String kechengid) {
+    public SearchKaohefangshiRequest(String kechengid) {
         this.kechengid = kechengid;
     }
 
@@ -16,8 +16,8 @@ public class FeedbackMatrixOfBiyeyaoqiuRequest {
 
     @Override
     public String toString() {
-        return "FeedbackMatrixOfBiyeyaoqiuRequest{" +
-                "feedbackMatrixOfBiyeyaoqiuRequest='" + kechengid + '\'' +
+        return "SearchKaohefangshiRequest{" +
+                "searchKaohefangshiRequest='" + kechengid + '\'' +
                 '}';
     }
 }

@@ -3,50 +3,43 @@ package com.example.test.datatype;
 import java.util.List;
 
 //重写中 未完成
-public class ConfirmMatrixOfBiyeyaoqiuResponse {
-    private int id;
-    private String neirong;
-    private List<SearchZhibiaodianResponse> zhibiaodian;
+public class SearchKaohefangshiResponse {
+    private String mubiao;
+    private int zhanbi;
+    private String guanlian;
 
     public SearchBiyeyaoqiuResponse() {
     }
 
-    public SearchBiyeyaoqiuResponse(int id, String neirong, List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.id = id;
-        this.neirong = neirong;
-        this.zhibiaodian = zhibiaodian;
+    public SearchBiyeyaoqiuResponse(String mubiao,int zhanbi,String guanlian) {
+        this.mubiao = mubiao;
+        this.zhanbi = zhanbi;
+        this.guanlian = guanlian;
     }
 
-    public int getId() {
-        return id;
+    public int getMubiao() {
+        return mubiao;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMubiao(String mubiao) {
+        this.mubiao = mubiao;
     }
 
-    public String getNeirong() {
-        return neirong;
+    public String getZhanbi() {
+        return zhanbi;
     }
 
-    public void setNeirong(String neirong) {
-        this.neirong = neirong;
+    public void setZhanbi(int zhanbi) {
+        this.zhanbi = zhanbi;
     }
 
-    public List<SearchZhibiaodianResponse> getZhibiaodian() {
-        return zhibiaodian;
-    }
-
-    public void setZhibiaodian(List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.zhibiaodian = zhibiaodian;
-    }
 
     @Override
     public String toString() {
-        return "SearchBiyeyaoqiuResponse{" +
-                "id=" + id +
-                ", neirong='" + neirong + '\'' +
-                ", zhibiaodian=" + zhibiaodian +
+        return "SearchKaohefangshiResponse{" +
+                "mubiao=" + mubiao +
+                ",zhanbi=" + zhanbi +
+                ",guanlian=" + guanlian + '\'' +
                 '}';
     }
 }

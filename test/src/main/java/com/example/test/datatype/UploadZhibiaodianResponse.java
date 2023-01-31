@@ -3,51 +3,62 @@ package com.example.test.datatype;
 import java.util.List;
 
 //重写中 未完成
-public class FeedbackOfBiyeyaoqiuResponse {
+public class UploadZhibiaodianResponse {
     private String zhichengdian;
     private boolean is_zhicheng;
     private String xiugai;
     private Strinf yijian;
 
-    public SearchBiyeyaoqiuResponse() {
+    public UploadZhibiaodianResponse() {
     }
 
-    public SearchBiyeyaoqiuResponse(int id, String neirong, List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.id = id;
-        this.neirong = neirong;
-        this.zhibiaodian = zhibiaodian;
+    public UploadZhibiaodianResponse( private String zhichengdian,boolean is_zhicheng,String xiugai,String yijian;) {
+        this.zhichengdian = zhichengdian;
+        this.is_zhicheng = is_zhicheng;
+        this.xiugai = xiugai;
+        this.yijian = yijian;
+    }
     }
 
-    public int getId() {
-        return id;
+    public String getZhichengdian() {
+        return zhichengdian;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setZhichengdian(String zhichengdian) {
+        this.zhichengdian = zhichengdian;
     }
 
-    public String getNeirong() {
-        return neirong;
+    public String getIs_zhicheng() {
+        return is_zhicheng;
     }
 
-    public void setNeirong(String neirong) {
-        this.neirong = neirong;
+    public void setIs_zhicheng(boolean) {
+        this.is_zhicheng = is_zhicheng;
     }
 
-    public List<SearchZhibiaodianResponse> getZhibiaodian() {
-        return zhibiaodian;
+    public String getXiugai() {
+        return xiugai;
     }
 
-    public void setZhibiaodian(List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.zhibiaodian = zhibiaodian;
+    public void setXiugai(String xiugai){
+        this.xiugai = xiugai;
+    }
+
+    public String getYijian() {
+        return  yijian;
+    }
+
+    public void setYijian(String yijian) {
+        this.yijian = yijian;
     }
 
     @Override
     public String toString() {
-        return "SearchBiyeyaoqiuResponse{" +
-                "id=" + id +
-                ", neirong='" + neirong + '\'' +
-                ", zhibiaodian=" + zhibiaodian +
+        return "UploadZhibiaodianResponse{" +
+                "zhichengdian=" + zhichengdian +
+                ", is_zhicheng='" + is_zhicheng +
+                ", xiugai=" + xiugai +
+                ", yijian=" + yijian '\'' +
                 '}';
     }
 }
