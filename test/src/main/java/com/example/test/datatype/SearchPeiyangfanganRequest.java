@@ -3,6 +3,8 @@ package com.example.test.datatype;
 public class SearchPeiyangfanganRequest {
     private String userid;
 
+    private String yeshu;
+
     private String zhuanye;
 
     private String yuanxi;
@@ -14,8 +16,9 @@ public class SearchPeiyangfanganRequest {
     public SearchPeiyangfanganRequest() {
     }
 
-    public SearchPeiyangfanganRequest(String userid, String zhuanye, String yuanxi, String xianxing, String jindu) {
+    public SearchPeiyangfanganRequest(String userid, String yeshu,String zhuanye, String yuanxi, String xianxing, String jindu) {
         this.userid = userid;
+        this.yeshu = yeshu;
         this.zhuanye = zhuanye;
         this.yuanxi = yuanxi;
         this.xianxing = xianxing;
@@ -28,6 +31,14 @@ public class SearchPeiyangfanganRequest {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public String getYeshu() {
+        return yeshu;
+    }
+
+    public void setYeshu(String yeshu) {
+        this.yeshu = yeshu;
     }
 
     public String getZhuanye() {
@@ -66,6 +77,7 @@ public class SearchPeiyangfanganRequest {
     public String toString() {
         return "SearchPeiyangfanganRequest{" +
                 "userid='" + userid + '\'' +
+                ", yeshu='" + yeshu + '\'' +
                 ", zhuanye='" + zhuanye + '\'' +
                 ", yuanxi='" + yuanxi + '\'' +
                 ", xianxing='" + xianxing + '\'' +

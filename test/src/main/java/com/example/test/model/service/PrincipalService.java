@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service("principalService")
 public class PrincipalService implements UserService {
@@ -129,8 +130,12 @@ public class PrincipalService implements UserService {
                     fangan.getZhuanyeId(),fangan.getVersion(),"yuanxi","是","完成"));
         }
 
+        int yeshu = Integer.valueOf(request.getYeshu());
+        List<SearchPeiyangfanganResponse> responses1 = responses.subList(yeshu * 5, Math.min(yeshu * 5,responses.size() - 1));
+
+
         if(!responses.isEmpty()) {
-            return new RestResponse<>().success("找到了培养方案列表",responses);
+            return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
         } else {
             return new RestResponse<>().fail("没有找到培养方案");
         }
