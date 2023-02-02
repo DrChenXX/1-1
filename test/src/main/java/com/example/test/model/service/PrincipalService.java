@@ -116,8 +116,16 @@ public class PrincipalService implements UserService {
                     continue;
                 }
             }
+            String ZhuanyeID = fangan.getZhuanyeId();
+            ZhuanyeMgr zhuanyeMgr = new ZhuanyeMgr();
+            Zhuanye zhuanye = zhuanyeMgr.getByID(ZhuanyeID);
+            if (request.getZhuanye()!="") {
+                if(!zhuanye.getName().equals(request.getZhuanye())) {
+                    continue;
+                }
+            }
             responses.add(new SearchPeiyangfanganResponse(
-                    fangan.getId(),fangan.getName(),"zhuanyemingcheng",
+                    fangan.getId(),fangan.getName(),zhuanye.getName(),
                     fangan.getZhuanyeId(),fangan.getVersion(),"yuanxi","是","完成"));
         }
 
