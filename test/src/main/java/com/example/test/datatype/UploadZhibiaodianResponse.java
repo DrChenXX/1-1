@@ -12,7 +12,7 @@ public class UploadZhibiaodianResponse {
     public UploadZhibiaodianResponse() {
     }
 
-    public UploadZhibiaodianResponse( private String zhichengdian,boolean is_zhicheng,String xiugai,String yijian;) {
+    public UploadZhibiaodianResponse(String zhichengdian,boolean is_zhicheng,String xiugai,String yijian) {
         this.zhichengdian = zhichengdian;
         this.is_zhicheng = is_zhicheng;
         this.xiugai = xiugai;
