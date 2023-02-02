@@ -27,7 +27,7 @@ public class DownloadZhibiaodianResponse {
         this.zhichengdian = zhichengdian;
     }
 
-    public String getIs_zhicheng() {
+    public boolean getIs_zhicheng() {
         return is_zhicheng;
     }
 
