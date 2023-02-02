@@ -8,16 +8,16 @@ public class SearchKaohefangshiResponse {
     private int zhanbi;
     private String guanlian;
 
-    public SearchBiyeyaoqiuResponse() {
+    public SearchKaohefangshiResponse() {
     }
 
-    public SearchBiyeyaoqiuResponse(String mubiao,int zhanbi,String guanlian) {
+    public SearchKaohefangshiResponse(String mubiao,int zhanbi,String guanlian) {
         this.mubiao = mubiao;
         this.zhanbi = zhanbi;
         this.guanlian = guanlian;
     }
 
-    public int getMubiao() {
+    public String getMubiao() {
         return mubiao;
     }
 
@@ -25,7 +25,7 @@ public class SearchKaohefangshiResponse {
         this.mubiao = mubiao;
     }
 
-    public String getZhanbi() {
+    public int getZhanbi() {
         return zhanbi;
     }
 

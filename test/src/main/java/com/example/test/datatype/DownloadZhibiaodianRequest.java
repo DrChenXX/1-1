@@ -1,9 +1,9 @@
 package com.example.test.datatype;
 
-public class DowmloadZhibiaodianRequest {
+public class DownloadZhibiaodianRequest {
     private String kechengid;
 
-    public DowmloadZhibiaodianRequest() {
+    public DownloadZhibiaodianRequest() {
     }
 
     public void setKechengid(String kechengid) {

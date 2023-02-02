@@ -31,7 +31,7 @@ public class DownloadZhibiaodianResponse {
         return is_zhicheng;
     }
 
-    public void setIs_zhicheng(boolean) {
+    public void setIs_zhicheng(boolean is_zhicheng) {
         this.is_zhicheng = is_zhicheng;
     }
 
@@ -57,7 +57,7 @@ public class DownloadZhibiaodianResponse {
                 "zhichengdian=" + zhichengdian +
                 ", is_zhicheng='" + is_zhicheng +
                 ", xiugai=" + xiugai +
-                ", yijian=" + yijian '\'' +
+                ", yijian=" + yijian + '\'' +
                 '}';
     }
 

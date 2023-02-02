@@ -7,12 +7,12 @@ public class SaveMatrixOfBiyeyaoqiuResponse {
     private String zhichengdian;
     private boolean is_zhicheng;
     private String xiugai;
-    private Strinf yijian;
+    private String yijian;
 
     public SaveMatrixOfBiyeyaoqiuResponse() {
     }
 
-    public SaveMatrixOfBiyeyaoqiuResponse(String zhichengdian,boolean is_zhicheng,String xiugai,String yijian) {
+    public SaveMatrixOfBiyeyaoqiuResponse(String zhichengdian, boolean is_zhicheng, String xiugai, String yijian) {
         this.zhichengdian = zhichengdian;
         this.is_zhicheng = is_zhicheng;
         this.xiugai = xiugai;
@@ -27,11 +27,11 @@ public class SaveMatrixOfBiyeyaoqiuResponse {
         this.zhichengdian = zhichengdian;
     }
 
-    public String getIs_zhicheng() {
+    public boolean getIs_zhicheng() {
         return is_zhicheng;
     }
 
-    public void setIs_zhicheng(boolean) {
+    public void setIs_zhicheng(boolean is_zhicheng) {
         this.is_zhicheng = is_zhicheng;
     }
 
@@ -39,12 +39,12 @@ public class SaveMatrixOfBiyeyaoqiuResponse {
         return xiugai;
     }
 
-    public void setXiugai(String xiugai){
+    public void setXiugai(String xiugai) {
         this.xiugai = xiugai;
     }
 
     public String getYijian() {
-        return  yijian;
+        return yijian;
     }
 
     public void setYijian(String yijian) {
@@ -57,7 +57,8 @@ public class SaveMatrixOfBiyeyaoqiuResponse {
                 "zhichengdian=" + zhichengdian +
                 ", is_zhicheng='" + is_zhicheng +
                 ", xiugai=" + xiugai +
-                ", yijian=" + yijian '\'' +
+                ", yijian=" + yijian + '\'' +
                 '}';
 
+    }
 }

@@ -7,17 +7,16 @@ public class UploadZhibiaodianResponse {
     private String zhichengdian;
     private boolean is_zhicheng;
     private String xiugai;
-    private Strinf yijian;
+    private String yijian;
 
     public UploadZhibiaodianResponse() {
     }
 
-    public UploadZhibiaodianResponse( private String zhichengdian,boolean is_zhicheng,String xiugai,String yijian;) {
+    public UploadZhibiaodianResponse( String zhichengdian,boolean is_zhicheng,String xiugai,String yijian) {
         this.zhichengdian = zhichengdian;
         this.is_zhicheng = is_zhicheng;
         this.xiugai = xiugai;
         this.yijian = yijian;
-    }
     }
 
     public String getZhichengdian() {
@@ -32,7 +31,7 @@ public class UploadZhibiaodianResponse {
         return is_zhicheng;
     }
 
-    public void setIs_zhicheng(boolean) {
+    public void setIs_zhicheng(boolean is_zhicheng) {
         this.is_zhicheng = is_zhicheng;
     }
 
@@ -58,7 +57,7 @@ public class UploadZhibiaodianResponse {
                 "zhichengdian=" + zhichengdian +
                 ", is_zhicheng='" + is_zhicheng +
                 ", xiugai=" + xiugai +
-                ", yijian=" + yijian '\'' +
+                ", yijian=" + yijian + '\'' +
                 '}';
     }
 }
