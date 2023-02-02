@@ -131,7 +131,7 @@ public class PrincipalService implements UserService {
         }
 
         int yeshu = Integer.valueOf(request.getYeshu());
-        List<SearchPeiyangfanganResponse> responses1 = responses.subList(yeshu * 5, Math.min(yeshu * 5,responses.size() - 1));
+        List<SearchPeiyangfanganResponse> responses1 = responses.subList(yeshu * 5, Math.min(yeshu * 5,yeshu * 5 + responses.size() - 1));
 
 
         if(!responses.isEmpty()) {
