@@ -130,7 +130,7 @@ public class PrincipalService implements UserService {
                     fangan.getZhuanyeId(),fangan.getVersion(),"yuanxi","是","完成"));
         }
 
-        int yeshu = Integer.valueOf(request.getYeshu());
+        int yeshu = Integer.valueOf(request.getYeshu()) - 1;
         List<SearchPeiyangfanganResponse> responses1 = responses.subList(yeshu * 5, Math.min(yeshu * 5,yeshu * 5 + responses.size() - 1));
 
 
