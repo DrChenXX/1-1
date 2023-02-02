@@ -30,14 +30,6 @@ public class SearchBiyeyaoqiuResponse{
         this.neirong = neirong;
     }
 
-    public List<SearchZhibiaodianResponse> getZhibiaodian() {
-        return zhibiaodian;
-    }
-
-    public void setZhibiaodian(List<SearchZhibiaodianResponse> zhibiaodian) {
-        this.zhibiaodian = zhibiaodian;
-    }
-
     @Override
     public String toString() {
         return "SearchBiyeyaoqiuResponse{" +
