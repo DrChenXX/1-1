@@ -28,7 +28,7 @@ public class UploadZhibiaodianResponse {
         this.zhichengdian = zhichengdian;
     }
 
-    public String getIs_zhicheng() {
+    public boolean getIs_zhicheng() {
         return is_zhicheng;
     }
 

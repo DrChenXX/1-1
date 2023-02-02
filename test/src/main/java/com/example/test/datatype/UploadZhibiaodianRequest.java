@@ -3,7 +3,7 @@ package com.example.test.datatype;
 public class UploadZhibiaodianRequest {
     private String kechengid;
 
-    public UploadZhibiaodian() {
+    public UploadZhibiaodianRequest() {
     }
 
     public UploadZhibiaodianRequest(String kechengid) {
