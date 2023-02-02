@@ -130,9 +130,11 @@ public class PrincipalService implements UserService {
                     fangan.getZhuanyeId(),fangan.getVersion(),"yuanxi","是","完成"));
         }
 
-        int yeshu = Integer.valueOf(request.getYeshu()) - 1;
+        //页码处理
+        int yeshu;
+        if(request.getYeshu() != "") { yeshu = Integer.valueOf(request.getYeshu()) - 1; }
+        else { yeshu = 0; }
         List<SearchPeiyangfanganResponse> responses1 = responses.subList(yeshu * 5, Math.min(yeshu * 5,yeshu * 5 + responses.size() - 1));
-
 
         if(!responses.isEmpty()) {
             return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
