@@ -1,9 +1,6 @@
 package com.example.test.datatype;
 
-import java.util.List;
-
-//重写中 未完成
-public class SearchKaohefangshiResponse {
+public class SearchKaohefangshiResponse{
     private String mubiao;
     private int zhanbi;
     private String guanlian;
@@ -33,6 +30,13 @@ public class SearchKaohefangshiResponse {
         this.zhanbi = zhanbi;
     }
 
+    public String getGuanlian() {
+        return guanlian;
+    }
+
+    public void setGuanlian(String guanlian) {
+        this.guanlian = guanlian;
+    }
 
     @Override
     public String toString() {
