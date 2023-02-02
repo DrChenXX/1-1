@@ -1,6 +1,6 @@
 package com.example.test.datatype;
 
-public class ConfirmMatrixOfBiyeyaoqiuResponse {
+public class ConfirmMatrixOfBiyeyaoqiuResponse{
     private String zhichengdian;
     private boolean zhicheng;
     //private List<ConfirmMatrixOfBiyeyaoqiuResponse> zhichengguanxi;
@@ -8,7 +8,6 @@ public class ConfirmMatrixOfBiyeyaoqiuResponse {
     public ConfirmMatrixOfBiyeyaoqiuResponse() {
     }
 
-    public ConfirmMatrixOfBiyeyaoqiuResponse
     public ConfirmMatrixOfBiyeyaoqiuResponse(String zhichengdian, boolean zhicheng , List<ConfirmMatrixOfBiyeyaoqiuResponse> zhichengguanxi) {
         this.zhichengdian = zhichengdian;
         this.zhicheng = zhicheng;
