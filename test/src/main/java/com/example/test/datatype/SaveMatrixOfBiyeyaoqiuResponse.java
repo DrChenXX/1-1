@@ -12,7 +12,7 @@ public class SaveMatrixOfBiyeyaoqiuResponse {
     public SaveMatrixOfBiyeyaoqiuResponse() {
     }
 
-    public SaveMatrixOfBiyeyaoqiuResponse(String zhichengdian,boolean is_zhicheng,String xiugai,String yijian;) {
+    public SaveMatrixOfBiyeyaoqiuResponse(String zhichengdian,boolean is_zhicheng,String xiugai,String yijian) {
         this.zhichengdian = zhichengdian;
         this.is_zhicheng = is_zhicheng;
         this.xiugai = xiugai;
