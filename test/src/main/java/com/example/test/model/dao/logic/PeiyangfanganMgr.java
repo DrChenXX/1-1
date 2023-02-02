@@ -15,16 +15,18 @@ public class PeiyangfanganMgr {
      * NAME
      * ZHUANYE_ID
      * VERSION
+     * FUZEREN_ID
      */
 
     public void add(Peiyangfangan p) {
         String sql =
-                "INSERT INTO T_PEIYANGFANGAN(ID,NAME,ZHUANYE_ID,VERSION) "+
+                "INSERT INTO T_PEIYANGFANGAN(ID,NAME,ZHUANYE_ID,VERSION,FUZEREN_ID) "+
                         "VALUES('"+
                         p.getId() + "','" +
                         p.getName() + "','" +
                         p.getZhuanyeId() + "','" +
-                        p.getVersion() + "')";
+                        p.getVersion() + "','" +
+                        p.getFuzerenId() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){
@@ -38,12 +40,13 @@ public class PeiyangfanganMgr {
         List<String> sqls = new ArrayList<String>();
         for (Peiyangfangan p : ps) {
             String sql =
-                    "INSERT INTO T_PEIYANGFANGAN(ID,NAME,ZHUANYE_ID,VERSION) "+
+                    "INSERT INTO T_PEIYANGFANGAN(ID,NAME,ZHUANYE_ID,VERSION,FUZEREN_ID) "+
                             "VALUES('"+
                             p.getId() + "','" +
                             p.getName() + "','" +
                             p.getZhuanyeId() + "','" +
-                            p.getVersion() + "')";
+                            p.getVersion() + "','" +
+                            p.getFuzerenId() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -103,7 +106,8 @@ public class PeiyangfanganMgr {
                 String.valueOf(list.get(0).get("ID")),
                 String.valueOf(list.get(0).get("NAME")),
                 String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                String.valueOf(list.get(0).get("VERSION"))
+                String.valueOf(list.get(0).get("VERSION")),
+                String.valueOf(list.get(0).get("FUZEREN_ID"))
         );
         return p;
     }
@@ -120,7 +124,8 @@ public class PeiyangfanganMgr {
                     String.valueOf(list.get(0).get("ID")),
                     String.valueOf(list.get(0).get("NAME")),
                     String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                    String.valueOf(list.get(0).get("VERSION"))
+                    String.valueOf(list.get(0).get("VERSION")),
+                    String.valueOf(list.get(0).get("FUZEREN_ID"))
             );
             result.add(p);
         }
@@ -139,7 +144,28 @@ public class PeiyangfanganMgr {
                     String.valueOf(map.get("ID")),
                     String.valueOf(map.get("NAME")),
                     String.valueOf(map.get("ZHUANYE_ID")),
-                    String.valueOf(map.get("VERSION"))
+                    String.valueOf(map.get("VERSION")),
+                    String.valueOf(map.get("FUZEREN_ID"))
+            );
+            result.add(p);
+        }
+        return result;
+    }
+
+    public List<Peiyangfangan> getByFUZERENID(String ID) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_PEIYANGFANGAN WHERE FUZEREN_ID = " + ID);
+        if (list.isEmpty()) {
+            return null;
+        }
+        List <Peiyangfangan> result = new ArrayList<Peiyangfangan>();
+        for (Map<String,Object> map : list) {
+            Peiyangfangan p = new Peiyangfangan(
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("ZHUANYE_ID")),
+                    String.valueOf(map.get("VERSION")),
+                    String.valueOf(map.get("FUZEREN_ID"))
             );
             result.add(p);
         }
@@ -158,7 +184,8 @@ public class PeiyangfanganMgr {
                     String.valueOf(map.get("ID")),
                     String.valueOf(map.get("NAME")),
                     String.valueOf(map.get("ZHUANYE_ID")),
-                    String.valueOf(map.get("VERSION"))
+                    String.valueOf(map.get("VERSION")),
+                    String.valueOf(map.get("FUZEREN_ID"))
             );
             result.add(p);
         }

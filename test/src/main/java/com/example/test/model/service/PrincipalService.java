@@ -112,7 +112,7 @@ public class PrincipalService implements UserService {
 
         for (Peiyangfangan fangan : fangans) {
             if (request.getUserid()!="") {
-                if(!fangan.getId().equals(request.getUserid())) {
+                if(!fangan.getFuzerenId().equals(request.getUserid())) {
                     continue;
                 }
             }

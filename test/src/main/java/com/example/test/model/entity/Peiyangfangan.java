@@ -40,11 +40,19 @@ public class Peiyangfangan {
 	 */
 	private String version;
 
-	public Peiyangfangan(String id, String name, String zhuanyeId, String version) {
+	/**
+	 * table name:FUZEREN_ID
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String fuzerenId;
+
+	public Peiyangfangan(String id, String name, String zhuanyeId, String version, String fuzerenId) {
 		this.id = id;
 		this.name = name;
 		this.zhuanyeId = zhuanyeId;
 		this.version = version;
+		this.fuzerenId = fuzerenId;
 	}
 
 	public String getId() {
@@ -75,12 +83,20 @@ public class Peiyangfangan {
 		this.version = version;
 	}
 
+	public String getFuzerenId() {
+		return fuzerenId;
+	}
+	public void setFuzerenId(String fuzerenId) {
+		this.fuzerenId = fuzerenId;
+	}
+
 	@Override
 	public String toString() {
 		return "Peiyangfangan{" +
 				"id='" + id + '\'' +
 				", zhuanyeId='" + zhuanyeId + '\'' +
 				", version='" + version + '\'' +
+				", fuzerenId='" + fuzerenId + '\'' +
 				'}';
 	}
 }
