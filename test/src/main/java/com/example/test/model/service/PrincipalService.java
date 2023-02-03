@@ -134,7 +134,8 @@ public class PrincipalService implements UserService {
         int yeshu;
         if(request.getYeshu() != "") { yeshu = Integer.valueOf(request.getYeshu()) - 1; }
         else { yeshu = 0; }
-        List<SearchPeiyangfanganResponse> responses1 = responses.subList(yeshu * 5, Math.min(yeshu * 5,yeshu * 5 + responses.size() - 1));
+        List<SearchPeiyangfanganResponse> responses1 =
+                responses.subList(yeshu * 5, (responses.size() - (yeshu + 1) * 5) < 0 ? responses.size() : (yeshu + 1) * 5);
 
         if(!responses.isEmpty()) {
             return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
