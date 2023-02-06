@@ -29,6 +29,8 @@ public class PrincipalService implements UserService {
     @Autowired
     private XiaoxiMgr xiaoxiMgr;
 
+    @Autowired
+    private ZhuanyeMgr zhuanyeMgr;
 
     @Override
     public String name() {
@@ -162,11 +164,13 @@ public class PrincipalService implements UserService {
                 }
             }
             String peiyangfanganID = xiaoxi.getPeiyangfanganID();
-            String yuanxi = 
+            Peiyangfangan peiyangfangan = peiyangfanganMgr.getByID(peiyangfanganID);
+            Zhuanye zhuanye = zhuanyeMgr.getByID(peiyangfangan.getZhuanyeId());
             responses.add(new SearchXiaoxiResponse(
                     xiaoxi.getId(),xiaoxi.getFromName(),xiaoxi.getFromId(),
-
-            ))
+                    zhuanye.getName(),xiaoxi.getIsRead(),xiaoxi.getHuifu(),
+                    peiyangfangan.getName()
+            ));
         }
 
         if(!responses.isEmpty()) {

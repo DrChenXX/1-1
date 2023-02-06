@@ -66,12 +66,19 @@ public class Xiaoxi {
      */
     private String peiyangfanganID;
 
+    /**
+     * table name:HUIFU
+     * table type:varchar(200)
+     * table comment:null
+     */
+    private String huifu;
+
     public Xiaoxi() {
     }
 
     public Xiaoxi(String id, String fromId, String fromName,
                   String toId, String toName, String isRead,
-                  String data, String peiyangfanganID) {
+                  String data, String peiyangfanganID, String huifu) {
         this.id = id;
         this.fromId = fromId;
         this.fromName = fromName;
@@ -80,6 +87,7 @@ public class Xiaoxi {
         this.isRead = "未读";
         this.data = data;
         this.peiyangfanganID = peiyangfanganID;
+        this.huifu = huifu;
     }
 
     public String getId() {
@@ -146,6 +154,14 @@ public class Xiaoxi {
         this.peiyangfanganID = peiyangfanganID;
     }
 
+    public String getHuifu() {
+        return huifu;
+    }
+
+    public void setHuifu(String huifu) {
+        this.huifu = huifu;
+    }
+
     @Override
     public String toString() {
         return "Xiaoxi{" +
@@ -157,6 +173,7 @@ public class Xiaoxi {
                 ", isRead='" + isRead + '\'' +
                 ", data='" + data + '\'' +
                 ", peiyangfanganID='" + peiyangfanganID + '\'' +
+                ", huifu='" + huifu + '\'' +
                 '}';
     }
 }

@@ -15,7 +15,7 @@ public class XiaoxiMgr {
 
     public void add(Xiaoxi xiaoxi) {
         String sql =
-                "INSERT INTO T_XIAOXI(ID,FROM_ID,FROMNAME,TO_ID,TONAME,ISREAD,DATA) "+
+                "INSERT INTO T_XIAOXI(ID,FROM_ID,FROMNAME,TO_ID,TONAME,ISREAD,DATA,PEIYANGFANGANID,HUIFU) "+
                         "VALUES('"+
                         xiaoxi.getId() + "','" +
                         xiaoxi.getFromId() + "','" +
@@ -23,7 +23,9 @@ public class XiaoxiMgr {
                         xiaoxi.getToId() + "','" +
                         xiaoxi.getToName() + "','" +
                         xiaoxi.getIsRead() + "','" +
-                        xiaoxi.getData() + ")";
+                        xiaoxi.getData() + "','" +
+                        xiaoxi.getPeiyangfanganID() + "','" +
+                        xiaoxi.getHuifu() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check) {
@@ -37,7 +39,7 @@ public class XiaoxiMgr {
         List<String> sqls = new ArrayList<String>();
         for (Xiaoxi xiaoxi : xiaoxis){
             String sql =
-                    "INSERT INTO T_XIAOXI(ID,FROM_ID,FROMNAME,TO_ID,TONAME,ISREAD,DATA) "+
+                    "INSERT INTO T_XIAOXI(ID,FROM_ID,FROMNAME,TO_ID,TONAME,ISREAD,DATA,PEIYANGFANGANID,HUIFU) "+
                             "VALUES('"+
                             xiaoxi.getId() + "','" +
                             xiaoxi.getFromId() + "','" +
@@ -45,7 +47,9 @@ public class XiaoxiMgr {
                             xiaoxi.getToId() + "','" +
                             xiaoxi.getToName() + "','" +
                             xiaoxi.getIsRead() + "','" +
-                            xiaoxi.getData() + ")";
+                            xiaoxi.getData() + "','" +
+                            xiaoxi.getPeiyangfanganID() + "','" +
+                            xiaoxi.getHuifu() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -92,7 +96,9 @@ public class XiaoxiMgr {
                 String.valueOf(list.get(0).get("TO_ID")),
                 String.valueOf(list.get(0).get("TONAME")),
                 String.valueOf(list.get(0).get("ISREAD")),
-                String.valueOf(list.get(0).get("DATA"))
+                String.valueOf(list.get(0).get("DATA")),
+                String.valueOf(list.get(0).get("PEIYANGFANGANID")),
+                String.valueOf(list.get(0).get("HUIFU"))
         );
         return xiaoxi;
     }
@@ -112,7 +118,9 @@ public class XiaoxiMgr {
                     String.valueOf(list.get(0).get("TO_ID")),
                     String.valueOf(list.get(0).get("TONAME")),
                     String.valueOf(list.get(0).get("ISREAD")),
-                    String.valueOf(list.get(0).get("DATA")));
+                    String.valueOf(list.get(0).get("DATA")),
+                    String.valueOf(list.get(0).get("PEIYANGFANGANID")),
+                    String.valueOf(list.get(0).get("HUIFU")));
             result.add(xiaoxi);
         }
         return result;
