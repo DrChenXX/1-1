@@ -18,7 +18,6 @@ public class UploadZhibiaodianResponse {
         this.xiugai = xiugai;
         this.yijian = yijian;
     }
-    }
 
     public String getZhichengdian() {
         return zhichengdian;
