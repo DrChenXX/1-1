@@ -2,13 +2,8 @@ package com.example.test.model.service;
 
 import com.example.test.datatype.*;
 import com.example.test.interfaces.UserService;
-import com.example.test.model.dao.logic.BiyeyaoqiuMgr;
-import com.example.test.model.dao.logic.DangqiankechengMgr;
-import com.example.test.model.dao.logic.KechengduizhibiaodianMgr;
-import com.example.test.model.dao.logic.PeiyangmubiaoMgr;
-import com.example.test.model.entity.Dangqiankecheng;
-import com.example.test.model.entity.Kechengduizhibiaodian;
-import com.example.test.model.entity.Peiyangmubiao;
+import com.example.test.model.dao.logic.*;
+import com.example.test.model.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -25,6 +20,10 @@ public class TeacherService implements UserService {
     private BiyeyaoqiuMgr biyeyaoqiuMgr;
     @Autowired
     private KechengduizhibiaodianMgr kechengduizhibiaodianMgr;
+    @Autowired
+    private KechengMgr kechengMgr;
+    @Autowired
+    private DangqianduizhibiaodianMgr dangqianduizhibiaodianMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -63,20 +62,18 @@ public class TeacherService implements UserService {
 //        return new RestResponse().success("已找到对应的课程",responses);
 //    }
 //
-//    //确认毕业要求矩阵：查看专业负责人建议的课程支撑点
-//    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
-//        List<Kechengduizhibiaodian> kechengduizhibiaodians = KechengduizhibiaodianMgr.getByKechengID(request.getKechengid());
-//        if (kechengduizhibiaodians.isEmpty()) {
-//            return new RestResponse().fail("当前课程无需支撑指标点");
-//        }
-//        List<ConfirmMatrixOfBiyeyaoqiuResponse> responses = new ArrayList<ConfirmMatrixOfBiyeyaoqiuResponse>();
-//        int n = 1;
-//        for (Kechengduizhibiaodian kechengduizhibiaodian : kechengduizhibiaodians) {
-//            responses.add(new ConfirmMatrixOfBiyeyaoqiuResponse(n,kechengduizhibiaodian.getContent()));
-//            n++;
-//        }
-//        return new RestResponse().success("当前课程所有支撑指标点有： ",responses);
-//    }
+    //确认毕业要求矩阵：查看专业负责人建议的课程支撑点
+    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
+        List<Dangqianduizhibiaodian> dangqianduizhibiaodians =  dangqianduizhibiaodianMgr.getByDangqiankechengID(request.getKechengid());
+        if (dangqianduizhibiaodians.isEmpty()) {
+            return new RestResponse().fail("当前课程无需支撑指标点");
+        }
+        List<ConfirmMatrixOfBiyeyaoqiuResponse> responses = new ArrayList<ConfirmMatrixOfBiyeyaoqiuResponse>();
+        for (Dangqianduizhibiaodian dangqianduizhibiaodian : dangqianduizhibiaodians) {
+            responses.add(new ConfirmMatrixOfBiyeyaoqiuResponse(dangqianduizhibiaodian.getContent(),true));
+        }
+        return new RestResponse().success("当前课程需要支撑",responses);
+    }
 //
 //    public RestResponse saveMatrixOfBiyeyaoqiu (SaveMatrixOfBiyeyaoqiuRequest request) {
 //
