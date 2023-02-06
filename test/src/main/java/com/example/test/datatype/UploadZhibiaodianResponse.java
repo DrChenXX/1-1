@@ -32,7 +32,7 @@ public class UploadZhibiaodianResponse {
         return is_zhicheng;
     }
 
-    public void setIs_zhicheng(boolean) {
+    public void setIs_zhicheng(boolean is_zhicheng) {
         this.is_zhicheng = is_zhicheng;
     }
 
