@@ -29,7 +29,7 @@ public class TeacherController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/Kechengduizhibiaodian/ConfirmMatrixOfBiyeyaoqiu", method = RequestMethod.POST)
-    public RestResponse searchPeiyangfangan(@RequestBody ConfirmMatrixOfBiyeyaoqiuRequest request) {
+    public RestResponse confirmMatrixOfBiyeyaoqiu(@RequestBody ConfirmMatrixOfBiyeyaoqiuRequest request) {
         System.out.println(request);
         return teacherService.confirmMatrixOfBiyeyaoqiu(request);
     }
