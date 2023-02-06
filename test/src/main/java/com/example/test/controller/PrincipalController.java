@@ -53,4 +53,11 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         return principalService.searchPeiyangfangan(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/fankui", method = RequestMethod.POST)
+    public RestResponse searchXianxi(@RequestBody SearchXiaoxiRequest request) {
+        System.out.println(request);
+        return principalService.searchXiaoxi(request);
+    }
 }

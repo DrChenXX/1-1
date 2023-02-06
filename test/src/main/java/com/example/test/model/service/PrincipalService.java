@@ -26,6 +26,9 @@ public class PrincipalService implements UserService {
     @Autowired
     private PeiyangfanganMgr peiyangfanganMgr;
 
+    @Autowired
+    private XiaoxiMgr xiaoxiMgr;
+
 
     @Override
     public String name() {
@@ -145,6 +148,32 @@ public class PrincipalService implements UserService {
 
     }
 
+    public RestResponse searchXiaoxi(SearchXiaoxiRequest request) {
+        List<Xiaoxi> xiaoxis = xiaoxiMgr.getByToID(request.getId());
+        System.out.println(xiaoxis);
+        List<SearchXiaoxiResponse> responses = new ArrayList<SearchXiaoxiResponse>();
+        if (xiaoxis == null) {
+            return new RestResponse<>().fail("没有消息");
+        }
+        for (Xiaoxi xiaoxi : xiaoxis) {
+            if (request.getId() != "") {
+                if (!xiaoxi.getToId().equals(request.getId())) {
+                    continue;
+                }
+            }
+            String peiyangfanganID = xiaoxi.getPeiyangfanganID();
+            String yuanxi = 
+            responses.add(new SearchXiaoxiResponse(
+                    xiaoxi.getId(),xiaoxi.getFromName(),xiaoxi.getFromId(),
 
+            ))
+        }
+
+        if(!responses.isEmpty()) {
+            return new RestResponse<>().success("找到您的消息",responses);
+        } else {
+            return new RestResponse<>().fail("没有您的消息");
+        }
+    }
 
 }

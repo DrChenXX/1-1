@@ -1,12 +1,18 @@
 package com.example.test.model.service;
 
-import com.example.test.interfaces.UserService;
-import org.springframework.stereotype.Service;
 import com.example.test.datatype.*;
 import com.example.test.interfaces.UserService;
-import com.example.test.model.dao.logic.*;
+import com.example.test.model.dao.logic.BiyeyaoqiuMgr;
+import com.example.test.model.dao.logic.DangqiankechengMgr;
+import com.example.test.model.dao.logic.KechengduizhibiaodianMgr;
+import com.example.test.model.dao.logic.PeiyangmubiaoMgr;
+import com.example.test.model.entity.Dangqiankecheng;
+import com.example.test.model.entity.Kechengduizhibiaodian;
+import com.example.test.model.entity.Peiyangmubiao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service("teacherService")
 public class TeacherService implements UserService {
@@ -16,13 +22,9 @@ public class TeacherService implements UserService {
     @Autowired
     private DangqiankechengMgr dangqiankechengMgr;
     @Autowired
-    private PeiyangmubiaoMgr peiyangmubiaoMgr;
-    @Autowired
     private BiyeyaoqiuMgr biyeyaoqiuMgr;
     @Autowired
     private KechengduizhibiaodianMgr kechengduizhibiaodianMgr;
-    @Autowired
-    private BiyeyaoqiuMgr biyeyaoqiuMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -48,7 +50,7 @@ public class TeacherService implements UserService {
     }
 
     public RestResponse searchDangqiankecheng (SearchDangqiankechengRequest request) {
-        List<Dangqiankecheng> dangqiankechengs = DangqiankechengMgr.get(request.getDangqiankecheng());
+        List<Dangqiankecheng> dangqiankechengs = dangqiankechengMgr.getAll(request.getDangqiankecheng());
         if (dangqiankechengs.isEmpty()) {
             return new RestResponse().fail("没有找到课程");
         }
