@@ -2,7 +2,11 @@ package com.example.test.model.service;
 
 import com.example.test.interfaces.UserService;
 import org.springframework.stereotype.Service;
-
+import com.example.test.datatype.*;
+import com.example.test.interfaces.UserService;
+import com.example.test.model.dao.logic.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service("teacherService")
 public class TeacherService implements UserService {
@@ -57,6 +61,7 @@ public class TeacherService implements UserService {
         return new RestResponse().success("已找到对应的课程",responses);
     }
 
+    //确认毕业要求矩阵：查看专业负责人建议的课程支撑点
     public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
         List<Kechengduizhibiaodian> kechengduizhibiaodians = KechengduizhibiaodianMgr.getByKechengID(request.getKechengid());
         if (kechengduizhibiaodians.isEmpty()) {
@@ -68,7 +73,7 @@ public class TeacherService implements UserService {
             responses.add(new ConfirmMatrixOfBiyeyaoqiuResponse(n,kechengduizhibiaodian.getContent()));
             n++;
         }
-        return new RestResponse().success("确定当前课程所有支撑指标点",responses);
+        return new RestResponse().success("当前课程所有支撑指标点有： ",responses);
     }
 
     public RestResponse saveMatrixOfBiyeyaoqiu (SaveMatrixOfBiyeyaoqiuRequest request) {
