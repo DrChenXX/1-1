@@ -18,6 +18,7 @@ public class UploadZhibiaodianResponse {
         this.xiugai = xiugai;
         this.yijian = yijian;
     }
+    }
 
     public String getZhichengdian() {
         return zhichengdian;
@@ -31,7 +32,7 @@ public class UploadZhibiaodianResponse {
         return is_zhicheng;
     }
 
-    public void setIs_zhicheng(boolean is_zhicheng) {
+    public void setIs_zhicheng(boolean) {
         this.is_zhicheng = is_zhicheng;
     }
 
