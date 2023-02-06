@@ -21,8 +21,6 @@ public class TeacherService implements UserService {
     @Autowired
     private KechengduizhibiaodianMgr kechengduizhibiaodianMgr;
     @Autowired
-    private KechengMgr kechengMgr;
-    @Autowired
     private DangqianduizhibiaodianMgr dangqianduizhibiaodianMgr;
     @Override
     public String name() {
