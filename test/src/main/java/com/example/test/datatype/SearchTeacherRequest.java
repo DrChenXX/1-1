@@ -3,17 +3,17 @@ package com.example.test.datatype;
 public class SearchTeacherRequest {
     private String id;
     private String yeshu;
-    private String ID;
+    private String userid;
     private String name;
     private String yuanxi;
 
     public SearchTeacherRequest() {
     }
 
-    public SearchTeacherRequest(String id, String yeshu, String ID, String name, String yuanxi) {
+    public SearchTeacherRequest(String id, String yeshu, String userid, String name, String yuanxi) {
         this.id = id;
         this.yeshu = yeshu;
-        this.ID = ID;
+        this.userid = userid;
         this.name = name;
         this.yuanxi = yuanxi;
     }
@@ -34,12 +34,12 @@ public class SearchTeacherRequest {
         this.yeshu = yeshu;
     }
 
-    public String getID() {
-        return ID;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getName() {
@@ -63,7 +63,7 @@ public class SearchTeacherRequest {
         return "SearchTeacherRequest{" +
                 "id='" + id + '\'' +
                 ", yeshu='" + yeshu + '\'' +
-                ", ID='" + ID + '\'' +
+                ", userid='" + userid + '\'' +
                 ", name='" + name + '\'' +
                 ", yuanxi='" + yuanxi + '\'' +
                 '}';

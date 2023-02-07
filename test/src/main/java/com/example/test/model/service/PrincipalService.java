@@ -50,8 +50,8 @@ public class PrincipalService implements UserService {
         }
 
         for (Yonghu teacher : teachers) {
-            if (request.getID()!="") {
-                if(!teacher.getId().equals(request.getID())) {
+            if (request.getUserid()!="") {
+                if(!teacher.getId().equals(request.getUserid())) {
                     continue;
                 }
             }
