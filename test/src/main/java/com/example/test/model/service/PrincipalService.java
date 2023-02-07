@@ -32,6 +32,9 @@ public class PrincipalService implements UserService {
     @Autowired
     private ZhuanyeMgr zhuanyeMgr;
 
+    @Autowired
+    private XueshengMgr xueshengMgr;
+
     @Override
     public String name() {
         System.out.println("principalService");
@@ -205,4 +208,47 @@ public class PrincipalService implements UserService {
         }
     }
 
+    public RestResponse searchXuesheng(SearchXueshengRequest request) {
+        List<Xuesheng> xueshengs = xueshengMgr.getAll();
+        System.out.println(xueshengs);
+        List<SearchXueshengResponse> responses = new ArrayList<SearchXueshengResponse>();
+        if (xueshengs == null) {
+            return new RestResponse<>().fail("没有消息");
+        }
+        for (Xuesheng xuesheng : xueshengs) {
+            if (request.getID() != "") {
+                if (!xuesheng.getId().equals(request.getID())) {
+                    continue;
+                }
+            }
+            if (request.getXingming() != "") {
+                if (!xuesheng.getName().equals(request.getXingming())) {
+                    continue;
+                }
+            }
+            if (request.getYuanxi() != "") {
+                if (!xuesheng.getYuanxi().equals(request.getYuanxi())) {
+                    continue;
+                }
+            }
+            responses.add(new SearchXueshengResponse(
+                    xuesheng.getId(),xuesheng.getName(),
+                    xuesheng.getGrade(),xuesheng.getBanji(),
+                    xuesheng.getYuanxi()
+            ));
+        }
+
+        //页码处理
+        int yeshu;
+        if(request.getYeshu() != "") { yeshu = Integer.valueOf(request.getYeshu()) - 1; }
+        else { yeshu = 0; }
+        List<SearchXueshengResponse> responses1 =
+                responses.subList(yeshu * 5, (responses.size() - (yeshu + 1) * 5) < 0 ? responses.size() : (yeshu + 1) * 5);
+
+        if(!responses.isEmpty()) {
+            return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
+        } else {
+            return new RestResponse<>().fail("没有您的消息");
+        }
+    }
 }

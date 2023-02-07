@@ -2,27 +2,33 @@ package com.example.test.model.dao.logic;
 
 import com.example.test.model.dao.database.ConnectDB;
 import com.example.test.model.entity.Xuesheng;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class XueshengMgr {
     /**
      * ID
      * NAME
      * ZHUANYE_ID
      * GRADE
+     * BANJI
+     * YUANXI
      */
 
     public void add(Xuesheng x) {
         String sql =
-                "INSERT INTO T_XUESHENG(ID,NAME,ZHUANYE_ID,GRADE) "+
+                "INSERT INTO T_XUESHENG(ID,NAME,ZHUANYE_ID,GRADE,BANJI,YUANXI) "+
                         "VALUES('"+
                         x.getId() + "','" +
                         x.getName() + "','" +
-                        x.getZhuanyeId() + "'," +
-                        x.getGrade() + ")";
+                        x.getZhuanyeId() + "','" +
+                        x.getGrade() + "','" +
+                        x.getBanji() + "','" +
+                        x.getYuanxi() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){
@@ -36,12 +42,14 @@ public class XueshengMgr {
         List<String> sqls = new ArrayList<String>();
         for (Xuesheng x : xs) {
             String sql =
-                    "INSERT INTO T_XUESHENG(ID,NAME,ZHUANYE_ID,GRADE) "+
+                    "INSERT INTO T_XUESHENG(ID,NAME,ZHUANYE_ID,GRADE,BANJI,YUANXI) "+
                             "VALUES('"+
                             x.getId() + "','" +
                             x.getName() + "','" +
-                            x.getZhuanyeId() + "'," +
-                            x.getGrade() + ")";
+                            x.getZhuanyeId() + "','" +
+                            x.getGrade() + "','" +
+                            x.getBanji() + "','" +
+                            x.getYuanxi() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -112,7 +120,9 @@ public class XueshengMgr {
                 String.valueOf(list.get(0).get("ID")),
                 String.valueOf(list.get(0).get("NAME")),
                 String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                Integer.parseInt(String.valueOf(list.get(0).get("GRADE")))
+                String.valueOf(list.get(0).get("GRADE")),
+                String.valueOf(list.get(0).get("BANJI")),
+                String.valueOf(list.get(0).get("YUANXI"))
         );
         return x;
     }
@@ -126,10 +136,12 @@ public class XueshengMgr {
         List <Xuesheng> result = new ArrayList<Xuesheng>();
         for (Map<String,Object> map : list) {
             Xuesheng x = new Xuesheng(
-                    String.valueOf(map.get("ID")),
-                    String.valueOf(map.get("NAME")),
-                    String.valueOf(map.get("ZHUANYE_ID")),
-                    Integer.parseInt(String.valueOf(map.get("GRADE")))
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("NAME")),
+                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
+                    String.valueOf(list.get(0).get("GRADE")),
+                    String.valueOf(list.get(0).get("BANJI")),
+                    String.valueOf(list.get(0).get("YUANXI"))
             );
             result.add(x);
         }
@@ -145,10 +157,12 @@ public class XueshengMgr {
         List <Xuesheng> result = new ArrayList<Xuesheng>();
         for (Map<String,Object> map : list) {
             Xuesheng x = new Xuesheng(
-                    String.valueOf(map.get("ID")),
-                    String.valueOf(map.get("NAME")),
-                    String.valueOf(map.get("ZHUANYE_ID")),
-                    Integer.parseInt(String.valueOf(map.get("GRADE")))
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("NAME")),
+                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
+                    String.valueOf(list.get(0).get("GRADE")),
+                    String.valueOf(list.get(0).get("BANJI")),
+                    String.valueOf(list.get(0).get("YUANXI"))
             );
             result.add(x);
         }
@@ -164,10 +178,12 @@ public class XueshengMgr {
         List<Xuesheng> result = new ArrayList<Xuesheng>();
         for (Map<String,Object> map : list) {
             Xuesheng x = new Xuesheng(
-                    String.valueOf(map.get("ID")),
-                    String.valueOf(map.get("NAME")),
-                    String.valueOf(map.get("ZHUANYE_ID")),
-                    Integer.parseInt(String.valueOf(map.get("GRADE")))
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("NAME")),
+                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
+                    String.valueOf(list.get(0).get("GRADE")),
+                    String.valueOf(list.get(0).get("BANJI")),
+                    String.valueOf(list.get(0).get("YUANXI"))
             );
             result.add(x);
         }

@@ -60,4 +60,6 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         return principalService.searchXiaoxi(request);
     }
+
+
 }

@@ -35,16 +35,35 @@ public class Xuesheng {
 
 	/**
 	 * table name:GRADE
-	 * table type:int(11)
+	 * table type:varchar(10)
 	 * table comment:null
 	 */
-	private Integer grade;
+	private String grade;
 
-	public Xuesheng(String id, String name, String zhuanyeId, Integer grade) {
+	/**
+	 * table name:BANJI
+	 * table type:varchar(20)
+	 * table comment:null
+	 */
+	private String banji;
+
+	/**
+	 * table name:YUANXI
+	 * table type:varchar(20)
+	 * table comment:null
+	 */
+	private String yuanxi;
+
+	public Xuesheng() {
+	}
+
+	public Xuesheng(String id, String name, String zhuanyeId, String grade, String banji, String yuanxi) {
 		this.id = id;
 		this.name = name;
 		this.zhuanyeId = zhuanyeId;
 		this.grade = grade;
+		this.banji = banji;
+		this.yuanxi = yuanxi;
 	}
 
 	public String getId() {
@@ -71,12 +90,28 @@ public class Xuesheng {
 		this.zhuanyeId = zhuanyeId;
 	}
 
-	public Integer getGrade() {
+	public String getGrade() {
 		return grade;
 	}
 
-	public void setGrade(Integer grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+
+	public String getBanji() {
+		return banji;
+	}
+
+	public void setBanji(String banji) {
+		this.banji = banji;
+	}
+
+	public String getYuanxi() {
+		return yuanxi;
+	}
+
+	public void setYuanxi(String yuanxi) {
+		this.yuanxi = yuanxi;
 	}
 
 	@Override
@@ -85,7 +120,9 @@ public class Xuesheng {
 				"id='" + id + '\'' +
 				", name='" + name + '\'' +
 				", zhuanyeId='" + zhuanyeId + '\'' +
-				", grade=" + grade +
+				", grade='" + grade + '\'' +
+				", banji='" + banji + '\'' +
+				", yuanxi='" + yuanxi + '\'' +
 				'}';
 	}
 }
