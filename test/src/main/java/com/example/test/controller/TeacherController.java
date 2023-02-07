@@ -2,7 +2,7 @@ package com.example.test.controller;
 
 import com.example.test.datatype.ConfirmMatrixOfBiyeyaoqiuRequest;
 import com.example.test.datatype.RestResponse;
-import com.example.test.datatype.SearchPeiyangmubiaoRequest;
+import com.example.test.datatype.SaveMatrixOfBiyeyaoqiuRequest;
 import com.example.test.interfaces.UserController;
 import com.example.test.model.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,12 @@ public class TeacherController implements UserController {
         System.out.println(request);
         return teacherService.confirmMatrixOfBiyeyaoqiu(request);
     }
-
+    @ResponseBody
+    @RequestMapping(path = "/Kechengduizhibiaodian/SaveMatrixOfBiyeyaoqiu", method = RequestMethod.POST)
+    public RestResponse saveMatrixOfBiyeyaoqiu(@RequestBody SaveMatrixOfBiyeyaoqiuRequest request) {
+        System.out.println(request);
+        return teacherService.saveMatrixOfBiyeyaoqiu(request);
+    }
 
 }
 
