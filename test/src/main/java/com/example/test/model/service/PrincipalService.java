@@ -163,6 +163,16 @@ public class PrincipalService implements UserService {
                     continue;
                 }
             }
+            if (request.getFankuirenID() != "") {
+                if (!xiaoxi.getFromId().equals(request.getFankuirenID())) {
+                    continue;
+                }
+            }
+            if (request.getChuli() != "") {
+                if (!xiaoxi.getIsRead().equals(request.getChuli())) {
+                    continue;
+                }
+            }
             String peiyangfanganID = xiaoxi.getPeiyangfanganID();
             Peiyangfangan peiyangfangan = peiyangfanganMgr.getByID(peiyangfanganID);
             Zhuanye zhuanye = zhuanyeMgr.getByID(peiyangfangan.getZhuanyeId());
@@ -173,8 +183,15 @@ public class PrincipalService implements UserService {
             ));
         }
 
+        //页码处理
+        int yeshu;
+        if(request.getYeshu() != "") { yeshu = Integer.valueOf(request.getYeshu()) - 1; }
+        else { yeshu = 0; }
+        List<SearchXiaoxiResponse> responses1 =
+                responses.subList(yeshu * 5, (responses.size() - (yeshu + 1) * 5) < 0 ? responses.size() : (yeshu + 1) * 5);
+
         if(!responses.isEmpty()) {
-            return new RestResponse<>().success("找到您的消息",responses);
+            return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
         } else {
             return new RestResponse<>().fail("没有您的消息");
         }
