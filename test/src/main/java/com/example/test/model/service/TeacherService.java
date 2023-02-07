@@ -22,6 +22,8 @@ public class TeacherService implements UserService {
     private KechengduizhibiaodianMgr kechengduizhibiaodianMgr;
     @Autowired
     private DangqianduizhibiaodianMgr dangqianduizhibiaodianMgr;
+    @Autowired
+    private KechengmubiaoMgr kechengmubiaoMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -46,20 +48,6 @@ public class TeacherService implements UserService {
         return new RestResponse().success("已找到对应的培养目标",responses);
     }
 
-//    public RestResponse searchDangqiankecheng (SearchDangqiankechengRequest request) {
-//        List<Dangqiankecheng> dangqiankechengs = dangqiankechengMgr.getAll(request.getDangqiankecheng());
-//        if (dangqiankechengs.isEmpty()) {
-//            return new RestResponse().fail("没有找到课程");
-//        }
-//        List<SearchDangqiankechengResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
-//        int n = 1;
-//        for (Dangqiankecheng dangqiankecheng : dangqiankechengs) {
-//            responses.add(new SearchDangqiankechengResponse(n,dangqiankecheng.getContent()));
-//            n++;
-//        }
-//        return new RestResponse().success("已找到对应的课程",responses);
-//    }
-//
     //确认毕业要求矩阵：查看专业负责人建议的课程支撑点
     public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
         List<Dangqianduizhibiaodian> dangqianduizhibiaodians =  dangqianduizhibiaodianMgr.getByDangqiankechengID(request.getKechengid());
@@ -72,18 +60,39 @@ public class TeacherService implements UserService {
         }
         return new RestResponse().success("当前课程需要支撑",responses);
     }
-//
-//    public RestResponse saveMatrixOfBiyeyaoqiu (SaveMatrixOfBiyeyaoqiuRequest request) {
-//
-//    }
+
+    //调取保存的记录
+    public RestResponse saveMatrixOfBiyeyaoqiu (SaveMatrixOfBiyeyaoqiuRequest request) {
+        List<Kechengmubiao> kechengmubiaos =  kechengmubiaoMgr.getByKechengID(request.getKechengid());
+        if (kechengmubiaos.isEmpty()) {
+            return new RestResponse().fail("当前课程无保存课程目标");
+        }
+        SaveMatrixOfBiyeyaoqiuResponse response = new SaveMatrixOfBiyeyaoqiuResponse();
+        for (Kechengmubiao kechengmubiao : kechengmubiaos) {
+            response.addMubiao(kechengmubiao.getContent());
+        }
+        return new RestResponse().success("当前课程需要支撑",response);
+    }
+
+
+    public RestResponse feedbackOfBiyeyaoqiu (FeedbackOfBiyeyaoqiuRequest request) {
+        List<Dangqianduizhibiaodian> dangqianduizhibiaodians =  dangqianduizhibiaodianMgr.getByDangqiankechengID(request.getKechengid());
+        if (dangqianduizhibiaodians.isEmpty()) {
+            return new RestResponse().fail("当前课程无需支撑指标点");
+        }
+        List<ConfirmMatrixOfBiyeyaoqiuResponse> responses = new ArrayList<ConfirmMatrixOfBiyeyaoqiuResponse>();
+        for (Dangqianduizhibiaodian dangqianduizhibiaodian : dangqianduizhibiaodians) {
+            responses.add(new ConfirmMatrixOfBiyeyaoqiuResponse(dangqianduizhibiaodian.getContent(),true));
+        }
+        return new RestResponse().success("当前课程需要支撑",responses);
+    }
+
 //
 //    public RestResponse uploadZhibiaodian (UploadZhibiaodianRequest request) {
 //
 //    }
 //
-//    public RestResponse feedbackOfBiyeyaoqiu (FeedbackOfBiyeyaoqiuRequest request) {
-//
-//    }
+
     //feedback
 //    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
 //        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
@@ -143,5 +152,19 @@ public class TeacherService implements UserService {
 //        }
 //        return new RestResponse().success("已找到对应课程目标", responses);
 //    }
+//    public RestResponse searchDangqiankecheng (SearchDangqiankechengRequest request) {
+//        List<Dangqiankecheng> dangqiankechengs = dangqiankechengMgr.getAll(request.getDangqiankecheng());
+//        if (dangqiankechengs.isEmpty()) {
+//            return new RestResponse().fail("没有找到课程");
+//        }
+//        List<SearchDangqiankechengResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
+//        int n = 1;
+//        for (Dangqiankecheng dangqiankecheng : dangqiankechengs) {
+//            responses.add(new SearchDangqiankechengResponse(n,dangqiankecheng.getContent()));
+//            n++;
+//        }
+//        return new RestResponse().success("已找到对应的课程",responses);
+//    }
+
 
 }
