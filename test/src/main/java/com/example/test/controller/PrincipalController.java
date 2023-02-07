@@ -29,13 +29,6 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/peiyangmubiao", method = RequestMethod.POST)
-    public RestResponse searchPeiyangfangan(@RequestBody SearchPeiyangmubiaoRequest request) {
-        System.out.println(request);
-        return principalService.searchPeiyangmubiao(request);
-    }
-
-    @ResponseBody
     @RequestMapping(path = "/biyeyaoqiu", method = RequestMethod.POST)
     public RestResponse searchBiyeyaoqiu(@RequestBody SearchBiyeyaoqiuRequest request) {
         System.out.println(request);
@@ -55,11 +48,38 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/peiyangmubiao", method = RequestMethod.POST)
+    public RestResponse searchPeiyangmubiao(@RequestBody SearchPeiyangmubiaoRequest request) {
+        System.out.println(request);
+        return principalService.searchPeiyangmubiao(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/peiyangmubiaoadd", method = RequestMethod.POST)
+    public void addPeiyangmubiao(@RequestBody AddPeiyangmubiaoRequest request) {
+        System.out.println(request);
+        principalService.addPeiyangmubiao(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/peiyangmubiaodelete", method = RequestMethod.POST)
+    public void deletePeiyangmubiao(@RequestBody DeletePeiyangmubiaoRequest request) {
+        System.out.println(request);
+        principalService.deletePeiyangmubiao(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/peiyangmubiaoupdate", method = RequestMethod.POST)
+    public void updatePeiyangmubiao(@RequestBody UpdatePeiyangmubiaoRequest request) {
+        System.out.println(request);
+        principalService.updatePeiyangmubiao(request);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/fankui", method = RequestMethod.POST)
     public RestResponse searchXianxi(@RequestBody SearchXiaoxiRequest request) {
         System.out.println(request);
         return principalService.searchXiaoxi(request);
     }
-
 
 }

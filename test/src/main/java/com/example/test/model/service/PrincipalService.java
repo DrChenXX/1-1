@@ -80,7 +80,7 @@ public class PrincipalService implements UserService {
     }
 
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
-        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getPeiyangfangan());
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getId());
         if (peiyangmubiaos.isEmpty()) {
             return new RestResponse().fail("没有找到对应培养目标");
         }
@@ -91,6 +91,41 @@ public class PrincipalService implements UserService {
             n++;
         }
         return new RestResponse().success("已找到对应的培养目标",responses);
+    }
+
+    public void addPeiyangmubiao(AddPeiyangmubiaoRequest request) {
+        if (request.getId() == "") {
+            System.out.println("未填写培养方案");
+            return;
+        }
+        if (request.getNeirong() == "") {
+            System.out.println("未填写内容");
+            return;
+        }
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getAll();
+        int id = peiyangmubiaos.size();
+        Peiyangmubiao peiyangmubiao = new Peiyangmubiao(String.valueOf(id),request.getId(),request.getNeirong());
+        peiyangmubiaoMgr.add(peiyangmubiao);
+    }
+
+    public void deletePeiyangmubiao(DeletePeiyangmubiaoRequest request) {
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getId());
+        String peiyangmubiaoID = "";
+        int n = 1;
+        for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
+            if (n == Integer.valueOf(request.getID())) {
+                peiyangmubiaoID = peiyangmubiao.getId();
+            }
+            n++;
+        }
+        peiyangmubiaoMgr.deleteByID(peiyangmubiaoID);
+    }
+
+    public void updatePeiyangmubiao(UpdatePeiyangmubiaoRequest request) {
+        DeletePeiyangmubiaoRequest request1 = new DeletePeiyangmubiaoRequest(request.getId(),request.getID());
+        deletePeiyangmubiao(request1);
+        AddPeiyangmubiaoRequest request2 = new AddPeiyangmubiaoRequest(request.getId(),request.getID(),request.getNeirong());
+        addPeiyangmubiao(request2);
     }
 
     //todo:性能问题
