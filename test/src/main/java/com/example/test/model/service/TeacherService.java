@@ -35,7 +35,7 @@ public class TeacherService implements UserService {
     }
 
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
-        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getPeiyangfangan());
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getId());
         if (peiyangmubiaos.isEmpty()) {
             return new RestResponse().fail("没有找到对应培养目标");
         }
