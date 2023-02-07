@@ -13,7 +13,7 @@ public class SearchXiaoxiRequest {
     }
 
     public SearchXiaoxiRequest(String id, String yeshu,String fankuiren, String fankuirenID, String yuanxi, String chuli, String huifu) {
-        this.id = id;
+        this.id = id;//专业负责人的id
         this.yeshu = yeshu;
         this.fankuiren = fankuiren;
         this.fankuirenID = fankuirenID;

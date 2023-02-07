@@ -29,6 +29,13 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/xueshengguanli", method = RequestMethod.POST)
+    public RestResponse searchXuesheng(@RequestBody SearchXueshengRequest request) {
+        System.out.println(request);
+        return principalService.searchXuesheng(request);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/biyeyaoqiu", method = RequestMethod.POST)
     public RestResponse searchBiyeyaoqiu(@RequestBody SearchBiyeyaoqiuRequest request) {
         System.out.println(request);

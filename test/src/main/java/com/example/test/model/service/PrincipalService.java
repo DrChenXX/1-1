@@ -50,8 +50,8 @@ public class PrincipalService implements UserService {
         }
 
         for (Yonghu teacher : teachers) {
-            if (request.getUserid()!="") {
-                if(!teacher.getId().equals(request.getUserid())) {
+            if (request.getId()!="") {
+                if(!teacher.getId().equals(request.getId())) {
                     continue;
                 }
             }
@@ -251,8 +251,8 @@ public class PrincipalService implements UserService {
             return new RestResponse<>().fail("没有消息");
         }
         for (Xuesheng xuesheng : xueshengs) {
-            if (request.getID() != "") {
-                if (!xuesheng.getId().equals(request.getID())) {
+            if (request.getId() != "") {
+                if (!xuesheng.getId().equals(request.getId())) {
                     continue;
                 }
             }
