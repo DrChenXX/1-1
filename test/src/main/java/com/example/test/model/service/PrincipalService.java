@@ -47,8 +47,8 @@ public class PrincipalService implements UserService {
         }
 
         for (Yonghu teacher : teachers) {
-            if (request.getId()!="") {
-                if(!teacher.getId().equals(request.getId())) {
+            if (request.getID()!="") {
+                if(!teacher.getId().equals(request.getID())) {
                     continue;
                 }
             }
@@ -60,8 +60,16 @@ public class PrincipalService implements UserService {
             responses.add(new SearchTeacherResponse(teacher.getId(),teacher.getName(),"教授","信息科学与工程学院"));
         }
 
+        //页码处理
+        int yeshu;
+        if(request.getYeshu() != "") { yeshu = Integer.valueOf(request.getYeshu()) - 1; }
+        else { yeshu = 0; }
+        List<SearchTeacherResponse> responses1 =
+                responses.subList(yeshu * 5, (responses.size() - (yeshu + 1) * 5) < 0 ? responses.size() : (yeshu + 1) * 5);
+
+
         if(!responses.isEmpty()) {
-            return new RestResponse<>().success("找到了老师列表",responses);
+            return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
         } else {
             return new RestResponse<>().fail("没有找到教师");
         }
