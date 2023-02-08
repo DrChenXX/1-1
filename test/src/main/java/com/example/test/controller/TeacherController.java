@@ -1,6 +1,8 @@
 package com.example.test.controller;
 
 import com.example.test.datatype.ConfirmMatrixOfBiyeyaoqiuRequest;
+import com.example.test.datatype.GetTeacherTaskListRequest;
+import com.example.test.datatype.SearchKaohefangshiRequest;
 import com.example.test.datatype.RestResponse;
 import com.example.test.datatype.SaveMatrixOfBiyeyaoqiuRequest;
 import com.example.test.interfaces.UserController;
@@ -39,6 +41,17 @@ public class TeacherController implements UserController {
         System.out.println(request);
         return teacherService.saveMatrixOfBiyeyaoqiu(request);
     }
-
+//    @ResponseBody
+//    @RequestMapping(path = "/GetTeacherTaskList", method = RequestMethod.POST)
+//    public RestResponse GetTeacherTaskList(@RequestBody GetTeacherTaskListRequest request) {
+//        System.out.println(request);
+//        return teacherService.Get(request);
+//    }
+    @ResponseBody
+    @RequestMapping(path = "/Kechengmubiao", method = RequestMethod.POST)
+    public RestResponse searchKaohefangshi(@RequestBody SearchKaohefangshiRequest request) {
+        System.out.println(request);
+        return teacherService.searchKaohefangshi(request);
+    }
 }
 
