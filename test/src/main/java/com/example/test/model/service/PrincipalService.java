@@ -80,7 +80,7 @@ public class PrincipalService implements UserService {
     }
 
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
-        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getId());
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getPeiyangfangan());
         if (peiyangmubiaos.isEmpty()) {
             return new RestResponse().fail("没有找到对应培养目标");
         }
