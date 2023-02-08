@@ -125,4 +125,27 @@ public class XiaoxiMgr {
         }
         return result;
     }
+
+    public List<Xiaoxi> getAll() {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_XIAOXI");
+        if (list.isEmpty()) {
+            return null;
+        }
+        List<Xiaoxi> result = new ArrayList<Xiaoxi>();
+        for (Map<String, Object> map : list) {
+            Xiaoxi xiaoxi = new Xiaoxi(
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("FROM_ID")),
+                    String.valueOf(list.get(0).get("FROMNAME")),
+                    String.valueOf(list.get(0).get("TO_ID")),
+                    String.valueOf(list.get(0).get("TONAME")),
+                    String.valueOf(list.get(0).get("ISREAD")),
+                    String.valueOf(list.get(0).get("DATA")),
+                    String.valueOf(list.get(0).get("PEIYANGFANGANID")),
+                    String.valueOf(list.get(0).get("HUIFU")));
+            result.add(xiaoxi);
+        }
+        return result;
+    }
 }
