@@ -7,7 +7,9 @@ import com.example.test.model.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("teacherService")
 public class TeacherService implements UserService {
@@ -20,6 +22,8 @@ public class TeacherService implements UserService {
     private BiyeyaoqiuMgr biyeyaoqiuMgr;
     @Autowired
     private KechengduizhibiaodianMgr kechengduizhibiaodianMgr;
+    @Autowired
+    private KaoheMgr kaoheMgr;
     @Autowired
     private DangqianduizhibiaodianMgr dangqianduizhibiaodianMgr;
     @Autowired
@@ -35,7 +39,7 @@ public class TeacherService implements UserService {
     }
 
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
-        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getId());
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getPeiyangfangan());
         if (peiyangmubiaos.isEmpty()) {
             return new RestResponse().fail("没有找到对应培养目标");
         }
@@ -87,84 +91,37 @@ public class TeacherService implements UserService {
         return new RestResponse().success("当前课程需要支撑",responses);
     }
 
+//    public RestResponse getTeacherTaskList (GetTeacherTaskListRequest request) {
 //
-//    public RestResponse uploadZhibiaodian (UploadZhibiaodianRequest request) {
-//
-//    }
-//
-
-    //feedback
-//    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
-//        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
-//        if (peiyangmubiaos.isEmpty()) {
-//            return new RestResponse().fail("");
-//        }
-//        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
-//        int n = 1;
-//        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
-//            responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
-//            n++;
-//        }
-//        return new RestResponse().success("",responses);
 //    }
 
-    //save
+    public RestResponse searchKaohefangshi(SearchKaohefangshiRequest request){
+        String kechengid = request.getKechengid();
+        List<Kechengmubiao> kechengmubiaos = kechengmubiaoMgr.getByKechengID(kechengid);
+        if(kechengmubiaos.isEmpty()){
+            return new RestResponse().fail("当前课程未上传课程目标");
+        }
+        List<SearchKaohefangshiResponse> responses = new ArrayList<SearchKaohefangshiResponse>();
+        Map<String, Integer> Kechengmubiaozhanbi = new HashMap<String,Integer>();
+        for (Kechengmubiao kechengmubiao:kechengmubiaos){
+            String kechengmubiaoid = kechengmubiao.getId();
+            List<Kaohe> kaohes = kaoheMgr.getByKechengmubiaoID(kechengmubiaoid);
+            for (Kaohe kaohe:kaohes){
+                if(Kechengmubiaozhanbi.containsKey(kechengmubiaoid)){
+                    int temp = Kechengmubiaozhanbi.get(kechengmubiaoid)+kaohe.getZhanbi();
+                    Kechengmubiaozhanbi.put(kechengmubiaoid,temp);
+                }
+                Kechengmubiaozhanbi.put(kechengmubiaoid,kaohe.getZhanbi());
+            }
+            for (Kaohe kaohe:kaohes){
+                responses.add(new SearchKaohefangshiResponse(kechengmubiao.getContent(),Kechengmubiaozhanbi.get(kechengmubiaoid),kaohe.getContent()));
+            }
+        }
+        return new RestResponse().success("当前课程需要对应指标点为：",responses);
+    }
 
 
-//    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
-//        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
-//        if (peiyangmubiaos.isEmpty()) {
-//            return new RestResponse().fail("");
-//        }
-//        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
-//        int n = 1;
-//        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
-//            responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
-//            n++;
-//        }
-//        return new RestResponse().success("",responses);
-//    }
-//
-//    public RestResponse confirmMatrixOfBiyeyaoqiu (ConfirmMatrixOfBiyeyaoqiuRequest request) {
-//        List<> peiyangmubiaos = peiyangmubiaoMgr.get(request.getDangqiankecheng());
-//        if (peiyangmubiaos.isEmpty()) {
-//            return new RestResponse().failM("");
-//    }
-//    List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
-//    int n = 1;
-//        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
-//        responses.add(new SearchPeiyangmubiaosResponse(n,dangqiankecheng.getContent()));
-//        n++;
-//    }
-//        return new RestResponse().success("",responses);
-//}
-//
-//    public RestResponse searchKechengmubiao (SearchKechengmubiaoRequest request) {
-//        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaogr.get(request.getDangqiankecheng());
-//        if (peiyangmubiaos.isEmpty()) {
-//            return new RestResponse().fail("没有找到课程目标");
-//        }
-//        List<SearchPeiyangmubiaosResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
-//        int n = 1;
-//        for (Peiyangmubiaos peiyangmubiao : peiyangmubiaos) {
-//            responses.add(new SearchPeiyangmubiaosResponse(n, dangqiankecheng.getContent()));
-//            n++;
-//        }
-//        return new RestResponse().success("已找到对应课程目标", responses);
-//    }
-//    public RestResponse searchDangqiankecheng (SearchDangqiankechengRequest request) {
-//        List<Dangqiankecheng> dangqiankechengs = dangqiankechengMgr.getAll(request.getDangqiankecheng());
-//        if (dangqiankechengs.isEmpty()) {
-//            return new RestResponse().fail("没有找到课程");
-//        }
-//        List<SearchDangqiankechengResponse> responses = new ArrayList<SearchDangqiankechengResponse>();
-//        int n = 1;
-//        for (Dangqiankecheng dangqiankecheng : dangqiankechengs) {
-//            responses.add(new SearchDangqiankechengResponse(n,dangqiankecheng.getContent()));
-//            n++;
-//        }
-//        return new RestResponse().success("已找到对应的课程",responses);
-//    }
+
 
 
 }
