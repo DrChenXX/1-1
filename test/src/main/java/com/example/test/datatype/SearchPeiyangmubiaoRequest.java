@@ -1,27 +1,20 @@
 package com.example.test.datatype;
 
 public class SearchPeiyangmubiaoRequest {
-    private String id;
+    private String peiyangfangan;
 
     public SearchPeiyangmubiaoRequest() {
     }
 
-    public SearchPeiyangmubiaoRequest(String id) {
-        this.id = id;
+    public SearchPeiyangmubiaoRequest(String peiyangfangan) {
+        this.peiyangfangan = peiyangfangan;
     }
 
-    public String getId() {
-        return id;
+    public String getPeiyangfangan() {
+        return peiyangfangan;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "SearchPeiyangmubiaoRequest{" +
-                "id='" + id + '\'' +
-                '}';
+    public void setPeiyangfangan(String peiyangfangan) {
+        this.peiyangfangan = peiyangfangan;
     }
 }
