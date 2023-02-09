@@ -54,13 +54,23 @@ public class Dangqiankecheng {
 	 */
 	private Integer xuefen;
 
-	public Dangqiankecheng(String id, String kechengId, String teacherId, String semester, String kaikeshijian, Integer xuefen) {
+	/**
+	 * table name:ZHUANGTAI
+	 * table type:varchar(20)
+	 * table comment:null
+	 */
+	private String zhuangtai;
+
+	public Dangqiankecheng(String id, String kechengId, String teacherId,
+						   String semester, String kaikeshijian, Integer xuefen,
+						   String zhuangtai) {
 		this.id = id;
 		this.kechengId = kechengId;
 		this.teacherId = teacherId;
 		this.semester = semester;
 		this.kaikeshijian = kaikeshijian;
 		this.xuefen = xuefen;
+		this.zhuangtai = zhuangtai;
 	}
 
 	public String getId() {
@@ -111,6 +121,14 @@ public class Dangqiankecheng {
 		this.xuefen = xuefen;
 	}
 
+	public String getZhuangtai() {
+		return zhuangtai;
+	}
+
+	public void setZhuangtai(String zhuangtai) {
+		this.zhuangtai = zhuangtai;
+	}
+
 	@Override
 	public String toString() {
 		return "Dangqiankecheng{" +
@@ -120,6 +138,7 @@ public class Dangqiankecheng {
 				", semester='" + semester + '\'' +
 				", kaikeshijian='" + kaikeshijian + '\'' +
 				", xuefen=" + xuefen +
+				", zhuangtai='" + zhuangtai + '\'' +
 				'}';
 	}
 }

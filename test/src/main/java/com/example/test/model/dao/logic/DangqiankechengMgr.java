@@ -14,14 +14,15 @@ public class DangqiankechengMgr {
     // 增加单条信息
     public void add(Dangqiankecheng d) {
         String sql =
-                "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN) "+
+                "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN,ZHUANGTAI) "+
                         "VALUES('"+
                         d.getId()+ "','"+
                         d.getKechengId() + "','" +
                         d.getTeacherId()+ "','" +
                         d.getSemester() + "','" +
                         d.getKaikeshijian() + "'," +
-                        d.getXuefen() + ")";
+                        d.getXuefen() + ",'" +
+                        d.getZhuangtai() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if(check){
@@ -35,14 +36,15 @@ public class DangqiankechengMgr {
         List<String> sqls = new ArrayList<String>();
         for (Dangqiankecheng d :ds){
             String sql =
-                    "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN) "+
+                    "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN,ZHUANGTAI) "+
                             "VALUES('"+
                             d.getId()+ "','"+
                             d.getKechengId() + "','" +
                             d.getTeacherId()+ "','" +
                             d.getSemester() + "','" +
                             d.getKaikeshijian() + "'," +
-                            d.getXuefen() + ")";
+                            d.getXuefen() + ",'" +
+                            d.getZhuangtai() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -117,7 +119,8 @@ public class DangqiankechengMgr {
                 String.valueOf(list.get(0).get("TEACHER_ID")),
                 String.valueOf(list.get(0).get("SEMESTER")),
                 String.valueOf(list.get(0).get("KAIKESHIJIAN")),
-                Integer.parseInt(String.valueOf(list.get(0).get("XUEFEN")))
+                Integer.parseInt(String.valueOf(list.get(0).get("XUEFEN"))),
+                String.valueOf(list.get(0).get("ZHUANGTAI"))
         );
         return d;
     }
@@ -136,7 +139,8 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("SEMESTER")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
-                    Integer.parseInt(String.valueOf(map.get("XUEFEN")))
+                    Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
+                    String.valueOf(list.get(0).get("ZHUANGTAI"))
             );
             result.add(d);
         }
@@ -157,7 +161,8 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("SEMESTER")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
-                    Integer.parseInt(String.valueOf(map.get("XUEFEN")))
+                    Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
+                    String.valueOf(list.get(0).get("ZHUANGTAI"))
             );
             result.add(d);
         }
@@ -178,7 +183,8 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("SEMESTER")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
-                    Integer.parseInt(String.valueOf(map.get("XUEFEN")))
+                    Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
+                    String.valueOf(list.get(0).get("ZHUANGTAI"))
             );
             result.add(d);
         }

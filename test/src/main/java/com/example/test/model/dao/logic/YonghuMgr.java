@@ -21,13 +21,17 @@ public class YonghuMgr {
 
     public void add(Yonghu y) {
         String sql =
-                "INSERT INTO T_YONGHU(ID,PASSWORD,NAME,DIANHUA,YOUXIANG) "+
+                "INSERT INTO T_YONGHU(ID,PASSWORD,NAME,DIANHUA,YOUXIANG,TOKEN,TYPE,YUANXI,ZHICHENG) "+
                         "VALUES('"+
                         y.getId() + "','" +
                         y.getPassword() + "','" +
                         y.getName() + "','" +
                         y.getDianhua() + "','" +
-                        y.getYouxiang() + "')";
+                        y.getYouxiang() + "','" +
+                        y.getToken() + "','" +
+                        y.getYuanxi() + "','" +
+                        y.getZhicheng() + "','" +
+                        y.getType() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){
@@ -41,13 +45,17 @@ public class YonghuMgr {
         List<String> sqls = new ArrayList<String>();
         for (Yonghu y : ys) {
             String sql =
-                    "INSERT INTO T_YONGHU(ID,PASSWORD,NAME,DIANHUA,YOUXIANG) "+
+                    "INSERT INTO T_YONGHU(ID,PASSWORD,NAME,DIANHUA,YOUXIANG,TOKEN,TYPE,YUANXI,ZHICHENG) "+
                             "VALUES('"+
                             y.getId() + "','" +
                             y.getPassword() + "','" +
                             y.getName() + "','" +
                             y.getDianhua() + "','" +
-                            y.getYouxiang() + "')";
+                            y.getYouxiang() + "','" +
+                            y.getToken() + "','" +
+                            y.getYuanxi() + "','" +
+                            y.getZhicheng() + "','" +
+                            y.getType() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -111,7 +119,11 @@ public class YonghuMgr {
                 String.valueOf(list.get(0).get("PASSWORD")),
                 String.valueOf(list.get(0).get("NAME")),
                 String.valueOf(list.get(0).get("DIANHUA")),
-                String.valueOf(list.get(0).get("YOUXIANG"))
+                String.valueOf(list.get(0).get("YOUXIANG")),
+                String.valueOf(list.get(0).get("TOKEN")),
+                String.valueOf(list.get(0).get("TYPE")),
+                String.valueOf(list.get(0).get("YUANXI")),
+                String.valueOf(list.get(0).get("ZHICHENG"))
         );
         return y;
     }
@@ -128,11 +140,15 @@ public class YonghuMgr {
         }
         for (Map<String,Object> map : list) {
             Yonghu y = new Yonghu(
-                    String.valueOf(map.get("ID")),
-                    String.valueOf(map.get("PASSWORD")),
-                    String.valueOf(map.get("NAME")),
-                    String.valueOf(map.get("DIANHUA")),
-                    String.valueOf(map.get("YOUXIANG"))
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("PASSWORD")),
+                    String.valueOf(list.get(0).get("NAME")),
+                    String.valueOf(list.get(0).get("DIANHUA")),
+                    String.valueOf(list.get(0).get("YOUXIANG")),
+                    String.valueOf(list.get(0).get("TOKEN")),
+                    String.valueOf(list.get(0).get("TYPE")),
+                    String.valueOf(list.get(0).get("YUANXI")),
+                    String.valueOf(list.get(0).get("ZHICHENG"))
             );
             result.add(y);
         }
@@ -151,11 +167,15 @@ public class YonghuMgr {
         }
         for (Map<String, Object> map : list) {
             Yonghu y = new Yonghu(
-                    String.valueOf(map.get("ID")),
-                    String.valueOf(map.get("PASSWORD")),
-                    String.valueOf(map.get("NAME")),
-                    String.valueOf(map.get("DIANHUA")),
-                    String.valueOf(map.get("YOUXIANG"))
+                    String.valueOf(list.get(0).get("ID")),
+                    String.valueOf(list.get(0).get("PASSWORD")),
+                    String.valueOf(list.get(0).get("NAME")),
+                    String.valueOf(list.get(0).get("DIANHUA")),
+                    String.valueOf(list.get(0).get("YOUXIANG")),
+                    String.valueOf(list.get(0).get("TOKEN")),
+                    String.valueOf(list.get(0).get("TYPE")),
+                    String.valueOf(list.get(0).get("YUANXI")),
+                    String.valueOf(list.get(0).get("ZHICHENG"))
             );
             result.add(y);
         }
