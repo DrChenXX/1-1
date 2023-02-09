@@ -18,7 +18,8 @@ class TestApplicationTests {
 //        YonghuMgr ym = new YonghuMgr();
 //        Yonghu y2 = ym.getByID(y.getId());
 //        System.out.println(y2.toString());
-        XiaoxiMgr xiaoxiMgr = new XiaoxiMgr();
-        xiaoxiMgr.readByID("1");
+        YonghuMgr yonghuMgr = new YonghuMgr();
+        Yonghu yonghu = yonghuMgr.getByID("1");
+        yonghuMgr.updateTokenByID(yonghu.getId(),"123");
     }
 }
