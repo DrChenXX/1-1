@@ -4,6 +4,7 @@ import com.example.test.datatype.*;
 import com.example.test.interfaces.UserController;
 import com.example.test.model.service.PrincipalService;
 import com.example.test.model.service.TeacherService;
+import com.example.test.model.session.SessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,8 @@ public class PrincipalController implements UserController {
 
     @Autowired
     private PrincipalService principalService;
+    @Autowired
+    private SessionManager sessionManager;
 
     @Override
     public String name() {
@@ -23,9 +26,9 @@ public class PrincipalController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/jiaoshiguanli", method = RequestMethod.POST)
-    public RestResponse searchTeacher(@RequestBody SearchTeacherRequest request) {
+    public RestResponse searchTeacher(@RequestHeader("token") String token,@RequestBody SearchTeacherRequest request) {
         System.out.println(request);
-        return principalService.searchTeacher(request);
+        return sessionManager.getSession(token).getPrincipalService().searchTeacher(request);
     }
 
     @ResponseBody
