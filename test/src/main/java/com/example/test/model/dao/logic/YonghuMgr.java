@@ -183,6 +183,13 @@ public class YonghuMgr {
     }
 
     public void updateTokenByID(String userid, String token) {
-
+        String sql = "UPDATE T_YONGHU SET TOKEN = '" + token + "' WHERE ID = " + userid;
+        boolean check;
+        check = ConnectDB.addContent(sql);
+        if (check){
+            System.out.println("更改token成功");
+        } else {
+            System.out.println("更改token失败");
+        }
     }
 }
