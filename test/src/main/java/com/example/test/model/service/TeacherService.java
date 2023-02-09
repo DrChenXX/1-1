@@ -120,6 +120,9 @@ public class TeacherService implements UserService {
         return new RestResponse().success("当前课程需要对应指标点为：",responses);
     }
 
+    public void updateKechengkaohe (UpdateKechengkaoheRequest request){
+        kaoheMgr.add(request.getKechengid(),request.getContent(),,request.getZhanbi());
+    }
 
 
 
