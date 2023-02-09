@@ -1,11 +1,14 @@
 package com.example.test.model.session;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 
 // 会话对象管理器
 /*
 用于储存当前的用户会话。
  */
+@Component
 public class SessionManager {
     // 会话列表
     private HashMap<String,SessionHandler> sessionList;
@@ -40,14 +43,20 @@ public class SessionManager {
     }
 
     // 新建用户会话
-    public void addSession(String token, String username, String password, String userType) {
+    public void addSession(String token, String userid, String userRole) {
         long time = System.currentTimeMillis()/1000/60;
-        SessionHandler sessionHandler = new SessionHandler(token, username, password, userType, time);
+        SessionHandler sessionHandler = new SessionHandler(token, userid, userRole, time);
         sessionList.put(token,sessionHandler);
+    }
+
+    // 查找会话是否存在
+    public boolean checkSession(String token) {
+        return sessionList.containsKey(token);
     }
 
     // 获取用户会话
     public SessionHandler getSession(String token) {
+
         return sessionList.get(token);
     }
 

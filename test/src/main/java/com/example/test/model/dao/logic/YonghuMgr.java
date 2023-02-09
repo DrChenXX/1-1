@@ -181,4 +181,8 @@ public class YonghuMgr {
         }
         return result;
     }
+
+    public void updateTokenByID(String userid, String token) {
+
+    }
 }

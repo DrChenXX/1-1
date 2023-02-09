@@ -68,4 +68,12 @@ public class RestResponse<T> implements Serializable {
     public static <T> RestResponse<T> fail(String msg, T data) {
         return new RestResponse<T>(500,msg,data);
     }
+
+    public static RestResponse badToken(String msg) {
+        return new RestResponse(401,msg);
+    }
+
+    public static <T> RestResponse<T> badToken(String msg, T data) {
+        return new RestResponse<T>(401,msg,data);
+    }
 }

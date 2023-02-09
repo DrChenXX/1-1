@@ -18,11 +18,9 @@ public class SessionHandler {
     // 用户token
     private String token;
     // 用户名
-    private String username;
-    // 用户密码
-    private String password;
+    private String userid;
     // 用户类型：0-系统管理员；1-专业负责人；2-教师；3-游客
-    private String userType;
+    private String userRole;
     // 回话创建时间，分钟级别
     private long time;
 
@@ -35,13 +33,13 @@ public class SessionHandler {
     public SessionHandler() {
     }
 
-    public SessionHandler(String token, String username, String password, String userType, long time) {
+    public SessionHandler(String token, String userid, String userRole, long time) {
         this.token = token;
-        this.username = username;
-        this.password = password;
-        this.userType = userType;
+        this.userid = userid;
+        this.userRole = userRole;
         this.time = time;
     }
+
 
     public String getToken() {
         return token;
@@ -51,28 +49,20 @@ public class SessionHandler {
         this.token = token;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserRole() {
+        return userRole;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public long getTime() {
