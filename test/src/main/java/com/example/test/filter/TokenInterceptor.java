@@ -45,13 +45,16 @@ public class TokenInterceptor implements HandlerInterceptor {
         }
 
         Map<String, String> map = tokenTool.parseToken(token);
-        String userId = map.get("userId");
+        String userId = map.get("userid");
         String userRole = map.get("userRole");
         long timeOfUse = System.currentTimeMillis() - Long.parseLong(map.get("timeStamp"));
         System.out.println("已解析token");
+        System.out.println("userid:"+userId);
+        System.out.println("userRole"+userRole);
+        System.out.println("timeOfUse"+timeOfUse);
         //1.判断 token 是否匹配
         String userToken = yonghuMgr.getByID(userId).getToken();
-        if (token == userToken) {
+        if (token.equals(userToken)) {
             // token正确
             System.out.println("token正确");
             //2.判断是否过期

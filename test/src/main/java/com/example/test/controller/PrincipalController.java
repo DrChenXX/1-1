@@ -26,7 +26,7 @@ public class PrincipalController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/jiaoshiguanli", method = RequestMethod.POST)
-    public RestResponse searchTeacher(@RequestHeader("token") String token,@RequestBody SearchTeacherRequest request) {
+    public RestResponse searchTeacher(@RequestHeader(value = "token",required = false) String token,@RequestBody SearchTeacherRequest request) {
         System.out.println(request);
         return sessionManager.getSession(token).getPrincipalService().searchTeacher(request);
     }
