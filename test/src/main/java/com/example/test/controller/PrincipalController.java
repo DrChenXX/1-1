@@ -33,16 +33,16 @@ public class PrincipalController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/xueshengguanli", method = RequestMethod.POST)
-    public RestResponse searchXuesheng(@RequestBody SearchXueshengRequest request) {
+    public RestResponse searchXuesheng(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXueshengRequest request) {
         System.out.println(request);
-        return principalService.searchXuesheng(request);
+        return sessionManager.getSession(token).getPrincipalService().searchXuesheng(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "/biyeyaoqiu", method = RequestMethod.POST)
-    public RestResponse searchBiyeyaoqiu(@RequestBody SearchBiyeyaoqiuRequest request) {
+    public RestResponse searchBiyeyaoqiu(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchBiyeyaoqiuRequest request) {
         System.out.println(request);
-        return principalService.searchBiyeyaoqiu(request);
+        return sessionManager.getSession(token).getPrincipalService().searchBiyeyaoqiu(request);
     }
 
     @RequestMapping(path = "hi", method = RequestMethod.GET)
@@ -52,44 +52,44 @@ public class PrincipalController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/peiyangfangan", method = RequestMethod.POST)
-    public RestResponse searchPeiyangfangan(@RequestBody SearchPeiyangfanganRequest request) {
+    public RestResponse searchPeiyangfangan(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchPeiyangfanganRequest request) {
         System.out.println(request);
-        return principalService.searchPeiyangfangan(request);
+        return sessionManager.getSession(token).getPrincipalService().searchPeiyangfangan(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "/peiyangmubiao", method = RequestMethod.POST)
-    public RestResponse searchPeiyangmubiao(@RequestBody SearchPeiyangmubiaoRequest request) {
+    public RestResponse searchPeiyangmubiao(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchPeiyangmubiaoRequest request) {
         System.out.println(request);
-        return principalService.searchPeiyangmubiao(request);
+        return sessionManager.getSession(token).getPrincipalService().searchPeiyangmubiao(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "/peiyangmubiaoadd", method = RequestMethod.POST)
-    public void addPeiyangmubiao(@RequestBody AddPeiyangmubiaoRequest request) {
+    public void addPeiyangmubiao(@RequestHeader(value = "token",required = false)String token,@RequestBody AddPeiyangmubiaoRequest request) {
         System.out.println(request);
-        principalService.addPeiyangmubiao(request);
+        sessionManager.getSession(token).getPrincipalService().addPeiyangmubiao(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "/peiyangmubiaodelete", method = RequestMethod.POST)
-    public void deletePeiyangmubiao(@RequestBody DeletePeiyangmubiaoRequest request) {
+    public void deletePeiyangmubiao(@RequestHeader(value = "token",required = false)String token,@RequestBody DeletePeiyangmubiaoRequest request) {
         System.out.println(request);
-        principalService.deletePeiyangmubiao(request);
+        sessionManager.getSession(token).getPrincipalService().deletePeiyangmubiao(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "/peiyangmubiaoupdate", method = RequestMethod.POST)
-    public void updatePeiyangmubiao(@RequestBody UpdatePeiyangmubiaoRequest request) {
+    public void updatePeiyangmubiao(@RequestHeader(value = "token",required = false)String token,@RequestBody UpdatePeiyangmubiaoRequest request) {
         System.out.println(request);
-        principalService.updatePeiyangmubiao(request);
+        sessionManager.getSession(token).getPrincipalService().updatePeiyangmubiao(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "/fankui", method = RequestMethod.POST)
-    public RestResponse searchXianxi(@RequestBody SearchXiaoxiRequest request) {
+    public RestResponse searchXianxi(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXiaoxiRequest request) {
         System.out.println(request);
-        return principalService.searchXiaoxi(request);
+        return sessionManager.getSession(token).getPrincipalService().searchXiaoxi(request);
     }
 
 }

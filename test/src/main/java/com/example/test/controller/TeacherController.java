@@ -7,6 +7,7 @@ import com.example.test.datatype.RestResponse;
 import com.example.test.datatype.SaveMatrixOfBiyeyaoqiuRequest;
 import com.example.test.interfaces.UserController;
 import com.example.test.model.service.TeacherService;
+import com.example.test.model.session.SessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,8 @@ public class TeacherController implements UserController {
 
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private SessionManager sessionManager;
 
 
     @Override
@@ -31,15 +34,16 @@ public class TeacherController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/Kechengduizhibiaodian/ConfirmMatrixOfBiyeyaoqiu", method = RequestMethod.POST)
-    public RestResponse confirmMatrixOfBiyeyaoqiu(@RequestBody ConfirmMatrixOfBiyeyaoqiuRequest request) {
+    public RestResponse confirmMatrixOfBiyeyaoqiu(@RequestHeader(value = "token",required = false)String token,@RequestBody ConfirmMatrixOfBiyeyaoqiuRequest request) {
         System.out.println(request);
-        return teacherService.confirmMatrixOfBiyeyaoqiu(request);
+        return sessionManager.getSession(token).getTeacherService().confirmMatrixOfBiyeyaoqiu(request);
+
     }
     @ResponseBody
     @RequestMapping(path = "/Kechengduizhibiaodian/SaveMatrixOfBiyeyaoqiu", method = RequestMethod.POST)
-    public RestResponse saveMatrixOfBiyeyaoqiu(@RequestBody SaveMatrixOfBiyeyaoqiuRequest request) {
+    public RestResponse saveMatrixOfBiyeyaoqiu(@RequestHeader(value = "token",required = false)String token,@RequestBody SaveMatrixOfBiyeyaoqiuRequest request) {
         System.out.println(request);
-        return teacherService.saveMatrixOfBiyeyaoqiu(request);
+        return sessionManager.getSession(token).getTeacherService().saveMatrixOfBiyeyaoqiu(request);
     }
 //    @ResponseBody
 //    @RequestMapping(path = "/GetTeacherTaskList", method = RequestMethod.POST)
@@ -49,9 +53,9 @@ public class TeacherController implements UserController {
 //    }
     @ResponseBody
     @RequestMapping(path = "/Kechengmubiao", method = RequestMethod.POST)
-    public RestResponse searchKaohefangshi(@RequestBody SearchKaohefangshiRequest request) {
+    public RestResponse searchKaohefangshi(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchKaohefangshiRequest request) {
         System.out.println(request);
-        return teacherService.searchKaohefangshi(request);
+        return sessionManager.getSession(token).getTeacherService().searchKaohefangshi(request);
     }
 }
 
