@@ -103,21 +103,21 @@ public class RenwuMgr {
         List<Renwu> result = new ArrayList<Renwu>();
         for (Map<String, Object> map : list) {
             Renwu renwu = new Renwu(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("KECHENG")),
-                    String.valueOf(list.get(0).get("KECHENG_ID")),
-                    String.valueOf(list.get(0).get("XUEFEN")),
-                    String.valueOf(list.get(0).get("LEIBIE")),
-                    String.valueOf(list.get(0).get("RENKELAOSHI")),
-                    String.valueOf(list.get(0).get("RENKELAOSHI_ID")),
-                    String.valueOf(list.get(0).get("YUANXI")),
-                    String.valueOf(list.get(0).get("NIANJI")),
-                    String.valueOf(list.get(0).get("FABU")),
-                    String.valueOf(list.get(0).get("FUZEREN_ID")),
-                    String.valueOf(list.get(0).get("ZHUANYE")),
-                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                    String.valueOf(list.get(0).get("PEIYANGFANGAN")),
-                    String.valueOf(list.get(0).get("XUEQI"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("KECHENG")),
+                    String.valueOf(map.get("KECHENG_ID")),
+                    String.valueOf(map.get("XUEFEN")),
+                    String.valueOf(map.get("LEIBIE")),
+                    String.valueOf(map.get("RENKELAOSHI")),
+                    String.valueOf(map.get("RENKELAOSHI_ID")),
+                    String.valueOf(map.get("YUANXI")),
+                    String.valueOf(map.get("NIANJI")),
+                    String.valueOf(map.get("FABU")),
+                    String.valueOf(map.get("FUZEREN_ID")),
+                    String.valueOf(map.get("ZHUANYE")),
+                    String.valueOf(map.get("ZHUANYE_ID")),
+                    String.valueOf(map.get("PEIYANGFANGAN")),
+                    String.valueOf(map.get("XUEQI"))
             );
             result.add(renwu);
         }

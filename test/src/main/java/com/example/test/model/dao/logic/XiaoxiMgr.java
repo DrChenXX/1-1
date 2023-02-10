@@ -112,15 +112,15 @@ public class XiaoxiMgr {
         List<Xiaoxi> result = new ArrayList<Xiaoxi>();
         for (Map<String, Object> map : list) {
             Xiaoxi xiaoxi = new Xiaoxi(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("FROM_ID")),
-                    String.valueOf(list.get(0).get("FROMNAME")),
-                    String.valueOf(list.get(0).get("TO_ID")),
-                    String.valueOf(list.get(0).get("TONAME")),
-                    String.valueOf(list.get(0).get("ISREAD")),
-                    String.valueOf(list.get(0).get("DATA")),
-                    String.valueOf(list.get(0).get("PEIYANGFANGANID")),
-                    String.valueOf(list.get(0).get("HUIFU")));
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("FROM_ID")),
+                    String.valueOf(map.get("FROMNAME")),
+                    String.valueOf(map.get("TO_ID")),
+                    String.valueOf(map.get("TONAME")),
+                    String.valueOf(map.get("ISREAD")),
+                    String.valueOf(map.get("DATA")),
+                    String.valueOf(map.get("PEIYANGFANGANID")),
+                    String.valueOf(map.get("HUIFU")));
             result.add(xiaoxi);
         }
         return result;
@@ -135,15 +135,15 @@ public class XiaoxiMgr {
         List<Xiaoxi> result = new ArrayList<Xiaoxi>();
         for (Map<String, Object> map : list) {
             Xiaoxi xiaoxi = new Xiaoxi(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("FROM_ID")),
-                    String.valueOf(list.get(0).get("FROMNAME")),
-                    String.valueOf(list.get(0).get("TO_ID")),
-                    String.valueOf(list.get(0).get("TONAME")),
-                    String.valueOf(list.get(0).get("ISREAD")),
-                    String.valueOf(list.get(0).get("DATA")),
-                    String.valueOf(list.get(0).get("PEIYANGFANGANID")),
-                    String.valueOf(list.get(0).get("HUIFU")));
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("FROM_ID")),
+                    String.valueOf(map.get("FROMNAME")),
+                    String.valueOf(map.get("TO_ID")),
+                    String.valueOf(map.get("TONAME")),
+                    String.valueOf(map.get("ISREAD")),
+                    String.valueOf(map.get("DATA")),
+                    String.valueOf(map.get("PEIYANGFANGANID")),
+                    String.valueOf(map.get("HUIFU")));
             result.add(xiaoxi);
         }
         return result;

@@ -60,7 +60,7 @@ public class PrincipalService implements UserService {
                     continue;
                 }
             }
-            responses.add(new SearchTeacherResponse(teacher.getId(),teacher.getName(),"教授","信息科学与工程学院"));
+            responses.add(new SearchTeacherResponse(teacher.getId(),teacher.getName(),teacher.getZhicheng(),teacher.getYuanxi()));
         }
 
         //页码处理

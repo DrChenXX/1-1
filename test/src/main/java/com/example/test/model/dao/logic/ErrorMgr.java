@@ -99,9 +99,9 @@ public class ErrorMgr {
         List<Error> result = new ArrayList<Error>();
         for (Map<String,Object> map : list) {
             Error e = new Error(
-                    String.valueOf(list.get(0).get("ID")),
-                    Timestamp.valueOf(String.valueOf(list.get(0).get("SHIJIAN"))),
-                    String.valueOf(list.get(0).get("CONTENT"))
+                    String.valueOf(map.get("ID")),
+                    Timestamp.valueOf(String.valueOf(map.get("SHIJIAN"))),
+                    String.valueOf(map.get("CONTENT"))
             );
             result.add(e);
         }

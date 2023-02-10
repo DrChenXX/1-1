@@ -140,15 +140,15 @@ public class YonghuMgr {
         }
         for (Map<String,Object> map : list) {
             Yonghu y = new Yonghu(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("PASSWORD")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("DIANHUA")),
-                    String.valueOf(list.get(0).get("YOUXIANG")),
-                    String.valueOf(list.get(0).get("TOKEN")),
-                    String.valueOf(list.get(0).get("TYPE")),
-                    String.valueOf(list.get(0).get("YUANXI")),
-                    String.valueOf(list.get(0).get("ZHICHENG"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("PASSWORD")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("DIANHUA")),
+                    String.valueOf(map.get("YOUXIANG")),
+                    String.valueOf(map.get("TOKEN")),
+                    String.valueOf(map.get("TYPE")),
+                    String.valueOf(map.get("YUANXI")),
+                    String.valueOf(map.get("ZHICHENG"))
             );
             result.add(y);
         }
@@ -167,15 +167,15 @@ public class YonghuMgr {
         }
         for (Map<String, Object> map : list) {
             Yonghu y = new Yonghu(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("PASSWORD")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("DIANHUA")),
-                    String.valueOf(list.get(0).get("YOUXIANG")),
-                    String.valueOf(list.get(0).get("TOKEN")),
-                    String.valueOf(list.get(0).get("TYPE")),
-                    String.valueOf(list.get(0).get("YUANXI")),
-                    String.valueOf(list.get(0).get("ZHICHENG"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("PASSWORD")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("DIANHUA")),
+                    String.valueOf(map.get("YOUXIANG")),
+                    String.valueOf(map.get("TOKEN")),
+                    String.valueOf(map.get("TYPE")),
+                    String.valueOf(map.get("YUANXI")),
+                    String.valueOf(map.get("ZHICHENG"))
             );
             result.add(y);
         }

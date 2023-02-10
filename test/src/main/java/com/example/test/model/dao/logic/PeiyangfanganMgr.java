@@ -121,11 +121,11 @@ public class PeiyangfanganMgr {
         List <Peiyangfangan> result = new ArrayList<Peiyangfangan>();
         for (Map<String, Object> map : list) {
             Peiyangfangan p = new Peiyangfangan(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                    String.valueOf(list.get(0).get("VERSION")),
-                    String.valueOf(list.get(0).get("FUZEREN_ID"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("ZHUANYE_ID")),
+                    String.valueOf(map.get("VERSION")),
+                    String.valueOf(map.get("FUZEREN_ID"))
             );
             result.add(p);
         }

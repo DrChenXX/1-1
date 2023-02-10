@@ -136,12 +136,12 @@ public class XueshengMgr {
         List <Xuesheng> result = new ArrayList<Xuesheng>();
         for (Map<String,Object> map : list) {
             Xuesheng x = new Xuesheng(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                    String.valueOf(list.get(0).get("GRADE")),
-                    String.valueOf(list.get(0).get("BANJI")),
-                    String.valueOf(list.get(0).get("YUANXI"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("ZHUANYE_ID")),
+                    String.valueOf(map.get("GRADE")),
+                    String.valueOf(map.get("BANJI")),
+                    String.valueOf(map.get("YUANXI"))
             );
             result.add(x);
         }
@@ -157,12 +157,12 @@ public class XueshengMgr {
         List <Xuesheng> result = new ArrayList<Xuesheng>();
         for (Map<String,Object> map : list) {
             Xuesheng x = new Xuesheng(
-                    String.valueOf(list.get(0).get("ID")),
-                    String.valueOf(list.get(0).get("NAME")),
-                    String.valueOf(list.get(0).get("ZHUANYE_ID")),
-                    String.valueOf(list.get(0).get("GRADE")),
-                    String.valueOf(list.get(0).get("BANJI")),
-                    String.valueOf(list.get(0).get("YUANXI"))
+                    String.valueOf(map.get("ID")),
+                    String.valueOf(map.get("NAME")),
+                    String.valueOf(map.get("ZHUANYE_ID")),
+                    String.valueOf(map.get("GRADE")),
+                    String.valueOf(map.get("BANJI")),
+                    String.valueOf(map.get("YUANXI"))
             );
             result.add(x);
         }
