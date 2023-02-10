@@ -126,6 +126,42 @@ public class TeacherService implements UserService {
         kaoheMgr.add(kaohe);
     }
 
+    public RestResponse getTaskStatusList (GetTaskStatusListRequest request){
+        Dangqiankecheng dangqiankecheng = (Dangqiankecheng) dangqiankechengMgr.getByKechengID(request.getKechengid());
+        GetTaskStatusListResponse response = new GetTaskStatusListResponse();
+        if (dangqiankecheng.getZhuangtai() == "课程-指标点支撑矩阵未确认") {
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "课程-指标点支撑矩阵已确认") {
+            response.setTask1_0(1);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "课程-指标点支撑矩阵反馈已提交待审核") {
+            response.setTask1_0(2);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "课程-指标点支撑矩阵反馈意见不通过") {
+            response.setTask1_0(3);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "课程-指标点支撑矩阵反馈意见通过") {
+            response.setTask1_0(1);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "教学大纲未上传") {
+            response.setTask1_0(1);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "教学大纲上传完成等待审核") {
+            response.setTask1_0(1);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        if (dangqiankecheng.getZhuangtai() == "教学大纲上传反馈审核通过") {
+            response.setTask1_1(1);
+            return new RestResponse().success("当前状态为：",response);
+        }
+        return new RestResponse().fail("未找到当前状态");
+    }
 
 
 }
