@@ -55,22 +55,63 @@ public class Dangqiankecheng {
 	private Integer xuefen;
 
 	/**
-	 * table name:ZHUANGTAI
-	 * table type:varchar(20)
+	 * table name:CURTASK
+	 * table type:varchar(10)
 	 * table comment:null
 	 */
-	private String zhuangtai;
+	private String curtask;
+
+	/**
+	 * table name:TASK1_0
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String task1_0;
+
+	/**
+	 * table name:TASK1_1
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String task1_1;
+
+	/**
+	 * table name:TASK2
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String task2;
+
+	/**
+	 * table name:TASK3
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String task3;
+
+	/**
+	 * table name:TASK4
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String task4;
 
 	public Dangqiankecheng(String id, String kechengId, String teacherId,
 						   String semester, String kaikeshijian, Integer xuefen,
-						   String zhuangtai) {
+						   String curtask, String task1_0, String task1_1,
+						   String task2, String task3, String task4) {
 		this.id = id;
 		this.kechengId = kechengId;
 		this.teacherId = teacherId;
 		this.semester = semester;
 		this.kaikeshijian = kaikeshijian;
 		this.xuefen = xuefen;
-		this.zhuangtai = zhuangtai;
+		this.curtask = curtask;
+		this.task1_0 = task1_0;
+		this.task1_1 = task1_1;
+		this.task2 = task2;
+		this.task3 = task3;
+		this.task4 = task4;
 	}
 
 	public String getId() {
@@ -121,12 +162,52 @@ public class Dangqiankecheng {
 		this.xuefen = xuefen;
 	}
 
-	public String getZhuangtai() {
-		return zhuangtai;
+	public String getCurtask() {
+		return curtask;
 	}
 
-	public void setZhuangtai(String zhuangtai) {
-		this.zhuangtai = zhuangtai;
+	public void setCurtask(String curtask) {
+		this.curtask = curtask;
+	}
+
+	public String getTask1_0() {
+		return task1_0;
+	}
+
+	public void setTask1_0(String task1_0) {
+		this.task1_0 = task1_0;
+	}
+
+	public String getTask1_1() {
+		return task1_1;
+	}
+
+	public void setTask1_1(String task1_1) {
+		this.task1_1 = task1_1;
+	}
+
+	public String getTask2() {
+		return task2;
+	}
+
+	public void setTask2(String task2) {
+		this.task2 = task2;
+	}
+
+	public String getTask3() {
+		return task3;
+	}
+
+	public void setTask3(String task3) {
+		this.task3 = task3;
+	}
+
+	public String getTask4() {
+		return task4;
+	}
+
+	public void setTask4(String task4) {
+		this.task4 = task4;
 	}
 
 	@Override
@@ -138,7 +219,12 @@ public class Dangqiankecheng {
 				", semester='" + semester + '\'' +
 				", kaikeshijian='" + kaikeshijian + '\'' +
 				", xuefen=" + xuefen +
-				", zhuangtai='" + zhuangtai + '\'' +
+				", curtask='" + curtask + '\'' +
+				", task1_0='" + task1_0 + '\'' +
+				", task1_1='" + task1_1 + '\'' +
+				", task2='" + task2 + '\'' +
+				", task3='" + task3 + '\'' +
+				", task4='" + task4 + '\'' +
 				'}';
 	}
 }

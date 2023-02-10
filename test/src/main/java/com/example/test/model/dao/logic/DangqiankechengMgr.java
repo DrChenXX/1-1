@@ -22,7 +22,12 @@ public class DangqiankechengMgr {
                         d.getSemester() + "','" +
                         d.getKaikeshijian() + "'," +
                         d.getXuefen() + ",'" +
-                        d.getZhuangtai() + "')";
+                        d.getCurtask() + "','" +
+                        d.getTask1_0() + "','" +
+                        d.getTask1_1() + "','" +
+                        d.getTask2() + "','" +
+                        d.getTask3() + "','" +
+                        d.getTask4() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if(check){
@@ -44,7 +49,12 @@ public class DangqiankechengMgr {
                             d.getSemester() + "','" +
                             d.getKaikeshijian() + "'," +
                             d.getXuefen() + ",'" +
-                            d.getZhuangtai() + "')";
+                            d.getCurtask() + "','" +
+                            d.getTask1_0() + "','" +
+                            d.getTask1_1() + "','" +
+                            d.getTask2() + "','" +
+                            d.getTask3() + "','" +
+                            d.getTask4() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -120,7 +130,12 @@ public class DangqiankechengMgr {
                 String.valueOf(list.get(0).get("SEMESTER")),
                 String.valueOf(list.get(0).get("KAIKESHIJIAN")),
                 Integer.parseInt(String.valueOf(list.get(0).get("XUEFEN"))),
-                String.valueOf(list.get(0).get("ZHUANGTAI"))
+                String.valueOf(list.get(0).get("CURTASK")),
+                String.valueOf(list.get(0).get("TASK1_0")),
+                String.valueOf(list.get(0).get("TASK1_1")),
+                String.valueOf(list.get(0).get("TASK2")),
+                String.valueOf(list.get(0).get("TASK3")),
+                String.valueOf(list.get(0).get("TASK4"))
         );
         return d;
     }
@@ -140,7 +155,12 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("SEMESTER")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
                     Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
-                    String.valueOf(list.get(0).get("ZHUANGTAI"))
+                    String.valueOf(map.get("CURTASK")),
+                    String.valueOf(map.get("TASK1_0")),
+                    String.valueOf(map.get("TASK1_1")),
+                    String.valueOf(map.get("TASK2")),
+                    String.valueOf(map.get("TASK3")),
+                    String.valueOf(map.get("TASK4"))
             );
             result.add(d);
         }
@@ -162,7 +182,12 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("SEMESTER")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
                     Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
-                    String.valueOf(list.get(0).get("ZHUANGTAI"))
+                    String.valueOf(map.get("CURTASK")),
+                    String.valueOf(map.get("TASK1_0")),
+                    String.valueOf(map.get("TASK1_1")),
+                    String.valueOf(map.get("TASK2")),
+                    String.valueOf(map.get("TASK3")),
+                    String.valueOf(map.get("TASK4"))
             );
             result.add(d);
         }
@@ -184,7 +209,12 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("SEMESTER")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
                     Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
-                    String.valueOf(list.get(0).get("ZHUANGTAI"))
+                    String.valueOf(map.get("CURTASK")),
+                    String.valueOf(map.get("TASK1_0")),
+                    String.valueOf(map.get("TASK1_1")),
+                    String.valueOf(map.get("TASK2")),
+                    String.valueOf(map.get("TASK3")),
+                    String.valueOf(map.get("TASK4"))
             );
             result.add(d);
         }
