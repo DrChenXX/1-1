@@ -1,21 +1,26 @@
 package com.example.test.model.session;
 
+import com.example.test.EnvironmentConfig;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.Map;
 
 // 会话对象管理器
 /*
 用于储存当前的用户会话。
  */
 @Component
+@EnableScheduling
 public class SessionManager {
     // 会话列表
     private HashMap<String,SessionHandler> sessionList;
     // 最大用户数量
-    private int maxUser = 1000;
+    private int maxUser = EnvironmentConfig.maxUser;
     // 会话保存时间(分钟）
-    private long saveTime = 1000;
+    private long saveTime = EnvironmentConfig.saveTime;
 
     public SessionManager() {
         sessionList = new HashMap<String,SessionHandler>();
@@ -44,7 +49,7 @@ public class SessionManager {
 
     // 新建用户会话
     public void addSession(String token, String userid, String userRole) {
-        long time = System.currentTimeMillis()/1000/60;
+        long time = System.currentTimeMillis();
         SessionHandler sessionHandler = new SessionHandler(token, userid, userRole, time);
         sessionList.put(token,sessionHandler);
     }
@@ -61,8 +66,17 @@ public class SessionManager {
     }
 
     // 消除已过期会话
+    @Scheduled(cron = "0 0 1 * * ?")
     public void killSession() {
-
+        System.out.println("正在自动清理过期会话");
+        for(Map.Entry<String,SessionHandler> entry : sessionList.entrySet()) {
+            long timeOfUse = System.currentTimeMillis() - entry.getValue().getTime();
+            if (timeOfUse >= saveTime) {
+                killSession(entry.getKey());
+                System.out.println("id为"+entry.getValue().getUserid()+"的会话对象已被清理");
+            }
+        }
+        System.out.println("所有过期会话已被清理");
     }
 
     // 消除目标会话

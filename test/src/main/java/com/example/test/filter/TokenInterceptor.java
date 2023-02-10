@@ -1,6 +1,7 @@
 package com.example.test.filter;
 
 
+import com.example.test.EnvironmentConfig;
 import com.example.test.exception.TokenExpiredException;
 import com.example.test.exception.TokenIncorrectException;
 import com.example.test.model.dao.logic.YonghuMgr;
@@ -22,9 +23,9 @@ public class TokenInterceptor implements HandlerInterceptor {
     @Autowired
     private TokenTool tokenTool;
     // key
-    private String key = "hidakleihcilllseafgjieiloner121";
+    private String key = EnvironmentConfig.key;
     // 过期时间
-    private Long oldToken = 3000000000L;
+    private Long oldToken = EnvironmentConfig.oldToken;
 
     // 用户数据库
     @Autowired
@@ -44,6 +45,8 @@ public class TokenInterceptor implements HandlerInterceptor {
             throw new TokenIncorrectException();
         }
 
+        //1.判断 token 是否匹配
+
         Map<String, String> map = tokenTool.parseToken(token);
         String userId = map.get("userid");
         String userRole = map.get("userRole");
@@ -52,13 +55,17 @@ public class TokenInterceptor implements HandlerInterceptor {
         System.out.println("userid:"+userId);
         System.out.println("userRole"+userRole);
         System.out.println("timeOfUse"+timeOfUse);
-        //1.判断 token 是否匹配
+
         String userToken = yonghuMgr.getByID(userId).getToken();
         if (token.equals(userToken)) {
             // token正确
             System.out.println("token正确");
             //2.判断是否过期
             if(timeOfUse>=oldToken) {
+                if(sessionManager.checkSession(token)) {
+                    // 销毁对应的token
+                    sessionManager.killSession(token);
+                }
                 throw new TokenExpiredException();
             } else {
                 System.out.println("token未过期");
