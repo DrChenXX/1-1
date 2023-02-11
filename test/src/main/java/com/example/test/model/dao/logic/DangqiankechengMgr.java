@@ -14,12 +14,13 @@ public class DangqiankechengMgr {
     // 增加单条信息
     public void add(Dangqiankecheng d) {
         String sql =
-                "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KAIKESHIJIAN,XUEFEN,CURTASK,TASK1_0,TASK1_1,TASK2,TASK3,TASK4) "+
+                "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,NIANJI,KKAIKESHIJIAN,XUEFEN,CURTASK,TASK1_0,TASK1_1,TASK2,TASK3,TASK4) "+
                         "VALUES('"+
                         d.getId()+ "','"+
                         d.getKechengId() + "','" +
                         d.getTeacherId()+ "','" +
                         d.getSemester() + "','" +
+                        d.getNianji() + "','" +
                         d.getKaikeshijian() + "'," +
                         d.getXuefen() + ",'" +
                         d.getCurtask() + "','" +
@@ -41,12 +42,13 @@ public class DangqiankechengMgr {
         List<String> sqls = new ArrayList<String>();
         for (Dangqiankecheng d :ds){
             String sql =
-                    "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN,ZHUANGTAI) "+
+                    "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,NIANJI,KKAIKESHIJIAN,XUEFEN,CURTASK,TASK1_0,TASK1_1,TASK2,TASK3,TASK4) "+
                             "VALUES('"+
                             d.getId()+ "','"+
                             d.getKechengId() + "','" +
                             d.getTeacherId()+ "','" +
                             d.getSemester() + "','" +
+                            d.getNianji() + "','" +
                             d.getKaikeshijian() + "'," +
                             d.getXuefen() + ",'" +
                             d.getCurtask() + "','" +
@@ -128,6 +130,7 @@ public class DangqiankechengMgr {
                 String.valueOf(list.get(0).get("KECHENG_ID")),
                 String.valueOf(list.get(0).get("TEACHER_ID")),
                 String.valueOf(list.get(0).get("SEMESTER")),
+                String.valueOf(list.get(0).get("NIANJI")),
                 String.valueOf(list.get(0).get("KAIKESHIJIAN")),
                 Integer.parseInt(String.valueOf(list.get(0).get("XUEFEN"))),
                 String.valueOf(list.get(0).get("CURTASK")),
@@ -153,6 +156,7 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("KECHENG_ID")),
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("SEMESTER")),
+                    String.valueOf(map.get("NIANJI")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
                     Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
                     String.valueOf(map.get("CURTASK")),
@@ -180,6 +184,7 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("KECHENG_ID")),
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("SEMESTER")),
+                    String.valueOf(map.get("NIANJI")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
                     Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
                     String.valueOf(map.get("CURTASK")),
@@ -207,6 +212,7 @@ public class DangqiankechengMgr {
                     String.valueOf(map.get("KECHENG_ID")),
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("SEMESTER")),
+                    String.valueOf(map.get("NIANJI")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
                     Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
                     String.valueOf(map.get("CURTASK")),

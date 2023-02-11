@@ -41,6 +41,13 @@ public class Dangqiankecheng {
 	private String semester;
 
 	/**
+	 * table name:NIANJI
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String nianji;
+
+	/**
 	 * table name:KAIKESHIJIAN
 	 * table type:varchar(10)
 	 * table comment:null
@@ -97,13 +104,14 @@ public class Dangqiankecheng {
 	private String task4;
 
 	public Dangqiankecheng(String id, String kechengId, String teacherId,
-						   String semester, String kaikeshijian, Integer xuefen,
+						   String semester, String nianji, String kaikeshijian, Integer xuefen,
 						   String curtask, String task1_0, String task1_1,
 						   String task2, String task3, String task4) {
 		this.id = id;
 		this.kechengId = kechengId;
 		this.teacherId = teacherId;
 		this.semester = semester;
+		this.nianji = nianji;
 		this.kaikeshijian = kaikeshijian;
 		this.xuefen = xuefen;
 		this.curtask = curtask;
@@ -144,6 +152,14 @@ public class Dangqiankecheng {
 
 	public void setSemester(String semester) {
 		this.semester = semester;
+	}
+
+	public String getNianji() {
+		return nianji;
+	}
+
+	public void setNianji(String nianji) {
+		this.nianji = nianji;
 	}
 
 	public String getKaikeshijian() {
@@ -217,6 +233,7 @@ public class Dangqiankecheng {
 				", kechengId='" + kechengId + '\'' +
 				", teacherId='" + teacherId + '\'' +
 				", semester='" + semester + '\'' +
+				", nianji='" + nianji + '\'' +
 				", kaikeshijian='" + kaikeshijian + '\'' +
 				", xuefen=" + xuefen +
 				", curtask='" + curtask + '\'' +
