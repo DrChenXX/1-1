@@ -53,6 +53,20 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/tianjiaxuesheng", method = RequestMethod.POST)
+    public void addXuesheng(@RequestHeader(value = "token",required = false) String token,@RequestBody AddXueshengRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().addXuesheng(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/bianjixuesheng", method = RequestMethod.POST)
+    public void updateXuesheng(@RequestHeader(value = "token",required = false) String token,@RequestBody UpdateXueshengRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().updateXuesheng(request);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/biyeyaoqiu", method = RequestMethod.POST)
     public RestResponse searchBiyeyaoqiu(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchBiyeyaoqiuRequest request) {
         System.out.println(request);
@@ -101,7 +115,7 @@ public class PrincipalController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/fankui", method = RequestMethod.POST)
-    public RestResponse searchXianxi(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXiaoxiRequest request) {
+    public RestResponse searchXiaoxi(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXiaoxiRequest request) {
         System.out.println(request);
         return sessionManager.getSession(token).getPrincipalService().searchXiaoxi(request);
     }
