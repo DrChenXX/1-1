@@ -5,6 +5,7 @@ import com.example.test.interfaces.UserService;
 import com.example.test.model.dao.logic.*;
 import com.example.test.model.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.ParameterResolutionDelegate;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,11 +33,18 @@ public class TeacherService implements UserService {
     private KechengMgr kechengMgr;
     @Autowired
     private ZhibiaodianMgr zhibiaodianMgr;
+    @Autowired
+    private XiaoxiMgr xiaoxiMgr;
+    @Autowired
+    private YonghuMgr yonghuMgr;
+    @Autowired
+    private PeiyangfanganMgr peiyangfanganMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
         return "teacherService";
     }
+
 
     public String getRequestList(String kechengmingcheng, String kechengbianhao, String kaikexueqi, String peiyangfangan, String dangqianrenwu, String renwuzhuangtai){
         return "";
@@ -204,10 +212,46 @@ public class TeacherService implements UserService {
                 responses.add(res);
             }
         }
-
         return RestResponse.success("data为列表",responses);
+    }
 
+    public RestResponse task11feedback_send(List<Task11FeedbackSendRequest> requests) {
+        String feedback = "";
+        for (Task11FeedbackSendRequest request : requests) {
+            if(request.isXiugai()) {
+                feedback += "该课程希望";
+                if(request.getZhichi().equals("是")) {
+                    feedback+="支持";
+                }else {
+                    feedback+="不支持";
+                }
+                feedback+="指标点：";
+                feedback+=request.getZhichengdian();
+                feedback+=".";
+                feedback+="意见为：";
+                feedback+=request.getYijian();
+                feedback+=";";
+            }
+        }
+        Task11FeedbackSendRequest res = requests.get(0);
+        String teacherid = dangqiankechengMgr.getByID(res.getCourseid()).getTeacherId();
+        String teachername = yonghuMgr.getByID(teacherid).getName();
+        String pyfaid =kechengMgr.getByID(dangqiankechengMgr.getByID(res.getCourseid()).getKechengId()).getPeiyangfanganId();
+        String toid = peiyangfanganMgr.getByID(pyfaid).getFuzerenId();
+        String toname = yonghuMgr.getByID(toid).getName();
 
+        Xiaoxi xiaoxi = new Xiaoxi(
+                "xiaoxi"+System.currentTimeMillis(),
+                teacherid,
+                teachername,
+                toid,
+                toname,
+                "否",
+                feedback,
+                pyfaid,
+                ""
+        );
+        return RestResponse.success("已发送");
     }
 
 
