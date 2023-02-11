@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service("principalService")
 public class PrincipalService implements UserService {
@@ -367,6 +366,36 @@ public class PrincipalService implements UserService {
                 }
             }
             renwuMgr.updateByID(renwu.getId());
+        }
+    }
+
+    public void releaseRenwu(ReleaseRenwuRequest request) {
+        renwuMgr.updateByID(request.getRenwuID());
+    }
+
+    public void updateRenwu(UpdateRenwuRequest request) {
+        List<Renwu> renwus = renwuMgr.getAll();
+        System.out.println(renwus);
+        List<Renwu> renwus1 = new ArrayList<Renwu>();
+        for (Renwu renwu : renwus) {
+            if (request.getKechengID() != "") {
+                if (!renwu.getKechengId().equals(request.getKechengID())) {
+                    continue;
+                }
+            }
+            if (request.getKaikenianji() != "") {
+                if (!renwu.getNianji().equals(request.getKaikenianji())) {
+                    continue;
+                }
+            }
+            renwus1.add(renwu);
+        }
+        for (Renwu renwu : renwus1) {
+            renwuMgr.deleteByID(renwu.getId());
+            renwu.setYuanxi(request.getYuanxi());
+            renwu.setRenkelaoshi(request.getRenkelaoshi());
+            renwu.setRenkelaoshiId(request.getRenkelaoshiID());
+            renwuMgr.add(renwu);
         }
     }
 

@@ -136,4 +136,15 @@ public class RenwuMgr {
             System.out.println("任务发布失败");
         }
     }
+
+    public void deleteByID(String ID) {
+        String sql = "DELETE FROM T_RENWU WHERE ID = " + ID;
+        boolean check;
+        check = ConnectDB.deleteContent(sql);
+        if(check){
+            System.out.println("删操作成功");
+        } else {
+            System.out.println("删操作失败");
+        }
+    }
 }
