@@ -38,6 +38,9 @@ public class PrincipalService implements UserService {
     @Autowired
     private RenwuMgr renwuMgr;
 
+    @Autowired
+    private KechengMgr kechengMgr;
+
     @Override
     public String name() {
         System.out.println("principalService");
@@ -292,6 +295,31 @@ public class PrincipalService implements UserService {
         } else {
             return new RestResponse<>().fail("没有找到培养方案");
         }
+    }
+
+    public void addRenwu(AddRenwuRequest request) {
+        String peiyangfanganId = kechengMgr.getByID(request.getKechengID()).getPeiyangfanganId();
+        String fuzerenId = peiyangfanganMgr.getByID(peiyangfanganId).getFuzerenId();
+        String zhuanyeId = peiyangfanganMgr.getByID(peiyangfanganId).getZhuanyeId();
+        String zhuanye = zhuanyeMgr.getByID(zhuanyeId).getName();
+        Renwu renwu = new Renwu(
+                "Renwu" + System.currentTimeMillis(),
+                request.getKecheng(),
+                request.getKechengID(),
+                request.getXuefen(),
+                request.getKechengleibie(),
+                request.getRenkelaoshi(),
+                request.getRenkelaoshiID(),
+                request.getYuanxi(),
+                request.getKaikenianji(),
+                "未发布",
+                fuzerenId,
+                zhuanye,
+                zhuanyeId,
+                peiyangfanganId,
+                "未设置"
+        );
+        renwuMgr.add(renwu);
     }
 
     public RestResponse searchXiaoxi(SearchXiaoxiRequest request) {
