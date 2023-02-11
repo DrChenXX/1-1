@@ -41,9 +41,11 @@ public class TokenInterceptor implements HandlerInterceptor {
         System.out.println("已拦截到token");
         //为空就返回错误
         String token = httpServletRequest.getHeader("token");
+
         if (null == token || "".equals(token.trim())) {
             throw new TokenIncorrectException();
         }
+
 
         //1.判断 token 是否匹配
 
