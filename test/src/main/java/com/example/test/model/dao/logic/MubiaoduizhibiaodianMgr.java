@@ -2,11 +2,13 @@ package com.example.test.model.dao.logic;
 
 import com.example.test.model.dao.database.ConnectDB;
 import com.example.test.model.entity.Mubiaoduizhibiaodian;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class MubiaoduizhibiaodianMgr {
     public void add(Mubiaoduizhibiaodian mubiaoduizhibiaodian) {
         String sql =
