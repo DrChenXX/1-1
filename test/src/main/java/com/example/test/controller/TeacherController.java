@@ -62,5 +62,20 @@ public class TeacherController implements UserController {
         System.out.println(request);
         return sessionManager.getSession(token).getTeacherService().getTaskStatusList(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/Kechengkaohe", method = RequestMethod.POST)
+    public void updateKechengkaohe(@RequestHeader(value = "token",required = false)String token,@RequestBody UpdateKechengkaoheRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getTeacherService().updateKechengkaohe(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/Peiyangmubiao", method = RequestMethod.POST)
+    public RestResponse uploadZhibiaodian(@RequestHeader(value = "token",required = false)String token,@RequestBody UploadZhibiaodianRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getTeacherService().uploadZhibiaodian(request);
+    }
+
 }
 
