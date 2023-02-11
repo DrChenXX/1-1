@@ -387,7 +387,7 @@ public class PrincipalService implements UserService {
                     continue;
                 }
             }
-            renwuMgr.updateByID(renwu.getId());
+            renwuMgr.deleteByID(renwu.getId());
             renwuMgr.add(new Renwu(
                     renwu.getId(),
                     renwu.getKecheng(),
