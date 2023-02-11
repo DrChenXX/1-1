@@ -2,14 +2,14 @@ package com.example.test.datatype;
 
 public class SearchZhibiaodianResponse {
     private int id;
-    private String content;
+    private String neirong;
 
     public SearchZhibiaodianResponse() {
     }
 
     public SearchZhibiaodianResponse(int id, String content) {
         this.id = id;
-        this.content = content;
+        this.neirong = content;
     }
 
     public int getId() {
@@ -20,19 +20,19 @@ public class SearchZhibiaodianResponse {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getNeirong() {
+        return neirong;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setNeirong(String neirong) {
+        this.neirong = neirong;
     }
 
     @Override
     public String toString() {
         return "SearchZhibiaodianResponse{" +
                 "id=" + id +
-                ", content='" + content + '\'' +
+                ", content='" + neirong + '\'' +
                 '}';
     }
 }
