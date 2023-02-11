@@ -111,5 +111,19 @@ public class TeacherController implements UserController {
         sessionManager.getSession(token).getTeacherService().task21kaohefangshi_send(requests);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/task_status_send", method = RequestMethod.POST)
+    public void taskStatusSend(@RequestHeader(value = "token",required = false)String token,@RequestBody TaskStatusSendRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getTeacherService().taskStatusSend(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "task_status_get", method = RequestMethod.POST)
+    public RestResponse taskStatusGet(@RequestHeader(value = "token",required = false)String token,@RequestBody TaskStatusGetRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getTeacherService().taskStatusGet(request);
+    }
+
 }
 
