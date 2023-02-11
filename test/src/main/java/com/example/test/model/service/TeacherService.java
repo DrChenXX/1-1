@@ -126,6 +126,19 @@ public class TeacherService implements UserService {
         kaoheMgr.add(kaohe);
     }
 
+    public RestResponse uploadZhibiaodian (UploadZhibiaodianRequest request){
+      List<Dangqianduizhibiaodian> dangqianduizhibiaodians = dangqianduizhibiaodianMgr.getByDangqiankechengID(request.getKechengid());
+        if(dangqianduizhibiaodians.isEmpty()){
+            return new RestResponse().fail("当前课程未上传课程目标");
+        }
+      List<UploadZhibiaodianResponse> responses = new ArrayList<UploadZhibiaodianResponse>();
+      int n = 1;
+      for(Dangqianduizhibiaodian dangqianduizhibiaodian : dangqianduizhibiaodians){
+          UploadZhibiaodianResponse response = new UploadZhibiaodianResponse(dangqianduizhibiaodian.getContent(),true,"1","1");
+          responses.add(n++,response);
+      }
+      return new RestResponse().success("当前课程指标点为：",responses);
+    }
     public RestResponse getTaskStatusList (GetTaskStatusListRequest request){
         Dangqiankecheng dangqiankecheng = (Dangqiankecheng) dangqiankechengMgr.getByKechengID(request.getKechengid());
         GetTaskStatusListResponse response = new GetTaskStatusListResponse();
