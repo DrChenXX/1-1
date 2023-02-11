@@ -376,7 +376,6 @@ public class PrincipalService implements UserService {
     public void updateRenwu(UpdateRenwuRequest request) {
         List<Renwu> renwus = renwuMgr.getAll();
         System.out.println(renwus);
-        List<Renwu> renwus1 = new ArrayList<Renwu>();
         for (Renwu renwu : renwus) {
             if (request.getKechengID() != "") {
                 if (!renwu.getKechengId().equals(request.getKechengID())) {
@@ -388,14 +387,24 @@ public class PrincipalService implements UserService {
                     continue;
                 }
             }
-            renwus1.add(renwu);
-        }
-        for (Renwu renwu : renwus1) {
-            renwuMgr.deleteByID(renwu.getId());
-            renwu.setYuanxi(request.getYuanxi());
-            renwu.setRenkelaoshi(request.getRenkelaoshi());
-            renwu.setRenkelaoshiId(request.getRenkelaoshiID());
-            renwuMgr.add(renwu);
+            renwuMgr.updateByID(renwu.getId());
+            renwuMgr.add(new Renwu(
+                    renwu.getId(),
+                    renwu.getKecheng(),
+                    renwu.getKechengId(),
+                    renwu.getXuefen(),
+                    renwu.getLeibie(),
+                    request.getRenkelaoshi(),
+                    request.getRenkelaoshiID(),
+                    request.getYuanxi(),
+                    renwu.getNianji(),
+                    renwu.getFabu(),
+                    renwu.getFuzerenId(),
+                    renwu.getZhuanye(),
+                    renwu.getZhuanyeId(),
+                    renwu.getPeiyangfangan(),
+                    renwu.getXueqi()
+            ));
         }
     }
 

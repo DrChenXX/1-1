@@ -121,6 +121,7 @@ public class Renwu {
         this.xuefen = xuefen;
         this.leibie = leibie;
         this.renkelaoshi = renkelaoshi;
+        this.renkelaoshiId = renkelaoshiId;
         this.yuanxi = yuanxi;
         this.nianji = nianji;
         this.fabu = fabu;
