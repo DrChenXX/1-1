@@ -254,6 +254,7 @@ public class TeacherService implements UserService {
                 pyfaid,
                 ""
         );
+        xiaoxiMgr.add(xiaoxi);
         return RestResponse.success("已发送");
     }
 
