@@ -110,11 +110,26 @@ public class TeacherController implements UserController {
         System.out.println(request);
         sessionManager.getSession(token).getTeacherService().task13Kechengmubiao_get(request);
     }
+    
     @ResponseBody
-    @RequestMapping(path = "/task1-4_get_heade", method = RequestMethod.POST)
+    @RequestMapping(path = "/task1-4_get_header", method = RequestMethod.POST)
     public void task14getHeade(@RequestHeader(value = "token",required = false)String token,@RequestBody Task14GetHeadRequest request) {
         System.out.println(request);
         sessionManager.getSession(token).getTeacherService().task14GetHead(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/task1-4_get_body", method = RequestMethod.POST)
+    public void task14getBody(@RequestHeader(value = "token",required = false)String token,@RequestBody Task14GetBodyRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getTeacherService().task14GetBody(request);
+    }
+    
+    @ResponseBody
+    @RequestMapping(path = "/task1-4_send_body", method = RequestMethod.POST)
+    public void task14getBody(@RequestHeader(value = "token",required = false)String token,@RequestBody Task14SendBodyRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getTeacherService().task14SendBody(request);
     }
 
     @ResponseBody
