@@ -121,6 +121,13 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/fankuihuifu", method = RequestMethod.POST)
+    public void updateXiaoxi(@RequestHeader(value = "token",required = false)String token,@RequestBody UpdateXiaoxiRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().updateXiaoxi(request);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/renwu", method = RequestMethod.POST)
     public RestResponse searchRenwu(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchRenwuRequest request) {
         System.out.println(request);
