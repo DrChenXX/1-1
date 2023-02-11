@@ -32,10 +32,38 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/tianjiajiaoshi", method = RequestMethod.POST)
+    public void addTeacher(@RequestHeader(value = "token",required = false) String token,@RequestBody AddTeacherRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().addTeacher(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/bianjijiaoshi", method = RequestMethod.POST)
+    public void updateTeacher(@RequestHeader(value = "token",required = false) String token,@RequestBody UpdateTeacherRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().updateTeacher(request);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/xueshengguanli", method = RequestMethod.POST)
     public RestResponse searchXuesheng(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXueshengRequest request) {
         System.out.println(request);
         return sessionManager.getSession(token).getPrincipalService().searchXuesheng(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/tianjiaxuesheng", method = RequestMethod.POST)
+    public void addXuesheng(@RequestHeader(value = "token",required = false) String token,@RequestBody AddXueshengRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().addXuesheng(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/bianjixuesheng", method = RequestMethod.POST)
+    public void updateXuesheng(@RequestHeader(value = "token",required = false) String token,@RequestBody UpdateXueshengRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().updateXuesheng(request);
     }
 
     @ResponseBody
@@ -87,7 +115,7 @@ public class PrincipalController implements UserController {
 
     @ResponseBody
     @RequestMapping(path = "/fankui", method = RequestMethod.POST)
-    public RestResponse searchXianxi(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXiaoxiRequest request) {
+    public RestResponse searchXiaoxi(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXiaoxiRequest request) {
         System.out.println(request);
         return sessionManager.getSession(token).getPrincipalService().searchXiaoxi(request);
     }

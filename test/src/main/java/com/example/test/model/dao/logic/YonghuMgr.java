@@ -29,9 +29,9 @@ public class YonghuMgr {
                         y.getDianhua() + "','" +
                         y.getYouxiang() + "','" +
                         y.getToken() + "','" +
+                        y.getType() + "','" +
                         y.getYuanxi() + "','" +
-                        y.getZhicheng() + "','" +
-                        y.getType() + "')";
+                        y.getZhicheng() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){
@@ -53,9 +53,9 @@ public class YonghuMgr {
                             y.getDianhua() + "','" +
                             y.getYouxiang() + "','" +
                             y.getToken() + "','" +
+                            y.getType() + "','" +
                             y.getYuanxi() + "','" +
-                            y.getZhicheng() + "','" +
-                            y.getType() + "')";
+                            y.getZhicheng() + "')";
             sqls.add(sql);
         }
         boolean check;

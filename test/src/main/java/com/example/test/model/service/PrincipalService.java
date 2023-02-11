@@ -76,7 +76,21 @@ public class PrincipalService implements UserService {
         } else {
             return new RestResponse<>().fail("没有找到教师");
         }
+    }
 
+    public void addTeacher(AddTeacherRequest request) {
+        Yonghu yonghu = new Yonghu(request.getId(),"123456",request.getXingming(),"无","无","","2",request.getYuanxi(),request.getZhicheng());
+        yonghuMgr.add(yonghu);
+    }
+
+    public void updateTeacher(UpdateTeacherRequest request) {
+        Yonghu yonghu = yonghuMgr.getByID(request.getOldid());
+        yonghuMgr.deleteByID(yonghu.getId());
+        yonghu.setId(request.getNewid());
+        yonghu.setName(request.getXingming());
+        yonghu.setYuanxi(request.getYuanxi());
+        yonghu.setZhicheng(request.getZhicheng());
+        yonghuMgr.add(yonghu);
     }
 
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
@@ -285,5 +299,20 @@ public class PrincipalService implements UserService {
         } else {
             return new RestResponse<>().fail("没有您的消息");
         }
+    }
+
+    public void addXuesheng(AddXueshengRequest request) {
+        Xuesheng xuesheng = new Xuesheng(request.getId(),request.getXingming(),"2601","2020",request.getBanji(),request.getYuanxi());
+        xueshengMgr.add(xuesheng);
+    }
+
+    public void updateXuesheng(UpdateXueshengRequest request) {
+        Xuesheng xuesheng = xueshengMgr.getByID(request.getOldid());
+        xueshengMgr.deleteByID(request.getOldid());
+        xuesheng.setBanji(request.getBanji());
+        xuesheng.setYuanxi(request.getYuanxi());
+        xuesheng.setName(request.getXingming());
+        xuesheng.setId(request.getNewid());
+        xueshengMgr.add(xuesheng);
     }
 }
