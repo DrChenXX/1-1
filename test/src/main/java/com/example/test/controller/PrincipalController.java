@@ -120,4 +120,11 @@ public class PrincipalController implements UserController {
         return sessionManager.getSession(token).getPrincipalService().searchXiaoxi(request);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/renwu", method = RequestMethod.POST)
+    public RestResponse searchRenwu(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchRenwuRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getPrincipalService().searchRenwu(request);
+    }
+
 }

@@ -1,25 +1,23 @@
 package com.example.test.datatype;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SearchXiaoxiRequest {
     private String id;
     private String yeshu;
     private String fankuiren;
     private String fankuirenID;
     private String yuanxi;
-    private String chuli;
-    private String huifu;
 
     public SearchXiaoxiRequest() {
     }
 
-    public SearchXiaoxiRequest(String id, String yeshu,String fankuiren, String fankuirenID, String yuanxi, String chuli, String huifu) {
+    public SearchXiaoxiRequest(String id, String yeshu,String fankuiren, String fankuirenID, String yuanxi) {
         this.id = id;//专业负责人的id
         this.yeshu = yeshu;
         this.fankuiren = fankuiren;
         this.fankuirenID = fankuirenID;
         this.yuanxi = yuanxi;
-        this.chuli = chuli;
-        this.huifu = huifu;
     }
 
     public String getId() {
@@ -62,22 +60,6 @@ public class SearchXiaoxiRequest {
         this.yuanxi = yuanxi;
     }
 
-    public String getChuli() {
-        return chuli;
-    }
-
-    public void setChuli(String chuli) {
-        this.chuli = chuli;
-    }
-
-    public String getHuifu() {
-        return huifu;
-    }
-
-    public void setHuifu(String huifu) {
-        this.huifu = huifu;
-    }
-
     @Override
     public String toString() {
         return "SearchXiaoxiRequest{" +
@@ -86,8 +68,6 @@ public class SearchXiaoxiRequest {
                 ", fankuiren='" + fankuiren + '\'' +
                 ", fankuirenID='" + fankuirenID + '\'' +
                 ", yuanxi='" + yuanxi + '\'' +
-                ", chuli='" + chuli + '\'' +
-                ", huifu='" + huifu + '\'' +
                 '}';
     }
 }
