@@ -377,8 +377,8 @@ public class PrincipalService implements UserService {
         List<Renwu> renwus = renwuMgr.getAll();
         System.out.println(renwus);
         for (Renwu renwu : renwus) {
-            if (request.getKechengID() != "") {
-                if (!renwu.getKechengId().equals(request.getKechengID())) {
+            if (request.getRenwuID() != "") {
+                if (!renwu.getId().equals(request.getRenwuID())) {
                     continue;
                 }
             }

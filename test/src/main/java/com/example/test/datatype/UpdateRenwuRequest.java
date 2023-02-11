@@ -1,7 +1,7 @@
 package com.example.test.datatype;
 
 public class UpdateRenwuRequest {
-    private String kechengID;
+    private String renwuID;
     private String kaikenianji;
     private String yuanxi;
     private String renkelaoshi;
@@ -10,20 +10,20 @@ public class UpdateRenwuRequest {
     public UpdateRenwuRequest() {
     }
 
-    public UpdateRenwuRequest(String kechengID, String kaikenianji, String yuanxi, String renkelaoshi, String renkelaoshiID) {
-        this.kechengID = kechengID;
+    public UpdateRenwuRequest(String renwuID, String kaikenianji, String yuanxi, String renkelaoshi, String renkelaoshiID) {
+        this.renwuID = renwuID;
         this.kaikenianji = kaikenianji;
         this.yuanxi = yuanxi;
         this.renkelaoshi = renkelaoshi;
         this.renkelaoshiID = renkelaoshiID;
     }
 
-    public String getKechengID() {
-        return kechengID;
+    public String getRenwuID() {
+        return renwuID;
     }
 
-    public void setKechengID(String kechengID) {
-        this.kechengID = kechengID;
+    public void setRenwuID(String renwuID) {
+        this.renwuID = renwuID;
     }
 
     public String getKaikenianji() {
@@ -61,7 +61,7 @@ public class UpdateRenwuRequest {
     @Override
     public String toString() {
         return "UpdateRenwuRequest{" +
-                "kechengID='" + kechengID + '\'' +
+                "kechengID='" + renwuID + '\'' +
                 ", kaikenianji='" + kaikenianji + '\'' +
                 ", yuanxi='" + yuanxi + '\'' +
                 ", renkelaoshi='" + renkelaoshi + '\'' +
