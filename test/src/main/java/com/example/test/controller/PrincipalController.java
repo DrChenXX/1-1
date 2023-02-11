@@ -168,4 +168,11 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         sessionManager.getSession(token).getPrincipalService().deleteRenwu(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/juzhen1", method = RequestMethod.POST)
+    public RestResponse searchYaoqiuduimubiao(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchYaoqiuduimubiaoRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getPrincipalService().searchYaoqiuduimubiao(request);
+    }
 }

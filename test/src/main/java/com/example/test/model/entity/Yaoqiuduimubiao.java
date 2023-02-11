@@ -22,13 +22,21 @@ public class Yaoqiuduimubiao {
      */
     private String peiyangmubiaoId;
 
+    /**
+     * table name:DATA
+     * table type:varchar(20)
+     * table comment:null
+     */
+    private String data;
+
     public Yaoqiuduimubiao() {
     }
 
-    public Yaoqiuduimubiao(String id, String biyeyaoqiuId, String peiyangmubiaoId) {
+    public Yaoqiuduimubiao(String id, String biyeyaoqiuId, String peiyangmubiaoId, String data) {
         this.id = id;
         this.biyeyaoqiuId = biyeyaoqiuId;
         this.peiyangmubiaoId = peiyangmubiaoId;
+        this.data = data;
     }
 
     public String getId() {
@@ -55,12 +63,21 @@ public class Yaoqiuduimubiao {
         this.peiyangmubiaoId = peiyangmubiaoId;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "Yaoqiuduimubiao{" +
                 "id='" + id + '\'' +
                 ", biyeyaoqiuId='" + biyeyaoqiuId + '\'' +
                 ", peiyangmubiaoId='" + peiyangmubiaoId + '\'' +
+                ", data='" + data + '\'' +
                 '}';
     }
 }

@@ -40,6 +40,9 @@ public class PrincipalService implements UserService {
     @Autowired
     private KechengMgr kechengMgr;
 
+    @Autowired
+    private YaoqiuduimubiaoMgr yaoqiuduimubiaoMgr;
+
     @Override
     public String name() {
         System.out.println("principalService");
@@ -518,5 +521,70 @@ public class PrincipalService implements UserService {
         xuesheng.setName(request.getXingming());
         xuesheng.setId(request.getNewid());
         xueshengMgr.add(xuesheng);
+    }
+
+    public RestResponse searchYaoqiuduimubiao(SearchYaoqiuduimubiaoRequest request) {
+        String peiyangfanganID = request.getPeiyangfanganId();
+        TableHeader now = new TableHeader();
+        now.setS0("毕业要求");
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(peiyangfanganID);
+        int n = 1;
+        for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
+            if (n == 1) {
+                now.setS1(peiyangmubiao.getContent());
+            }
+            if (n == 2) {
+                now.setS2(peiyangmubiao.getContent());
+            }
+            if (n == 3) {
+                now.setS3(peiyangmubiao.getContent());
+            }
+            if (n == 4) {
+                now.setS4(peiyangmubiao.getContent());
+            }
+            if (n == 5) {
+                now.setS5(peiyangmubiao.getContent());
+            }
+            if (n == 6) {
+                now.setS6(peiyangmubiao.getContent());
+            }
+            n++;
+        }
+        List<Biyeyaoqiu> biyeyaoqius = biyeyaoqiuMgr.getByPeiyangfanganID(peiyangfanganID);
+        List<TableData> now2 = new ArrayList<TableData>();
+        List<Yaoqiuduimubiao> yaoqiuduimubiaos = yaoqiuduimubiaoMgr.getAll();
+        for (Biyeyaoqiu biyeyaoqiu : biyeyaoqius) {
+            TableData tableData = new TableData();
+            tableData.setS0(biyeyaoqiu.getContent());
+            String biyeyaoqiuID = biyeyaoqiu.getId();
+            n = 1;
+            for (Yaoqiuduimubiao yaoqiuduimubiao : yaoqiuduimubiaos) {
+                if (yaoqiuduimubiao.getPeiyangmubiaoId() == peiyangfanganID &&
+                        yaoqiuduimubiao.getBiyeyaoqiuId() == biyeyaoqiuID) {
+                    if (n == 1) {
+                        tableData.setS1(yaoqiuduimubiao.getData());
+                    }
+                    if (n == 2) {
+                        tableData.setS2(yaoqiuduimubiao.getData());
+                    }
+                    if (n == 3) {
+                        tableData.setS3(yaoqiuduimubiao.getData());
+                    }
+                    if (n == 4) {
+                        tableData.setS4(yaoqiuduimubiao.getData());
+                    }
+                    if (n == 5) {
+                        tableData.setS5(yaoqiuduimubiao.getData());
+                    }
+                    if (n == 6) {
+                        tableData.setS6(yaoqiuduimubiao.getData());
+                    }
+                }
+                n++;
+            }
+            now2.add(tableData);
+        }
+        SearchYaoqiuduimubiaoResponse response = new SearchYaoqiuduimubiaoResponse(now,now2);
+        return new RestResponse<>().success("找到矩阵",response);
     }
 }
