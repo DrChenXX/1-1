@@ -56,12 +56,16 @@ public class TeacherController implements UserController {
         System.out.println(request);
         return sessionManager.getSession(token).getTeacherService().searchKaohefangshi(request);
     }
+
+    /*
     @ResponseBody
     @RequestMapping(path = "/Renwuliebiao", method = RequestMethod.POST)
     public RestResponse getTaskStatusList(@RequestHeader(value = "token",required = false)String token,@RequestBody GetTaskStatusListRequest request) {
         System.out.println(request);
         return sessionManager.getSession(token).getTeacherService().getTaskStatusList(request);
     }
+
+    */
 
     @ResponseBody
     @RequestMapping(path = "/Kechengkaohe", method = RequestMethod.POST)
@@ -75,6 +79,13 @@ public class TeacherController implements UserController {
     public RestResponse uploadZhibiaodian(@RequestHeader(value = "token",required = false)String token,@RequestBody UploadZhibiaodianRequest request) {
         System.out.println(request);
         return sessionManager.getSession(token).getTeacherService().uploadZhibiaodian(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/task1-1feedback_get", method = RequestMethod.POST)
+    public RestResponse task11feedback_get(@RequestHeader(value = "token",required = false)String token,@RequestBody Task11FeedbackGetRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getTeacherService().task11feedback_get(request);
     }
 
 }

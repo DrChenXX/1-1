@@ -28,6 +28,10 @@ public class TeacherService implements UserService {
     private DangqianduizhibiaodianMgr dangqianduizhibiaodianMgr;
     @Autowired
     private KechengmubiaoMgr kechengmubiaoMgr;
+    @Autowired
+    private KechengMgr kechengMgr;
+    @Autowired
+    private ZhibiaodianMgr zhibiaodianMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -139,6 +143,8 @@ public class TeacherService implements UserService {
       }
       return new RestResponse().success("当前课程指标点为：",responses);
     }
+
+    /*
     public RestResponse getTaskStatusList (GetTaskStatusListRequest request){
         Dangqiankecheng dangqiankecheng = (Dangqiankecheng) dangqiankechengMgr.getByKechengID(request.getKechengid());
         GetTaskStatusListResponse response = new GetTaskStatusListResponse();
@@ -174,6 +180,34 @@ public class TeacherService implements UserService {
             return new RestResponse().success("当前状态为：",response);
         }
         return new RestResponse().fail("未找到当前状态");
+    }
+    */
+
+
+    public RestResponse task11feedback_get(Task11FeedbackGetRequest request) {
+        String courseid = request.getCourseid();
+        List<Dangqianduizhibiaodian> dangqianduizhibiaodians = dangqianduizhibiaodianMgr.getByDangqiankechengID(courseid);
+        List<Task11FeedbackGetResponse> responses = new ArrayList<Task11FeedbackGetResponse>();
+        Kecheng kecheng = kechengMgr.getByID(courseid);
+        List<Biyeyaoqiu> biyeyaoqius = biyeyaoqiuMgr.getByPeiyangfanganID(courseid);
+        for (Biyeyaoqiu biyeyaoqiu : biyeyaoqius) {
+            List<Zhibiaodian> zbd = zhibiaodianMgr.getByBIYEYAOQIUID(biyeyaoqiu.getId());
+            for(Zhibiaodian z : zbd) {
+                String zhichi = "否";
+                for (Dangqianduizhibiaodian d : dangqianduizhibiaodians) {
+                    if(d.getZhibiaodianId().equals(z.getId())) {
+                        zhichi = "是";
+                        break;
+                    }
+                }
+                Task11FeedbackGetResponse res = new Task11FeedbackGetResponse(courseid,z.getContent(),zhichi,false,"");
+                responses.add(res);
+            }
+        }
+
+        return RestResponse.success("data为列表",responses);
+
+
     }
 
 
