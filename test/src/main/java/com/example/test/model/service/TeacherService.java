@@ -25,6 +25,8 @@ public class TeacherService implements UserService {
     @Autowired
     private KaoheMgr kaoheMgr;
     @Autowired
+    private DangqiankaoheMgr dangqiankaoheMgr;
+    @Autowired
     private DangqianduizhibiaodianMgr dangqianduizhibiaodianMgr;
     @Autowired
     private KechengmubiaoMgr kechengmubiaoMgr;
@@ -131,11 +133,6 @@ public class TeacherService implements UserService {
         return new RestResponse().success("当前课程需要对应指标点为：",responses);
     }
 
-     public void updateKechengkaohe (UpdateKechengkaoheRequest request){
-        Integer zhanbi = request.getZhanbi();
-        Kaohe kaohe = new Kaohe(" ",request.getKechengid(),request.getContent()," ",zhanbi);
-        kaoheMgr.add(kaohe);
-    }
 
     public RestResponse uploadZhibiaodian (UploadZhibiaodianRequest request){
       List<Dangqianduizhibiaodian> dangqianduizhibiaodians = dangqianduizhibiaodianMgr.getByDangqiankechengID(request.getKechengid());
@@ -257,5 +254,27 @@ public class TeacherService implements UserService {
         return RestResponse.success("已发送");
     }
 
-
+    public RestResponse task21kaohefangshi_get(Task21Kaohefangshi_getRequest request){
+        String courseid = request.getCourseid();
+        List<Dangqiankaohe> dangqiankaohess = dangqiankaoheMgr.getByDangqiankechengID(courseid);
+        List<Task21Kaohefangshi_getResponse> responses = new ArrayList<Task21Kaohefangshi_getResponse>();
+        Kecheng kecheng = kechengMgr.getByID(courseid);
+        List<Dangqiankaohe> dangqiankaohes = dangqiankaoheMgr.getByDangqiankechengID(courseid);
+        for (Dangqiankaohe dangqiankaohe:dangqiankaohes) {
+            String mingcheng = dangqiankaohe.getContent();
+            int zhanbi = dangqiankaohe.getZhanbi();
+            Task21Kaohefangshi_getResponse res = new Task21Kaohefangshi_getResponse(courseid,mingcheng,zhanbi);
+            responses.add(res);
+        }
+        return RestResponse.success("kaohefangshi为：",responses);
+    }
+    public void task21kaohefangshi_send(List<Task21Kaohefangshi_sendRequest> requests) {
+        for (Task21Kaohefangshi_sendRequest request:requests){
+            String courseid = request.getKechengid();
+            int zhanbi = request.getZhanbi();
+            String mingcheng = request.getContent();
+            Dangqiankaohe kaohe = new Dangqiankaohe(courseid,mingcheng,courseid,"","",zhanbi);
+            dangqiankaoheMgr.add(kaohe);
+        }
+    }
 }

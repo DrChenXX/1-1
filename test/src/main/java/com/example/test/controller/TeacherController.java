@@ -69,12 +69,12 @@ public class TeacherController implements UserController {
 
     */
 
-    @ResponseBody
-    @RequestMapping(path = "/Kechengkaohe", method = RequestMethod.POST)
-    public void updateKechengkaohe(@RequestHeader(value = "token",required = false)String token,@RequestBody UpdateKechengkaoheRequest request) {
-        System.out.println(request);
-        sessionManager.getSession(token).getTeacherService().updateKechengkaohe(request);
-    }
+//    @ResponseBody
+//    @RequestMapping(path = "/Kechengkaohe", method = RequestMethod.POST)
+//    public void updateKechengkaohe(@RequestHeader(value = "token",required = false)String token,@RequestBody Task21Kaohefangshi_getRequest request) {
+//        System.out.println(request);
+//        sessionManager.getSession(token).getTeacherService().updateKechengkaohe(request);
+//    }
 
     @ResponseBody
     @RequestMapping(path = "/Peiyangmubiao", method = RequestMethod.POST)
@@ -97,6 +97,19 @@ public class TeacherController implements UserController {
         return sessionManager.getSession(token).getTeacherService().task11feedback_send(requests);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/task2-1_get", method = RequestMethod.POST)
+    public RestResponse task21kaohefangshi_getRequest(@RequestHeader(value = "token",required = false)String token,@RequestBody Task21Kaohefangshi_getRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getTeacherService().task21kaohefangshi_get(request);
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "/task2-1_send", method = RequestMethod.POST)
+    public void task21kaohefangshi_sendRequest(@RequestHeader(value = "token",required = false)String token,@RequestBody List<Task21Kaohefangshi_sendRequest> requests) {
+        System.out.println(requests);
+        sessionManager.getSession(token).getTeacherService().task21kaohefangshi_send(requests);
+    }
 
 }
 
