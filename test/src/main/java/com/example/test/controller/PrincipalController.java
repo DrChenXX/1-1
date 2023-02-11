@@ -182,4 +182,13 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         return sessionManager.getSession(token).getPrincipalService().searchKechengdagang(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/xueqikaikexiangqing", method = RequestMethod.POST)
+    public RestResponse searchKaikexiangqing(@RequestHeader(value = "token",required = false)String token,@RequestBody KaikexiangqingRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getPrincipalService().searchKaikexiangqing(request);
+    }
+
+
 }

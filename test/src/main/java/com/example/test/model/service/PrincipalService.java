@@ -43,6 +43,9 @@ public class PrincipalService implements UserService {
     @Autowired
     private YaoqiuduimubiaoMgr yaoqiuduimubiaoMgr;
 
+    @Autowired
+    private DangqiankechengMgr dangqiankechengMgr;
+
     @Override
     public String name() {
         System.out.println("principalService");
@@ -637,6 +640,70 @@ public class PrincipalService implements UserService {
             yeshu = 0;
         }
         List<KechengdagangResponse> res =
+                responses.subList(yeshu*5,(responses.size() - (yeshu +1)*5) <0? responses.size():(yeshu+1)*5);
+
+        if(!responses.isEmpty()) {
+            return new RestResponse<>().success(String.valueOf(responses.size()),res);
+        } else {
+            return new RestResponse<>().fail("没有找到培养方案");
+        }
+
+
+    }
+
+    // 开课详情
+    public RestResponse searchKaikexiangqing(KaikexiangqingRequest request) {
+        List<Dangqiankecheng> dangqiankechengs = dangqiankechengMgr.getAll();
+        System.out.println(dangqiankechengs);
+        List<KaikexiangqingResponse> responses = new ArrayList<KaikexiangqingResponse>();
+        if (dangqiankechengs.isEmpty()||dangqiankechengs==null) {
+            return new RestResponse<>().fail("0");
+        }
+        for (Dangqiankecheng dangqiankecheng : dangqiankechengs) {
+            Kecheng kecheng = kechengMgr.getByID(dangqiankecheng.getKechengId());
+            if(request.getPeiyangfanganid() != "") {
+                if(!kecheng.getPeiyangfanganId().equals(request.getPeiyangfanganid())) {
+                    continue;
+                }
+            }
+            if(request.getKechengmingcheng() != "") {
+                if(!kecheng.getName().equals(request.getKechengmingcheng())) {
+                    continue;
+                }
+            }
+            if(request.getKechengbianhao() != "") {
+                if(!dangqiankecheng.getKechengId().equals(request.getKechengbianhao())) {
+                    continue;
+                }
+            }
+            if(request.getKechengleibie() != "") {
+                if(!kecheng.getLeibie().equals(request.getKechengleibie())) {
+                    continue;
+                }
+            }
+            if (request.getShangchuan() != "") {
+                if(!kecheng.getIsdagang().equals(request.getShangchuan())) {
+                    continue;
+                }
+            }
+            responses.add(new KaikexiangqingResponse(
+                    kecheng.getName(),
+                    dangqiankecheng.getKechengId(),
+                    dangqiankecheng.getXuefen().toString(),
+                    kecheng.getLeibie(),
+                    "信息科学与工程学院",
+                    "2022",
+                    dangqiankecheng.getKaikeshijian(),
+                    kecheng.getIsdagang()
+            ));
+        }
+        int yeshu;
+        if(request.getYeshu() != "") {
+            yeshu = Integer.valueOf(request.getYeshu()) - 1;
+        } else {
+            yeshu = 0;
+        }
+        List<KaikexiangqingResponse> res =
                 responses.subList(yeshu*5,(responses.size() - (yeshu +1)*5) <0? responses.size():(yeshu+1)*5);
 
         if(!responses.isEmpty()) {
