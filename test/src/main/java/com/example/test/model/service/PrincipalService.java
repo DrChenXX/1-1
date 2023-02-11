@@ -35,6 +35,9 @@ public class PrincipalService implements UserService {
     @Autowired
     private XueshengMgr xueshengMgr;
 
+    @Autowired
+    private RenwuMgr renwuMgr;
+
     @Override
     public String name() {
         System.out.println("principalService");
@@ -207,7 +210,88 @@ public class PrincipalService implements UserService {
         } else {
             return new RestResponse<>().fail("没有找到培养方案");
         }
+    }
 
+    public RestResponse searchRenwu(SearchRenwuRequest request) {
+        List<Renwu> renwus = renwuMgr.getAll();
+        System.out.println(renwus);
+        List<SearchRenwuResponse> responses = new ArrayList<SearchRenwuResponse>();
+        if (renwus == null) {
+            return new RestResponse<>().fail("没有找到任务");
+        }
+        for (Renwu renwu : renwus) {
+            if (request.getUserid() != "") {
+                if (!renwu.getFuzerenId().equals(request.getUserid())) {
+                    continue;
+                }
+            }
+            if (request.getZhuanye() != "") {
+                if (!renwu.getZhuanye().equals(request.getZhuanye())) {
+                    continue;
+                }
+            }
+            if (request.getZhuanyeID() != "") {
+                if (!renwu.getZhuanyeId().equals(request.getZhuanyeID())) {
+                    continue;
+                }
+            }
+            if (request.getPeiyangfangan() != "") {
+                if (!renwu.getPeiyangfangan().equals(request.getPeiyangfangan())) {
+                    continue;
+                }
+            }
+            if (request.getXueqi() != "") {
+                if (!renwu.getXueqi().equals(request.getXueqi())) {
+                    continue;
+                }
+            }
+            if (request.getKecheng() != "") {
+                if (!renwu.getKecheng().equals(request.getKecheng())) {
+                    continue;
+                }
+            }
+            if (request.getKechengID() != "") {
+                if (!renwu.getKechengId().equals(request.getKechengID())) {
+                    continue;
+                }
+            }
+            if (request.getKaikenianji() != "") {
+                if (!renwu.getNianji().equals(request.getKaikenianji())) {
+                    continue;
+                }
+            }
+            if (request.getKechengleibie() != "") {
+                if (!renwu.getLeibie().equals(request.getKechengleibie())) {
+                    continue;
+                }
+            }
+            if (request.getFabu() != "") {
+                if (!renwu.getFabu().equals(request.getFabu())) {
+                    continue;
+                }
+            }
+            responses.add(new SearchRenwuResponse(
+                    renwu.getId(),
+                    renwu.getKecheng(),
+                    renwu.getKechengId(),
+                    renwu.getXuefen(),
+                    renwu.getLeibie(),
+                    renwu.getRenkelaoshi(),
+                    renwu.getYuanxi(),
+                    renwu.getNianji(),
+                    renwu.getFabu()));
+        }
+        int yeshu;
+        if(request.getYeshu() != "") { yeshu = Integer.valueOf(request.getYeshu()) - 1; }
+        else { yeshu = 0; }
+        List<SearchRenwuResponse> responses1 =
+                responses.subList(yeshu * 5, (responses.size() - (yeshu + 1) * 5) < 0 ? responses.size() : (yeshu + 1) * 5);
+
+        if(!responses.isEmpty()) {
+            return new RestResponse<>().success(String.valueOf(responses.size()),responses1);
+        } else {
+            return new RestResponse<>().fail("没有找到培养方案");
+        }
     }
 
     public RestResponse searchXiaoxi(SearchXiaoxiRequest request) {
@@ -223,24 +307,18 @@ public class PrincipalService implements UserService {
                     continue;
                 }
             }
+            if (request.getFankuiren() != "") {
+                if (!xiaoxi.getFromName().equals(request.getFankuiren())) {
+                    continue;
+                }
+            }
             if (request.getFankuirenID() != "") {
                 if (!xiaoxi.getFromId().equals(request.getFankuirenID())) {
                     continue;
                 }
             }
-            if (request.getChuli() != "") {
-                if (!xiaoxi.getIsRead().equals(request.getChuli())) {
-                    continue;
-                }
-            }
-            String peiyangfanganID = xiaoxi.getPeiyangfanganID();
-            Peiyangfangan peiyangfangan = peiyangfanganMgr.getByID(peiyangfanganID);
-            Zhuanye zhuanye = zhuanyeMgr.getByID(peiyangfangan.getZhuanyeId());
-            responses.add(new SearchXiaoxiResponse(
-                    xiaoxi.getId(),xiaoxi.getFromName(),xiaoxi.getFromId(),
-                    zhuanye.getName(),xiaoxi.getIsRead(),xiaoxi.getHuifu(),
-                    peiyangfangan.getName()
-            ));
+            String yuanxi = yonghuMgr.getByID(xiaoxi.getFromId()).getYuanxi();
+            responses.add(new SearchXiaoxiResponse(xiaoxi.getId(),xiaoxi.getFromName(),xiaoxi.getFromId(),yuanxi,xiaoxi.getData()));
         }
 
         //页码处理

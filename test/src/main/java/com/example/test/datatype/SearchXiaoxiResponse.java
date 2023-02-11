@@ -9,20 +9,15 @@ public class SearchXiaoxiResponse {
     @JsonProperty("fankuirenID")
     String fankuirenID;
     String yuanxi;
-    String chakan;
-    String huifu;
-    String juzhen;
+    String data;
 
     public SearchXiaoxiResponse(String ID, String fankuiren, String fankuirenID,
-                                String yuanxi, String chakan, String huifu,
-                                String juzhen) {
+                                String yuanxi, String data) {
         this.ID = ID;
         this.fankuiren = fankuiren;
         this.fankuirenID = fankuirenID;
         this.yuanxi = yuanxi;
-        this.chakan = chakan;
-        this.huifu = huifu;
-        this.juzhen = juzhen;
+        this.data = data;
     }
 
     @JsonProperty("ID")
@@ -61,27 +56,11 @@ public class SearchXiaoxiResponse {
         this.yuanxi = yuanxi;
     }
 
-    public String getChakan() {
-        return chakan;
+    public String getData() {
+        return data;
     }
 
-    public void setChakan(String chakan) {
-        this.chakan = chakan;
-    }
-
-    public String getHuifu() {
-        return huifu;
-    }
-
-    public void setHuifu(String huifu) {
-        this.huifu = huifu;
-    }
-
-    public String getJuzhen() {
-        return juzhen;
-    }
-
-    public void setJuzhen(String juzhen) {
-        this.juzhen = juzhen;
+    public void setData(String data) {
+        this.data = data;
     }
 }
