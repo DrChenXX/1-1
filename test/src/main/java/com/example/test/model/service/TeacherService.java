@@ -289,7 +289,18 @@ public class TeacherService implements UserService {
         }
         return RestResponse.success("课程目标为：",responses);
     }
-    
+    public RestResponse task14GetHead(Task14GetHeadRequest request){
+        String courseid = request.getCourseid();
+        List<Task14GetHeadResponse> responses = new ArrayList<Task14GetHeadResponse>();
+        List<Biyeyaoqiu> biyeyaoqius = biyeyaoqiuMgr.getAll();
+        Task14GetHeadResponse res0 = new Task14GetHeadResponse(null);
+        responses.add(res0);
+        for(Biyeyaoqiu biyeyaoqiu:biyeyaoqius){
+            Task14GetHeadResponse res = new Task14GetHeadResponse(biyeyaoqiu.getContent());
+            responses.add(res);
+        }
+        return RestResponse.success("表头为：",responses);
+    }
     public RestResponse task21kaohefangshi_get(Task21Kaohefangshi_getRequest request){
         String courseid = request.getCourseid();
         List<Dangqiankaohe> dangqiankaohess = dangqiankaoheMgr.getByDangqiankechengID(courseid);
