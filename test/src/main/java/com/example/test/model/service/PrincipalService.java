@@ -335,6 +335,14 @@ public class PrincipalService implements UserService {
         }
     }
 
+    public void updateXiaoxi(UpdateXiaoxiRequest request) {
+        Xiaoxi xiaoxi = xiaoxiMgr.getByID(request.getId());
+        xiaoxiMgr.deleteByID(request.getId());
+        xiaoxi.setHuifu(request.getData());
+        xiaoxi.setIsRead("已读");
+        xiaoxiMgr.add(xiaoxi);
+    }
+
     public RestResponse searchXuesheng(SearchXueshengRequest request) {
         List<Xuesheng> xueshengs = xueshengMgr.getAll();
         System.out.println(xueshengs);
