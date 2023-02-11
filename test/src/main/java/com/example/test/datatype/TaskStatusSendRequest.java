@@ -77,4 +77,17 @@ public class TaskStatusSendRequest {
     public void setTask4(String task4) {
         this.task4 = task4;
     }
+
+    @Override
+    public String toString() {
+        return "TaskStatusSendRequest{" +
+                "courseid='" + courseid + '\'' +
+                ", cur_task='" + cur_task + '\'' +
+                ", task1_0='" + task1_0 + '\'' +
+                ", task1_1='" + task1_1 + '\'' +
+                ", task2='" + task2 + '\'' +
+                ", task3='" + task3 + '\'' +
+                ", task4='" + task4 + '\'' +
+                '}';
+    }
 }
