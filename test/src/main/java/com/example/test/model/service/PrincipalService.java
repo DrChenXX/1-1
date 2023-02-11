@@ -40,6 +40,7 @@ public class PrincipalService implements UserService {
     @Autowired
     private KechengMgr kechengMgr;
 
+
     @Override
     public String name() {
         System.out.println("principalService");
@@ -518,5 +519,65 @@ public class PrincipalService implements UserService {
         xuesheng.setName(request.getXingming());
         xuesheng.setId(request.getNewid());
         xueshengMgr.add(xuesheng);
+    }
+
+    public RestResponse searchKechengdagang(KechengdagangRequest request) {
+        List<Kecheng> kechengs = kechengMgr.getAll();
+        System.out.println(kechengs);
+        List<KechengdagangResponse> responses = new ArrayList<KechengdagangResponse>();
+        if (kechengs.isEmpty()||kechengs==null) {
+            return new RestResponse<>().fail("0");
+        }
+        for (Kecheng kecheng : kechengs) {
+            if(request.getPeiyangfanganid() != "") {
+                if(!kecheng.getPeiyangfanganId().equals(request.getPeiyangfanganid())) {
+                    continue;
+                }
+            }
+            if(request.getKechengmingcheng() != "") {
+                if(!kecheng.getName().equals(request.getKechengmingcheng())) {
+                    continue;
+                }
+            }
+            if(request.getKechengbianhao() != "") {
+                if(!kecheng.getId().equals(request.getKechengbianhao())) {
+                    continue;
+                }
+            }
+            if(request.getKechengleibie() != "") {
+                if(!kecheng.getLeibie().equals(request.getKechengleibie())) {
+                    continue;
+                }
+            }
+            if (request.getShangchuan() != "") {
+                if(!kecheng.getIsdagang().equals(request.getShangchuan())) {
+                    continue;
+                }
+            }
+            responses.add(new KechengdagangResponse(
+                    kecheng.getName(),
+                    kecheng.getId(),
+                    kecheng.getXuefen().toString(),
+                    kecheng.getLeibie(),
+                    "信息科学与工程学院",
+                    kecheng.getIsdagang()
+            ));
+        }
+        int yeshu;
+        if(request.getYeshu() != "") {
+            yeshu = Integer.valueOf(request.getYeshu()) - 1;
+        } else {
+            yeshu = 0;
+        }
+        List<KechengdagangResponse> res =
+                responses.subList(yeshu*5,(responses.size() - (yeshu +1)*5) <0? responses.size():(yeshu+1)*5);
+
+        if(!responses.isEmpty()) {
+            return new RestResponse<>().success(String.valueOf(responses.size()),res);
+        } else {
+            return new RestResponse<>().fail("没有找到培养方案");
+        }
+
+
     }
 }

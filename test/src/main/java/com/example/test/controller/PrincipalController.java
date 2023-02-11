@@ -168,4 +168,12 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         sessionManager.getSession(token).getPrincipalService().deleteRenwu(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/kechengdagang", method = RequestMethod.POST)
+    public RestResponse searchKechengdagang(@RequestHeader(value = "token",required = false)String token,@RequestBody KechengdagangRequest request) {
+        System.out.println(request);
+        return sessionManager.getSession(token).getPrincipalService().searchKechengdagang(request);
+    }
+
 }
