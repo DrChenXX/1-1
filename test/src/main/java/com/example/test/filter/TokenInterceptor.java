@@ -55,8 +55,8 @@ public class TokenInterceptor implements HandlerInterceptor {
         long timeOfUse = System.currentTimeMillis() - Long.parseLong(map.get("timeStamp"));
         System.out.println("已解析token");
         System.out.println("userid:"+userId);
-        System.out.println("userRole"+userRole);
-        System.out.println("timeOfUse"+timeOfUse);
+        System.out.println("userRole:"+userRole);
+        System.out.println("timeOfUse:"+timeOfUse);
 
         String userToken = yonghuMgr.getByID(userId).getToken();
         if (token.equals(userToken)) {
