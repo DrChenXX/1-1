@@ -1,8 +1,12 @@
 package com.example.test.datatype;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SearchXiaoxiResponse {
+    @JsonProperty("ID")
     String ID;
     String fankuiren;
+    @JsonProperty("fankuirenID")
     String fankuirenID;
     String yuanxi;
     String chakan;
