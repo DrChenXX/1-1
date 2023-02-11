@@ -339,6 +339,7 @@ public class PrincipalService implements UserService {
         Xiaoxi xiaoxi = xiaoxiMgr.getByID(request.getId());
         xiaoxiMgr.deleteByID(request.getId());
         xiaoxi.setHuifu(request.getData());
+        xiaoxi.setIsRead("已读");
         xiaoxiMgr.add(xiaoxi);
     }
 
