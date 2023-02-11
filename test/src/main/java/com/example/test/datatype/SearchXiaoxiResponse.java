@@ -25,10 +25,12 @@ public class SearchXiaoxiResponse {
         this.juzhen = juzhen;
     }
 
+    @JsonProperty("ID")
     public String getID() {
         return ID;
     }
 
+    @JsonProperty("ID")
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -41,10 +43,12 @@ public class SearchXiaoxiResponse {
         this.fankuiren = fankuiren;
     }
 
+    @JsonProperty("fankuirenID")
     public String getFankuirenID() {
         return fankuirenID;
     }
 
+    @JsonProperty("fankuirenID")
     public void setFankuirenID(String fankuirenID) {
         this.fankuirenID = fankuirenID;
     }
