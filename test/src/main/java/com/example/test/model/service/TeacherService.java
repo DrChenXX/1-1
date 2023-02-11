@@ -40,6 +40,8 @@ public class TeacherService implements UserService {
     private YonghuMgr yonghuMgr;
     @Autowired
     private PeiyangfanganMgr peiyangfanganMgr;
+    @Autowired
+    private RenwuMgr renwuMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -276,5 +278,42 @@ public class TeacherService implements UserService {
             Dangqiankaohe kaohe = new Dangqiankaohe(courseid,mingcheng,courseid,"","",zhanbi);
             dangqiankaoheMgr.add(kaohe);
         }
+    }
+
+    // 设置任务状态
+    public RestResponse taskStatusSend(TaskStatusSendRequest request) {
+        Dangqiankecheng dangqiankecheng = dangqiankechengMgr.getByID(request.getCourseid());
+        dangqiankecheng.setCurtask(request.getCur_task());
+        dangqiankecheng.setTask1_0(request.getTask1_0());
+        dangqiankecheng.setTask1_1(request.getTask1_1());
+        dangqiankecheng.setTask2(request.getTask2());
+        dangqiankecheng.setTask3(request.getTask3());
+        dangqiankecheng.setTask4(request.getTask4());
+
+        dangqiankechengMgr.deleteByID(request.getCourseid());
+        dangqiankechengMgr.add(dangqiankecheng);
+
+        return RestResponse.success("设置成功");
+    }
+
+    // 获取任务状态
+    public RestResponse taskStatusGet(TaskStatusGetRequest request) {
+        Dangqiankecheng dangqiankecheng = dangqiankechengMgr.getByID(request.getCourseid());
+
+        if (dangqiankecheng==null) {
+            return RestResponse.fail("没有找到对应课程");
+        }
+
+        TaskStatusGetResponse response = new TaskStatusGetResponse(
+                request.getCourseid(),
+                dangqiankecheng.getCurtask(),
+                dangqiankecheng.getTask1_0(),
+                dangqiankecheng.getTask1_1(),
+                dangqiankecheng.getTask2(),
+                dangqiankecheng.getTask3(),
+                dangqiankecheng.getTask4()
+        );
+
+        return RestResponse.success("已找到对应课程",response);
     }
 }

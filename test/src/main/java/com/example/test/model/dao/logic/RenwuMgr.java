@@ -95,6 +95,31 @@ public class RenwuMgr {
                 );
         return renwu;
     }
+    public Renwu getByKechengID(String ID) {
+        List<Map<String, Object>> list;
+        list = ConnectDB.getList("SELECT * FROM T_RENWU WHERE KECHENG_ID = " + ID);
+        if (list.isEmpty()) {
+            return null;
+        }
+        Renwu renwu = new Renwu(
+                String.valueOf(list.get(0).get("ID")),
+                String.valueOf(list.get(0).get("KECHENG")),
+                String.valueOf(list.get(0).get("KECHENG_ID")),
+                String.valueOf(list.get(0).get("XUEFEN")),
+                String.valueOf(list.get(0).get("LEIBIE")),
+                String.valueOf(list.get(0).get("RENKELAOSHI")),
+                String.valueOf(list.get(0).get("RENKELAOSHI_ID")),
+                String.valueOf(list.get(0).get("YUANXI")),
+                String.valueOf(list.get(0).get("NIANJI")),
+                String.valueOf(list.get(0).get("FABU")),
+                String.valueOf(list.get(0).get("FUZEREN_ID")),
+                String.valueOf(list.get(0).get("ZHUANYE")),
+                String.valueOf(list.get(0).get("ZHUANYE_ID")),
+                String.valueOf(list.get(0).get("PEIYANGFANGAN")),
+                String.valueOf(list.get(0).get("XUEQI"))
+        );
+        return renwu;
+    }
 
     public List<Renwu> getAll() {
         List<Map<String, Object>> list;
