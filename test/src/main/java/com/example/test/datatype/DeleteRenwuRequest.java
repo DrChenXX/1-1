@@ -1,12 +1,12 @@
 package com.example.test.datatype;
 
-public class ReleaseRenwuRequest {
+public class DeleteRenwuRequest {
     private String renwuID;
 
-    public ReleaseRenwuRequest() {
+    public DeleteRenwuRequest() {
     }
 
-    public ReleaseRenwuRequest(String renwuID) {
+    public DeleteRenwuRequest(String renwuID) {
         this.renwuID = renwuID;
     }
 
@@ -20,7 +20,7 @@ public class ReleaseRenwuRequest {
 
     @Override
     public String toString() {
-        return "ReleaseRenwuRequest{" +
+        return "DeleteRenwuRequest{" +
                 "renwuID='" + renwuID + '\'' +
                 '}';
     }

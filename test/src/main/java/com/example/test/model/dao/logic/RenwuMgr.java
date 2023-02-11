@@ -152,7 +152,7 @@ public class RenwuMgr {
     }
 
     public void updateByID(String ID) {
-        String sql = "UPDATE T_RENWU SET FABU='已发布' WHERE ID = " + ID;
+        String sql = "UPDATE T_RENWU SET FABU='已发布' WHERE ID = '" + ID + "'";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){
