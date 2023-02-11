@@ -125,4 +125,15 @@ public class RenwuMgr {
         }
         return result;
     }
+
+    public void updateByID(String ID) {
+        String sql = "UPDATE T_RENWU SET FABU='已发布' WHERE ID = " + ID;
+        boolean check;
+        check = ConnectDB.addContent(sql);
+        if (check){
+            System.out.println("任务发布成功");
+        } else {
+            System.out.println("任务发布失败");
+        }
+    }
 }

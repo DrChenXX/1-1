@@ -322,6 +322,54 @@ public class PrincipalService implements UserService {
         renwuMgr.add(renwu);
     }
 
+    public void releaseAllRenwu(ReleaseAllRenwuRequest request) {
+        List<Renwu> renwus = renwuMgr.getAll();
+        System.out.println(renwus);
+        for (Renwu renwu : renwus) {
+            if (request.getZhuanye() != "") {
+                if (!renwu.getZhuanye().equals(request.getZhuanye())) {
+                    continue;
+                }
+            }
+            if (request.getZhuanyeID() != "") {
+                if (!renwu.getZhuanyeId().equals(request.getZhuanyeID())) {
+                    continue;
+                }
+            }
+            if (request.getPeiyangfangan() != "") {
+                if (!renwu.getPeiyangfangan().equals(request.getPeiyangfangan())) {
+                    continue;
+                }
+            }
+            if (request.getKecheng() != "") {
+                if (!renwu.getKecheng().equals(request.getKecheng())) {
+                    continue;
+                }
+            }
+            if (request.getKechengID() != "") {
+                if (!renwu.getKechengId().equals(request.getKechengID())) {
+                    continue;
+                }
+            }
+            if (request.getKaikenianji() != "") {
+                if (!renwu.getNianji().equals(request.getKaikenianji())) {
+                    continue;
+                }
+            }
+            if (request.getKechengleibie() != "") {
+                if (!renwu.getLeibie().equals(request.getKechengleibie())) {
+                    continue;
+                }
+            }
+            if (request.getFabu() != "") {
+                if (!renwu.getFabu().equals(request.getFabu())) {
+                    continue;
+                }
+            }
+            renwuMgr.updateByID(renwu.getId());
+        }
+    }
+
     public RestResponse searchXiaoxi(SearchXiaoxiRequest request) {
         List<Xiaoxi> xiaoxis = xiaoxiMgr.getByToID(request.getId());
         System.out.println(xiaoxis);

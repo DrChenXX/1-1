@@ -140,4 +140,11 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         sessionManager.getSession(token).getPrincipalService().addRenwu(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/renwufabuall", method = RequestMethod.POST)
+    public void releaseAllRenwu(@RequestHeader(value = "token",required = false)String token,@RequestBody ReleaseAllRenwuRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().releaseAllRenwu(request);
+    }
 }
