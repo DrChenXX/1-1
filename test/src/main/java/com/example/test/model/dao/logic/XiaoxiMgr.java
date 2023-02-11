@@ -62,7 +62,7 @@ public class XiaoxiMgr {
     }
 
     public void deleteByID(String ID) {
-        String sql = "DELETE FROM T_XIAOXI WHERE ID = " + ID;
+        String sql = "DELETE FROM T_XIAOXI WHERE ID = '" + ID + "'";
         boolean check;
         check = ConnectDB.deleteContent(sql);
         if(check){
@@ -85,7 +85,7 @@ public class XiaoxiMgr {
 
     public Xiaoxi getByID(String ID) {
         List<Map<String, Object>> list;
-        list = ConnectDB.getList("SELECT * FROM T_XIAOXI WHERE ID = " + ID);
+        list = ConnectDB.getList("SELECT * FROM T_XIAOXI WHERE ID = '" + ID + "'");
         if (list.isEmpty()) {
             return null;
         }
@@ -105,7 +105,7 @@ public class XiaoxiMgr {
 
     public List<Xiaoxi> getByToID(String ID) {
         List<Map<String, Object>> list;
-        list = ConnectDB.getList("SELECT * FROM T_XIAOXI WHERE TO_ID = " + ID);
+        list = ConnectDB.getList("SELECT * FROM T_XIAOXI WHERE TO_ID = '" + ID + "'");
         if (list.isEmpty()) {
             return null;
         }
