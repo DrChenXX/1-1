@@ -83,6 +83,16 @@ public class PrincipalService implements UserService {
         yonghuMgr.add(yonghu);
     }
 
+    public void updateTeacher(UpdateTeacherRequest request) {
+        Yonghu yonghu = yonghuMgr.getByID(request.getOldid());
+        yonghuMgr.deleteByID(yonghu.getId());
+        yonghu.setId(request.getNewid());
+        yonghu.setName(request.getXingming());
+        yonghu.setYuanxi(request.getYuanxi());
+        yonghu.setZhicheng(request.getZhicheng());
+        yonghuMgr.add(yonghu);
+    }
+
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
         List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getPeiyangfangan());
         if (peiyangmubiaos.isEmpty()) {

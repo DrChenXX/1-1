@@ -39,6 +39,13 @@ public class PrincipalController implements UserController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "/bianjijiaoshi", method = RequestMethod.POST)
+    public void updateTeacher(@RequestHeader(value = "token",required = false) String token,@RequestBody UpdateTeacherRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().updateTeacher(request);
+    }
+
+    @ResponseBody
     @RequestMapping(path = "/xueshengguanli", method = RequestMethod.POST)
     public RestResponse searchXuesheng(@RequestHeader(value = "token",required = false)String token,@RequestBody SearchXueshengRequest request) {
         System.out.println(request);
