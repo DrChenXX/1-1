@@ -17,4 +17,6 @@ public class TaskStatusGetRequest {
     public void setCourseid(String courseid) {
         this.courseid = courseid;
     }
+
+
 }

@@ -14,7 +14,7 @@ public class DangqiankechengMgr {
     // 增加单条信息
     public void add(Dangqiankecheng d) {
         String sql =
-                "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KKAIKESHIJIAN,XUEFEN,ZHUANGTAI) "+
+                "INSERT INTO T_DANGQIANKECHENG(ID,KECHENG_ID,TEACHER_ID,SEMESTER,KAIKESHIJIAN,XUEFEN,CURTASK,TASK1_0,TASK1_1,TASK2,TASK3,TASK4) "+
                         "VALUES('"+
                         d.getId()+ "','"+
                         d.getKechengId() + "','" +

@@ -42,6 +42,8 @@ public class TeacherService implements UserService {
     private PeiyangfanganMgr peiyangfanganMgr;
     @Autowired
     private RenwuMgr renwuMgr;
+    @Autowired
+    private DangqianmubiaoMgr dangqianmubiaoMgr;
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -255,7 +257,39 @@ public class TeacherService implements UserService {
         xiaoxiMgr.add(xiaoxi);
         return RestResponse.success("已发送");
     }
-
+    
+    public void task13Kechengmubiao_send(List<Task13Kechengmubiao_sendRequest> requests) {
+        int i = 0;
+        for(Task13Kechengmubiao_sendRequest request:requests){
+            String courseid = request.getCourseid();
+            String mingcheng = request.getMubiao();
+            String mubiaoid = kechengmubiaoMgr.getByKechengID(courseid).get(0).getId();
+            Kechengmubiao mubiao = new Kechengmubiao(
+                    "mubiao" + System.currentTimeMillis(),
+                    courseid,
+                    mingcheng
+            );
+            kechengmubiaoMgr.add(mubiao);
+            i++;
+            String id = String.valueOf(i);
+            Dangqianmubiao dangqianmubiao = new Dangqianmubiao(id,courseid,mubiaoid,mingcheng);
+            dangqianmubiaoMgr.add(dangqianmubiao);
+        }
+    }
+    
+    public RestResponse task13Kechengmubiao_get(Task13Kechengmubiao_getRequest request){
+        String courseid = request.getCourseid();
+        List<Dangqianmubiao> dangqianmubiaos = dangqianmubiaoMgr.getByDangqiankechengID(courseid);
+        List<Task13Kechengmubiao_getResponse> responses = new ArrayList<Task13Kechengmubiao_getResponse>();
+        Kecheng kecheng = kechengMgr.getByID(courseid);
+        for (Dangqianmubiao dangqianmubiao:dangqianmubiaos) {
+            String mubiao = dangqianmubiao.getContent();
+            Task13Kechengmubiao_getResponse res = new Task13Kechengmubiao_getResponse(courseid,mubiao);
+            responses.add(res);
+        }
+        return RestResponse.success("课程目标为：",responses);
+    }
+    
     public RestResponse task21kaohefangshi_get(Task21Kaohefangshi_getRequest request){
         String courseid = request.getCourseid();
         List<Dangqiankaohe> dangqiankaohess = dangqiankaoheMgr.getByDangqiankechengID(courseid);
