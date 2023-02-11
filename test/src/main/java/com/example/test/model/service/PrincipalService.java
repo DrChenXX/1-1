@@ -399,6 +399,10 @@ public class PrincipalService implements UserService {
         }
     }
 
+    public void deleteRenwu(DeleteRenwuRequest request) {
+        renwuMgr.deleteByID(request.getRenwuID());
+    }
+
     public RestResponse searchXiaoxi(SearchXiaoxiRequest request) {
         List<Xiaoxi> xiaoxis = xiaoxiMgr.getByToID(request.getId());
         System.out.println(xiaoxis);

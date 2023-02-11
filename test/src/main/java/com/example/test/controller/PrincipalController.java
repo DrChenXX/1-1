@@ -161,4 +161,11 @@ public class PrincipalController implements UserController {
         System.out.println(request);
         sessionManager.getSession(token).getPrincipalService().updateRenwu(request);
     }
+
+    @ResponseBody
+    @RequestMapping(path = "/renwushanchu", method = RequestMethod.POST)
+    public void deleteRenwu(@RequestHeader(value = "token",required = false)String token,@RequestBody DeleteRenwuRequest request) {
+        System.out.println(request);
+        sessionManager.getSession(token).getPrincipalService().deleteRenwu(request);
+    }
 }
