@@ -2,7 +2,6 @@ package com.example.test.datatype;
 
 import java.util.List;
 
-//重写中 未完成
 public class UploadZhibiaodianResponse {
     private String zhichengdian;
     private boolean is_zhicheng;
