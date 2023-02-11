@@ -54,14 +54,33 @@ public class Kecheng {
 	 */
 	private Integer xuefen;
 
-	public Kecheng(String id, String name, String teacherId, String peiyangfanganId, String kaikeshijian, Integer xuefen) {
+	/**
+	 * table name:LEIBIE
+	 * table type:varchar(20)
+	 * table comment:null
+	 */
+	private String leibie;
+
+	/**
+	 * table name:ISDAGANG
+	 * table type:varchar(10)
+	 * table comment:null
+	 */
+	private String isdagang;
+
+	public Kecheng(String id, String name, String teacherId,
+				   String peiyangfanganId, String kaikeshijian,
+				   Integer xuefen, String leibie, String isdagang) {
 		this.id = id;
 		this.name = name;
 		this.teacherId = teacherId;
 		this.peiyangfanganId = peiyangfanganId;
 		this.kaikeshijian = kaikeshijian;
 		this.xuefen = xuefen;
+		this.leibie = leibie;
+		this.isdagang = isdagang;
 	}
+
 
 	public String getId() {
 		return id;
@@ -111,6 +130,22 @@ public class Kecheng {
 		this.xuefen = xuefen;
 	}
 
+	public String getLeibie() {
+		return leibie;
+	}
+
+	public void setLeibie(String leibie) {
+		this.leibie = leibie;
+	}
+
+	public String getIsdagang() {
+		return isdagang;
+	}
+
+	public void setIsdagang(String isdagang) {
+		this.isdagang = isdagang;
+	}
+
 	@Override
 	public String toString() {
 		return "Kecheng{" +
@@ -120,6 +155,8 @@ public class Kecheng {
 				", peiyangfanganId='" + peiyangfanganId + '\'' +
 				", kaikeshijian='" + kaikeshijian + '\'' +
 				", xuefen=" + xuefen +
+				", leibie='" + leibie + '\'' +
+				", isdagang='" + isdagang + '\'' +
 				'}';
 	}
 }

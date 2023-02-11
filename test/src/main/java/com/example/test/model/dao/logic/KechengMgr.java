@@ -14,14 +14,16 @@ public class KechengMgr {
     // 增加单条信息
     public void add(Kecheng k) {
         String sql =
-                "INSERT INTO T_KECHENG(ID,NAME,TEACHER_ID,PEIYANGFANGAN_ID,KAIKESHIJIAN,XUEFEN) "+
+                "INSERT INTO T_KECHENG(ID,NAME,TEACHER_ID,PEIYANGFANGAN_ID,KAIKESHIJIAN,XUEFEN,LEIBIE,ISDAGANG) "+
                         "VALUES('"+
                         k.getId()+ "','"+
                         k.getName() + "','" +
                         k.getTeacherId() + "','" +
                         k.getPeiyangfanganId() + "','" +
                         k.getKaikeshijian() + "'," +
-                        k.getXuefen()+ ")";
+                        k.getXuefen() + ",'" +
+                        k.getLeibie() + "','" +
+                        k.getIsdagang() + "')";
         boolean check;
         check = ConnectDB.addContent(sql);
         if(check){
@@ -35,14 +37,16 @@ public class KechengMgr {
         List<String> sqls = new ArrayList<String>();
         for (Kecheng k : ks){
             String sql =
-                    "INSERT INTO T_KECHENG(ID,NAME,TEACHER_ID,PEIYANGFANGAN_ID,KAIKESHIJIAN,XUEFEN) "+
+                    "INSERT INTO T_KECHENG(ID,NAME,TEACHER_ID,PEIYANGFANGAN_ID,KAIKESHIJIAN,XUEFEN,LEIBIE,ISDAGANG) "+
                             "VALUES('"+
                             k.getId()+ "','"+
                             k.getName() + "','" +
                             k.getTeacherId() + "','" +
                             k.getPeiyangfanganId() + "','" +
                             k.getKaikeshijian() + "'," +
-                            k.getXuefen()+ ")";
+                            k.getXuefen() + ",'" +
+                            k.getLeibie() + "','" +
+                            k.getIsdagang() + "')";
             sqls.add(sql);
         }
         boolean check;
@@ -117,7 +121,9 @@ public class KechengMgr {
                 String.valueOf(list.get(0).get("TEACHER_ID")),
                 String.valueOf(list.get(0).get("PEIYANGFANGAN_ID")),
                 String.valueOf(list.get(0).get("KAIKESHIJIAN")),
-                Integer.parseInt(String.valueOf(list.get(0).get("XUEFEN")))
+                Integer.parseInt(String.valueOf(list.get(0).get("XUEFEN"))),
+                String.valueOf(list.get(0).get("LEIBIE")),
+                String.valueOf(list.get(0).get("ISDAGANG"))
         );
         return k;
     }
@@ -136,7 +142,9 @@ public class KechengMgr {
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("PEIYANGFANGAN_ID")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
-                    Integer.parseInt(String.valueOf(map.get("XUEFEN")))
+                    Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
+                    String.valueOf(map.get("LEIBIE")),
+                    String.valueOf(map.get("ISDAGANG"))
             );
             result.add(k);
         }
@@ -157,7 +165,9 @@ public class KechengMgr {
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("PEIYANGFANGAN_ID")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
-                    Integer.parseInt(String.valueOf(map.get("XUEFEN")))
+                    Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
+                    String.valueOf(map.get("LEIBIE")),
+                    String.valueOf(map.get("ISDAGANG"))
             );
             result.add(k);
         }
@@ -178,7 +188,9 @@ public class KechengMgr {
                     String.valueOf(map.get("TEACHER_ID")),
                     String.valueOf(map.get("PEIYANGFANGAN_ID")),
                     String.valueOf(map.get("KAIKESHIJIAN")),
-                    Integer.parseInt(String.valueOf(map.get("XUEFEN")))
+                    Integer.parseInt(String.valueOf(map.get("XUEFEN"))),
+                    String.valueOf(map.get("LEIBIE")),
+                    String.valueOf(map.get("ISDAGANG"))
             );
             result.add(k);
         }
