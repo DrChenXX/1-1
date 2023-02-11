@@ -7,6 +7,8 @@ import com.example.test.model.session.SessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/home/teacher")
 public class TeacherController implements UserController {
@@ -88,6 +90,12 @@ public class TeacherController implements UserController {
         return sessionManager.getSession(token).getTeacherService().task11feedback_get(request);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "/task1-1feedback_send", method = RequestMethod.POST)
+    public RestResponse task11feedback_send(@RequestHeader(value = "token",required = false)String token,@RequestBody List<Task11FeedbackSendRequest> requests) {
+        System.out.println(requests);
+        return sessionManager.getSession(token).getTeacherService().task11feedback_send(requests);
+    }
 
 
 }

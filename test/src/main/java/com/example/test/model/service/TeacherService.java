@@ -192,6 +192,7 @@ public class TeacherService implements UserService {
     */
 
 
+    // 显示毕业要求支撑点
     public RestResponse task11feedback_get(Task11FeedbackGetRequest request) {
         String courseid = request.getCourseid();
         List<Dangqianduizhibiaodian> dangqianduizhibiaodians = dangqianduizhibiaodianMgr.getByDangqiankechengID(courseid);
@@ -215,6 +216,8 @@ public class TeacherService implements UserService {
         return RestResponse.success("data为列表",responses);
     }
 
+
+    // 提交毕业要求支撑点修改意见
     public RestResponse task11feedback_send(List<Task11FeedbackSendRequest> requests) {
         String feedback = "";
         for (Task11FeedbackSendRequest request : requests) {
