@@ -76,7 +76,11 @@ public class PrincipalService implements UserService {
         } else {
             return new RestResponse<>().fail("没有找到教师");
         }
+    }
 
+    public void addTeacher(AddTeacherRequest request) {
+        Yonghu yonghu = new Yonghu(request.getId(),"123456",request.getXingming(),"无","无","","教师",request.getYuanxi(),request.getZhicheng());
+        yonghuMgr.add(yonghu);
     }
 
     public RestResponse searchPeiyangmubiao(SearchPeiyangmubiaoRequest request) {
