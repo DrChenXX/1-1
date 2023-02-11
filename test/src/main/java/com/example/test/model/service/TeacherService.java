@@ -5,7 +5,6 @@ import com.example.test.interfaces.UserService;
 import com.example.test.model.dao.logic.*;
 import com.example.test.model.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.ParameterResolutionDelegate;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -221,7 +220,7 @@ public class TeacherService implements UserService {
     public RestResponse task11feedback_send(List<Task11FeedbackSendRequest> requests) {
         String feedback = "";
         for (Task11FeedbackSendRequest request : requests) {
-            if(request.isXiugai()) {
+            if(request.getXiugai().equals("true")) {
                 feedback += "该课程希望";
                 if(request.getZhichi().equals("是")) {
                     feedback+="支持";

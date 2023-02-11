@@ -1,18 +1,16 @@
 package com.example.test.datatype;
 
-import java.util.List;
-
 public class Task11FeedbackSendRequest {
     private String courseid;
     private String zhichengdian;
     private String zhichi;
-    private boolean xiugai;
+    private String xiugai;
     private String yijian;
 
     public Task11FeedbackSendRequest() {
     }
 
-    public Task11FeedbackSendRequest(String courseid, String zhichengdian, String zhichi, boolean xiugai, String yijian) {
+    public Task11FeedbackSendRequest(String courseid, String zhichengdian, String zhichi, String xiugai, String yijian) {
         this.courseid = courseid;
         this.zhichengdian = zhichengdian;
         this.zhichi = zhichi;
@@ -44,11 +42,11 @@ public class Task11FeedbackSendRequest {
         this.zhichi = zhichi;
     }
 
-    public boolean isXiugai() {
+    public String getXiugai() {
         return xiugai;
     }
 
-    public void setXiugai(boolean xiugai) {
+    public void setXiugai(String xiugai) {
         this.xiugai = xiugai;
     }
 
