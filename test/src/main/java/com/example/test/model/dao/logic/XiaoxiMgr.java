@@ -73,7 +73,7 @@ public class XiaoxiMgr {
     }
 
     public void readByID(String ID) {
-        String sql = "UPDATE T_XIAOXI SET ISREAD='已读' WHERE ID = " + ID;
+        String sql = "UPDATE T_XIAOXI SET ISREAD='已读' WHERE ID = '" + ID + "'";
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){

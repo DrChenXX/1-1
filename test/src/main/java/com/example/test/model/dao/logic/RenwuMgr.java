@@ -138,7 +138,7 @@ public class RenwuMgr {
     }
 
     public void deleteByID(String ID) {
-        String sql = "DELETE FROM T_RENWU WHERE ID = " + ID;
+        String sql = "DELETE FROM T_RENWU WHERE ID = '" + ID + "'";
         boolean check;
         check = ConnectDB.deleteContent(sql);
         if(check){
