@@ -139,7 +139,7 @@ public class PrincipalService implements UserService {
         String peiyangmubiaoID = "";
         int n = 1;
         for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
-            if (n == Integer.valueOf(request.getID()) + 1) {
+            if (n == Integer.valueOf(request.getID())) {
                 peiyangmubiaoID = peiyangmubiao.getId();
             }
             n++;
