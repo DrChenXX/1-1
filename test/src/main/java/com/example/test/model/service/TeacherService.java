@@ -44,6 +44,9 @@ public class TeacherService implements UserService {
     private RenwuMgr renwuMgr;
     @Autowired
     private DangqianmubiaoMgr dangqianmubiaoMgr;
+    @Autowired
+    private MubiaoduizhibiaodianMgr mubiaoduizhibiaodianMgr;
+
     @Override
     public String name() {
         System.out.println("teacherService");

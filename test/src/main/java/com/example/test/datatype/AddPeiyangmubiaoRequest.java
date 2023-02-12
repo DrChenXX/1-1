@@ -11,8 +11,8 @@ public class AddPeiyangmubiaoRequest {
     public AddPeiyangmubiaoRequest() {
     }
 
-    public AddPeiyangmubiaoRequest(String id, String ID, String neirong) {
-        this.fanganid = id;
+    public AddPeiyangmubiaoRequest(String fanganid, String ID, String neirong) {
+        this.fanganid = fanganid;
         this.ID = ID;
         this.neirong = neirong;
     }

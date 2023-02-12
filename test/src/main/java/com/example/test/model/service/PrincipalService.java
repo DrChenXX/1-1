@@ -127,10 +127,11 @@ public class PrincipalService implements UserService {
             System.out.println("未填写内容");
             return;
         }
-        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getAll();
-        int id = peiyangmubiaos.size();
-        Peiyangmubiao peiyangmubiao = new Peiyangmubiao(String.valueOf(id),request.getFanganid(),request.getNeirong());
-        peiyangmubiaoMgr.add(peiyangmubiao);
+        peiyangmubiaoMgr.add(new Peiyangmubiao(
+                "peiyangmubiao" + System.currentTimeMillis(),
+                request.getFanganid(),
+                request.getNeirong()
+        ));
     }
 
     public void deletePeiyangmubiao(DeletePeiyangmubiaoRequest request) {
