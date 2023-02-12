@@ -10,8 +10,8 @@ public class DeletePeiyangmubiaoRequest {
     public DeletePeiyangmubiaoRequest() {
     }
 
-    public DeletePeiyangmubiaoRequest(String id, String ID) {
-        this.fanganid = id;
+    public DeletePeiyangmubiaoRequest(String fanganid, String ID) {
+        this.fanganid = fanganid;
         this.ID = ID;
     }
 
@@ -19,8 +19,8 @@ public class DeletePeiyangmubiaoRequest {
         return fanganid;
     }
 
-    public void setFanganid(String id) {
-        this.fanganid = id;
+    public void setFanganid(String fanganid) {
+        this.fanganid = fanganid;
     }
 
     public String getID() {

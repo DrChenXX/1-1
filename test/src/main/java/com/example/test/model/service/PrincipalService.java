@@ -135,6 +135,7 @@ public class PrincipalService implements UserService {
     }
 
     public void deletePeiyangmubiao(DeletePeiyangmubiaoRequest request) {
+        System.out.println(request);
         List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getFanganid());
         String peiyangmubiaoID = "";
         int n = 1;
