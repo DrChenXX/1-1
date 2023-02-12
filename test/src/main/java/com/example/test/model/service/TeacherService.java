@@ -397,6 +397,62 @@ public class TeacherService implements UserService {
             dangqiankaoheMgr.add(dangqiankaohe);
         }
     }
+    public void task31Fenshuzhanbi_send(List<Task31Fenshuzhanbi_sendRequest> requests){
+        for(Task31Fenshuzhanbi_sendRequest request:requests){
+            String courseid = request.getCourseid();
+            String mubiao = request.getMubiao();
+            int zhanbi = request.getZhanbi();
+            String guanlian = request.getGuanlian();
+            String content = courseid + "\""+guanlian;
+            Kechengmubiao kechengmubiao = new Kechengmubiao("kaohe" + System.currentTimeMillis(), courseid,content);
+            List<Kechengmubiao> kechengmubiaos = kechengmubiaoMgr.getByKechengID(courseid);
+            List<Kaohe> kaohes = kaoheMgr.getByKechengID(courseid);
+            List<Dangqiankaohe> dangqiankaohes = dangqiankaoheMgr.getByDangqiankechengID(courseid);
+            for(Kaohe kaohe:kaohes){
+                if (kaohe.getContent() == guanlian){
+                    kaohe.setZhanbi(zhanbi);
+                    break;
+                }
+            }
+            for(Dangqiankaohe dangqiankaohekaohe:dangqiankaohes){
+                if (dangqiankaohekaohe.getContent() == guanlian){
+                    dangqiankaohekaohe.setZhanbi(zhanbi);
+                    break;
+                }
+            }
+            String mubiaoid = null ;
+            for (Kechengmubiao kechengmubiao1:kechengmubiaos){
+                if (kechengmubiao1.getContent() == mubiao){
+                    mubiaoid = kechengmubiao1.getId();
+                }
+            }
+            Dangqianmubiao dangqianmubiao = new Dangqianmubiao("dangqianmubiao"+System.currentTimeMillis(),courseid,mubiaoid,content);
+            dangqianmubiaoMgr.add(dangqianmubiao);
+            kechengmubiaoMgr.add(kechengmubiao);
+        }
+    }
+    public RestResponse task31Fenshuzhanbi_get(Task31Fenshuzhanbi_getRequest request){
+        String courseid = request.getCourseid();
+        List<Dangqianmubiao> dangqianmubiaos = dangqianmubiaoMgr.getByDangqiankechengID(courseid);
+        List<Task31Fenshuzhanbi_getResponse> responses = new ArrayList<Task31Fenshuzhanbi_getResponse>();
+        for(Dangqianmubiao dangqianmubiao : dangqianmubiaos){
+            String content = dangqianmubiao.getContent();
+            String[] temp = content.split("/");
+            String mubiao = temp[0];
+            String guanlian = temp[1];
+            List<Dangqiankaohe> dangqiankaohes = dangqiankaoheMgr.getByDangqiankechengID(courseid);
+            int zhanbi = 0 ;
+            for(Dangqiankaohe dangqiankaohe:dangqiankaohes){
+                if(dangqiankaohe.getContent()==content){
+                    zhanbi = dangqiankaohe.getZhanbi();
+                    break;
+                }
+            }
+            Task31Fenshuzhanbi_getResponse res = new Task31Fenshuzhanbi_getResponse(courseid,mubiao,zhanbi,guanlian);
+            responses.add(res);
+        }
+        return RestResponse.success("分数占比为",responses);
+    }
 
     // 设置任务状态
     public RestResponse taskStatusSend(TaskStatusSendRequest request) {
