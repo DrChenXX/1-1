@@ -1,15 +1,15 @@
 package com.example.test.datatype;
 
-public class Task31Fenshuzhanbi_getResponse {
+public class Task31Fenshuzhanbi_sendRequest {
     private String courseid;
     private String mubiao;
     private int zhanbi;
     private String guanlian;
 
-    public Task31Fenshuzhanbi_getResponse() {
+    public Task31Fenshuzhanbi_sendRequest() {
     }
 
-    public Task31Fenshuzhanbi_getResponse(String courseid,String mubiao,int zhanbi,String guanlian) {
+    public Task31Fenshuzhanbi_sendRequest(String courseid,String mubiao,int zhanbi,String guanlian) {
         this.courseid = courseid;
         this.mubiao = mubiao;
         this.zhanbi = zhanbi;
@@ -46,14 +46,5 @@ public class Task31Fenshuzhanbi_getResponse {
 
     public void setGuanlian(String guanlian) {
         this.guanlian = guanlian;
-    }
-
-    @Override
-    public String toString() {
-        return "FenshuzhanbiResponse{" +
-                "mubiao=" + mubiao +
-                ",zhanbi=" + zhanbi +
-                ",guanlian=" + guanlian + '\'' +
-                '}';
     }
 }
