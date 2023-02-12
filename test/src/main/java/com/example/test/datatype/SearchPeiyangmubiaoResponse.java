@@ -1,22 +1,22 @@
 package com.example.test.datatype;
 
 public class SearchPeiyangmubiaoResponse {
-    private int id;
+    private String id;
     private String content;
 
     public SearchPeiyangmubiaoResponse() {
     }
 
-    public SearchPeiyangmubiaoResponse(int number, String content) {
+    public SearchPeiyangmubiaoResponse(String number, String content) {
         this.id = number;
         this.content = content;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

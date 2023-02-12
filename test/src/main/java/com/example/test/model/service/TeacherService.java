@@ -61,10 +61,10 @@ public class TeacherService implements UserService {
             return new RestResponse().fail("没有找到对应培养目标");
         }
         List<SearchPeiyangmubiaoResponse> responses = new ArrayList<SearchPeiyangmubiaoResponse>();
-        int n = 1;
+        // int n = 1;
         for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
-            responses.add(new SearchPeiyangmubiaoResponse(n,peiyangmubiao.getContent()));
-            n++;
+            responses.add(new SearchPeiyangmubiaoResponse(peiyangmubiao.getId(),peiyangmubiao.getContent()));
+            // n++;
         }
         return new RestResponse().success("已找到对应的培养目标",responses);
     }
