@@ -110,10 +110,10 @@ public class PrincipalService implements UserService {
             return new RestResponse().fail("没有找到对应培养目标");
         }
         List<SearchPeiyangmubiaoResponse> responses = new ArrayList<SearchPeiyangmubiaoResponse>();
-        int n = 1;
+        // int n = 1;
         for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
-            responses.add(new SearchPeiyangmubiaoResponse(n,peiyangmubiao.getContent()));
-            n++;
+            responses.add(new SearchPeiyangmubiaoResponse(peiyangmubiao.getId(),peiyangmubiao.getContent()));
+            // n++;
         }
         return new RestResponse().success("已找到对应的培养目标",responses);
     }
@@ -136,7 +136,7 @@ public class PrincipalService implements UserService {
 
     public void deletePeiyangmubiao(DeletePeiyangmubiaoRequest request) {
         List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getFanganid());
-        String peiyangmubiaoID = "";
+        /* String peiyangmubiaoID = "";
         int n = 1;
         for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
             if (n == Integer.valueOf(request.getID())) {
@@ -144,7 +144,9 @@ public class PrincipalService implements UserService {
             }
             n++;
         }
-        peiyangmubiaoMgr.deleteByID(peiyangmubiaoID);
+
+         */
+        peiyangmubiaoMgr.deleteByID(request.getID());
     }
 
     public void updatePeiyangmubiao(UpdatePeiyangmubiaoRequest request) {

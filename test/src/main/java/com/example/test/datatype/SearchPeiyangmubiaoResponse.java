@@ -4,22 +4,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SearchPeiyangmubiaoResponse {
     @JsonProperty("ID")
-    private int ID;
+    private String ID;
     private String neirong;
 
     public SearchPeiyangmubiaoResponse() {
     }
 
-    public SearchPeiyangmubiaoResponse(int number, String content) {
+    public SearchPeiyangmubiaoResponse(String number, String content) {
         this.ID = number;
         this.neirong = content;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int id) {
+    public void setID(String id) {
         this.ID = id;
     }
 
