@@ -386,15 +386,10 @@ public class TeacherService implements UserService {
     }
     
     public void task21kaohefangshi_send(List<Task21Kaohefangshi_sendRequest> requests) {
-        int i = 0;
-        String courseid = null;
         for (Task21Kaohefangshi_sendRequest request:requests){
-            if(i == 0){
-                courseid = request.getKechengid();
-                i++;
-            }
+            String courseid = request.getKechengid();
             int zhanbi = request.getZhanbi();
-            String mingcheng = request.getContent();
+            String mingcheng = request.getMingcheng();
             Kaohe kaohe = new Kaohe("kaohe" + System.currentTimeMillis(),mingcheng,courseid,"",zhanbi);
             Dangqiankaohe dangqiankaohe = new Dangqiankaohe(
                     "dangqiankaohe" + System.currentTimeMillis(),mingcheng,courseid,"", kaohe.getId(), zhanbi);
