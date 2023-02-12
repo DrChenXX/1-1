@@ -106,9 +106,9 @@ public class TeacherController implements UserController {
     
     @ResponseBody
     @RequestMapping(path = "/task1-3_get", method = RequestMethod.POST)
-    public void task13kechengmubiao_getRequest(@RequestHeader(value = "token",required = false)String token,@RequestBody Task13Kechengmubiao_getRequest request) {
+    public RestResponse task13kechengmubiao_getRequest(@RequestHeader(value = "token",required = false)String token,@RequestBody Task13Kechengmubiao_getRequest request) {
         System.out.println(request);
-        sessionManager.getSession(token).getTeacherService().task13Kechengmubiao_get(request);
+        return sessionManager.getSession(token).getTeacherService().task13Kechengmubiao_get(request);
     }
     
     @ResponseBody
