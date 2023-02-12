@@ -53,7 +53,7 @@ public class PeiyangmubiaoMgr {
     }
 
     public void deleteByID(String ID) {
-        String sql = "DELETE FROM T_PEIYANGMUBIAO WHERE ID = " + ID;
+        String sql = "DELETE FROM T_PEIYANGMUBIAO WHERE ID = '" + ID + "'";
         boolean check;
         check = ConnectDB.deleteContent(sql);
         if(check){
@@ -64,7 +64,7 @@ public class PeiyangmubiaoMgr {
     }
 
     public void deleteByPEIYANGFANGANID(String ID) {
-        String sql = "DELETE FROM T_PEIYANGMUBIAO WHERE PEIYANGFANGAN_ID = " + ID;
+        String sql = "DELETE FROM T_PEIYANGMUBIAO WHERE PEIYANGFANGAN_ID = '" + ID + "'";
         boolean check;
         check = ConnectDB.deleteContent(sql);
         if(check){
@@ -92,7 +92,7 @@ public class PeiyangmubiaoMgr {
 
     public Peiyangmubiao getByID(String ID) {
         List<Map<String, Object>> list;
-        list = ConnectDB.getList("SELECT * FROM T_PEIYANGMUBIAO WHERE ID = " + ID);
+        list = ConnectDB.getList("SELECT * FROM T_PEIYANGMUBIAO WHERE ID = '" + ID + "'");
         if (list.isEmpty()) {
             return null;
         }
