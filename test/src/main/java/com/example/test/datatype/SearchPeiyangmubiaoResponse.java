@@ -1,38 +1,41 @@
 package com.example.test.datatype;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SearchPeiyangmubiaoResponse {
-    private String id;
-    private String content;
+    @JsonProperty("ID")
+    private int ID;
+    private String neirong;
 
     public SearchPeiyangmubiaoResponse() {
     }
 
-    public SearchPeiyangmubiaoResponse(String number, String content) {
-        this.id = number;
-        this.content = content;
+    public SearchPeiyangmubiaoResponse(int number, String content) {
+        this.ID = number;
+        this.neirong = content;
     }
 
-    public String getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setID(int id) {
+        this.ID = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getNeirong() {
+        return neirong;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setNeirong(String content) {
+        this.neirong = content;
     }
 
     @Override
     public String toString() {
         return "SearchPeiyangfanganResponse{" +
-                "number=" + id +
-                ", content='" + content + '\'' +
+                "number=" + ID +
+                ", content='" + neirong + '\'' +
                 '}';
     }
 }

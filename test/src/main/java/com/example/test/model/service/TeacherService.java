@@ -44,6 +44,9 @@ public class TeacherService implements UserService {
     private RenwuMgr renwuMgr;
     @Autowired
     private DangqianmubiaoMgr dangqianmubiaoMgr;
+    @Autowired
+    private MubiaoduizhibiaodianMgr mubiaoduizhibiaodianMgr;
+
     @Override
     public String name() {
         System.out.println("teacherService");
@@ -282,25 +285,91 @@ public class TeacherService implements UserService {
         List<Dangqianmubiao> dangqianmubiaos = dangqianmubiaoMgr.getByDangqiankechengID(courseid);
         List<Task13Kechengmubiao_getResponse> responses = new ArrayList<Task13Kechengmubiao_getResponse>();
         Kecheng kecheng = kechengMgr.getByID(courseid);
+        int i = 0;
         for (Dangqianmubiao dangqianmubiao:dangqianmubiaos) {
             String mubiao = dangqianmubiao.getContent();
-            Task13Kechengmubiao_getResponse res = new Task13Kechengmubiao_getResponse(courseid,mubiao);
+            Task13Kechengmubiao_getResponse res = new Task13Kechengmubiao_getResponse("",mubiao);
+            if(i == 0) {
+                res.setCourseid(courseid);
+                i++;
+            }
             responses.add(res);
         }
         return RestResponse.success("课程目标为：",responses);
     }
-    public RestResponse task14GetHead(Task14GetHeadRequest request){
+    
+   public RestResponse task14GetHead(Task14GetHeadRequest request){
         String courseid = request.getCourseid();
         List<Task14GetHeadResponse> responses = new ArrayList<Task14GetHeadResponse>();
-        List<Biyeyaoqiu> biyeyaoqius = biyeyaoqiuMgr.getAll();
+        List<Zhibiaodian> zhibiaodians = zhibiaodianMgr.getAll();
         Task14GetHeadResponse res0 = new Task14GetHeadResponse(null);
         responses.add(res0);
-        for(Biyeyaoqiu biyeyaoqiu:biyeyaoqius){
-            Task14GetHeadResponse res = new Task14GetHeadResponse(biyeyaoqiu.getContent());
+        for(Zhibiaodian zhibiaodian:zhibiaodians){
+            Task14GetHeadResponse res = new Task14GetHeadResponse(zhibiaodian.getContent());
             responses.add(res);
         }
         return RestResponse.success("表头为：",responses);
     }
+    
+   public void task14SendBody(List<Task14SendBodyRequest> requests){
+        for(Task14SendBodyRequest request:requests){
+            List<Kechengmubiao> kechengmubiaos = kechengmubiaoMgr.getAll();
+            String courseid = request.getCourseid();
+            String kechengmubiao = request.getKechengmubiao();
+            String kechengmubiaoid = null;
+            for(Kechengmubiao kechengmubiao1 : kechengmubiaos) {
+                if (kechengmubiao1.getContent() == kechengmubiao){
+                    kechengmubiaoid = kechengmubiao1.getId();
+                }
+            }
+            int i = 0;
+            for(Boolean b:request.getIs_zhicheng()){
+                i++;
+                List<Zhibiaodian> zhibiaodians = zhibiaodianMgr.getAll();
+                Zhibiaodian zhibiaodian = zhibiaodians.get(i);
+                String zhibiaodianid = zhibiaodian.getId();
+                Mubiaoduizhibiaodian mubiaoduizhibiaodian;
+                if(b == false){
+                    mubiaoduizhibiaodian = new Mubiaoduizhibiaodian(
+                            "mubiao" + System.currentTimeMillis(),
+                            kechengmubiaoid,zhibiaodianid,"false"
+                            );
+                } else{
+                    mubiaoduizhibiaodian = new Mubiaoduizhibiaodian(
+                            "mubiao" + System.currentTimeMillis(),
+                            kechengmubiaoid,zhibiaodianid,"true"
+                            );
+                }
+                mubiaoduizhibiaodianMgr.add(mubiaoduizhibiaodian);
+            }
+        }
+    }
+
+    public RestResponse task14GetBody(Task14GetBodyRequest request){
+        List<Task14GetBodyResponse> responses = new ArrayList<Task14GetBodyResponse>();
+        String courseid = request.getCourseid();
+        List<Mubiaoduizhibiaodian> mubiaoduizhibiaodians = mubiaoduizhibiaodianMgr.getAll();
+        List<Kechengmubiao> kechengmubiaos = kechengmubiaoMgr.getByKechengID(courseid);
+        for(Kechengmubiao kechengmubiao:kechengmubiaos){
+            String kechengmubiaomingcheng = kechengmubiao.getContent();//课程目标
+            String kechengmubiaoid = kechengmubiao.getId();//得到课程目标的id
+            int i = 0;
+            List<Boolean> is_zhichengs = new ArrayList<Boolean>();
+            for(Mubiaoduizhibiaodian mubiaoduizhibiaodian:mubiaoduizhibiaodians){
+                i++;
+                if(mubiaoduizhibiaodian.getKechengmubiaoId() == kechengmubiaoid){
+                    String result = mubiaoduizhibiaodian.getContent();//是否
+                    if(result == "true"){
+                        is_zhichengs.add(i,true);
+                    }
+                }
+            }
+            Task14GetBodyResponse res = new Task14GetBodyResponse(courseid,kechengmubiaomingcheng,is_zhichengs);
+            responses.add(res);
+        }
+        return RestResponse.success("获取表格：",responses);
+    }
+
     public RestResponse task21kaohefangshi_get(Task21Kaohefangshi_getRequest request){
         String courseid = request.getCourseid();
         List<Dangqiankaohe> dangqiankaohess = dangqiankaoheMgr.getByDangqiankechengID(courseid);

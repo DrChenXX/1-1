@@ -1,9 +1,13 @@
 package com.example.test.datatype;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UpdatePeiyangmubiaoRequest {
-    private String id;
+    private String fanganid;
+    @JsonProperty("ID")
     private String ID;
     private String neirong;
+    @JsonProperty("oldID")
     private String oldID;
     private String oldneirong;
 
@@ -11,19 +15,19 @@ public class UpdatePeiyangmubiaoRequest {
     }
 
     public UpdatePeiyangmubiaoRequest(String id, String ID, String neirong, String oldID, String oldneirong) {
-        this.id = id;
+        this.fanganid = id;
         this.ID = ID;
         this.neirong = neirong;
         this.oldID = oldID;
         this.oldneirong = oldneirong;
     }
 
-    public String getId() {
-        return id;
+    public String getFanganid() {
+        return fanganid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFanganid(String id) {
+        this.fanganid = id;
     }
 
     public String getID() {
@@ -61,7 +65,7 @@ public class UpdatePeiyangmubiaoRequest {
     @Override
     public String toString() {
         return "UpdatePeiyangmubiaoRequest{" +
-                "id='" + id + '\'' +
+                "id='" + fanganid + '\'' +
                 ", ID='" + ID + '\'' +
                 ", neirong='" + neirong + '\'' +
                 ", oldID='" + oldID + '\'' +

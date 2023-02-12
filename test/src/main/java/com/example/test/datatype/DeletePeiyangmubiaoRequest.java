@@ -1,23 +1,26 @@
 package com.example.test.datatype;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class DeletePeiyangmubiaoRequest {
-    private String id;//培养方案id
+    private String fanganid;//培养方案id
+    @JsonProperty("ID")
     private String ID;//当前编号
 
     public DeletePeiyangmubiaoRequest() {
     }
 
-    public DeletePeiyangmubiaoRequest(String id, String ID) {
-        this.id = id;
+    public DeletePeiyangmubiaoRequest(String fanganid, String ID) {
+        this.fanganid = fanganid;
         this.ID = ID;
     }
 
-    public String getId() {
-        return id;
+    public String getFanganid() {
+        return fanganid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFanganid(String fanganid) {
+        this.fanganid = fanganid;
     }
 
     public String getID() {
@@ -31,7 +34,7 @@ public class DeletePeiyangmubiaoRequest {
     @Override
     public String toString() {
         return "DeletePeiyangmubiaoRequest{" +
-                "id='" + id + '\'' +
+                "id='" + fanganid + '\'' +
                 ", ID='" + ID + '\'' +
                 '}';
     }
