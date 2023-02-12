@@ -119,7 +119,7 @@ public class PrincipalService implements UserService {
     }
 
     public void addPeiyangmubiao(AddPeiyangmubiaoRequest request) {
-        if (request.getId() == "") {
+        if (request.getFanganid() == "") {
             System.out.println("未填写培养方案");
             return;
         }
@@ -129,12 +129,12 @@ public class PrincipalService implements UserService {
         }
         List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getAll();
         int id = peiyangmubiaos.size();
-        Peiyangmubiao peiyangmubiao = new Peiyangmubiao(String.valueOf(id),request.getId(),request.getNeirong());
+        Peiyangmubiao peiyangmubiao = new Peiyangmubiao(String.valueOf(id),request.getFanganid(),request.getNeirong());
         peiyangmubiaoMgr.add(peiyangmubiao);
     }
 
     public void deletePeiyangmubiao(DeletePeiyangmubiaoRequest request) {
-        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getId());
+        List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getFanganid());
         String peiyangmubiaoID = "";
         int n = 1;
         for (Peiyangmubiao peiyangmubiao : peiyangmubiaos) {
@@ -147,9 +147,9 @@ public class PrincipalService implements UserService {
     }
 
     public void updatePeiyangmubiao(UpdatePeiyangmubiaoRequest request) {
-        DeletePeiyangmubiaoRequest request1 = new DeletePeiyangmubiaoRequest(request.getId(),request.getID());
+        DeletePeiyangmubiaoRequest request1 = new DeletePeiyangmubiaoRequest(request.getFanganid(),request.getID());
         deletePeiyangmubiao(request1);
-        AddPeiyangmubiaoRequest request2 = new AddPeiyangmubiaoRequest(request.getId(),request.getID(),request.getNeirong());
+        AddPeiyangmubiaoRequest request2 = new AddPeiyangmubiaoRequest(request.getFanganid(),request.getID(),request.getNeirong());
         addPeiyangmubiao(request2);
     }
 
