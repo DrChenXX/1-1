@@ -384,13 +384,17 @@ public class TeacherService implements UserService {
         }
         return RestResponse.success("kaohefangshi为：",responses);
     }
+    
     public void task21kaohefangshi_send(List<Task21Kaohefangshi_sendRequest> requests) {
         for (Task21Kaohefangshi_sendRequest request:requests){
             String courseid = request.getKechengid();
             int zhanbi = request.getZhanbi();
-            String mingcheng = request.getContent();
-            Dangqiankaohe kaohe = new Dangqiankaohe(courseid,mingcheng,courseid,"","",zhanbi);
-            dangqiankaoheMgr.add(kaohe);
+            String mingcheng = request.getMingcheng();
+            Kaohe kaohe = new Kaohe("kaohe" + System.currentTimeMillis(),mingcheng,courseid,"",zhanbi);
+            Dangqiankaohe dangqiankaohe = new Dangqiankaohe(
+                    "dangqiankaohe" + System.currentTimeMillis(),mingcheng,courseid,"", kaohe.getId(), zhanbi);
+            kaoheMgr.add(kaohe);
+            dangqiankaoheMgr.add(dangqiankaohe);
         }
     }
 

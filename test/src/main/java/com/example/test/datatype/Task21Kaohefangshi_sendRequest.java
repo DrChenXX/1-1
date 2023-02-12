@@ -3,7 +3,7 @@ package com.example.test.datatype;
 public class Task21Kaohefangshi_sendRequest {
 
     private String kechengid;
-    private String content;
+    private String mingcheng;
     private int zhanbi;
 
 
@@ -12,14 +12,14 @@ public class Task21Kaohefangshi_sendRequest {
 
     }
 
-    public Task21Kaohefangshi_sendRequest(String kechengid, String content, int zhanbi){
+    public Task21Kaohefangshi_sendRequest(String kechengid, String mingcheng, int zhanbi){
         this.kechengid = kechengid;
-        this.content = content;
+        this.mingcheng = mingcheng;
         this.zhanbi = zhanbi;
     }
 
-    public Task21Kaohefangshi_sendRequest(String content, int zhanbi){
-        this.content = content;
+    public Task21Kaohefangshi_sendRequest(String mingcheng, int zhanbi){
+        this.mingcheng = mingcheng;
         this.zhanbi = zhanbi;
     }
 
@@ -32,12 +32,12 @@ public class Task21Kaohefangshi_sendRequest {
         this.kechengid = kechengid;
     }
 
-    public String getContent() {
-        return content;
+    public String getMingcheng() {
+        return mingcheng;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContent(String mingcheng) {
+        this.mingcheng = mingcheng;
     }
 
     public int getZhanbi() {
