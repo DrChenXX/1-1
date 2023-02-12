@@ -92,18 +92,18 @@ public class YaoqiuduimubiaoMgr {
     public void changeByID(String ID) {
         String sql = "";
         Yaoqiuduimubiao yaoqiuduimubiao = getByID(ID);
-        if (yaoqiuduimubiao.getData() == "是") {
-            sql = "UPDATE T_YAOQIUDUIMUBIAO SET DATA = '否' WHERE ID = '" + ID + "'";
+        if (yaoqiuduimubiao.getData() == "true") {
+            sql = "UPDATE T_YAOQIUDUIMUBIAO SET DATA = 'false' WHERE ID = '" + ID + "'";
         }
         else {
-            sql = "UPDATE T_YAOQIUDUIMUBIAO SET DATA = '是' WHERE ID = '" + ID + "'";
+            sql = "UPDATE T_YAOQIUDUIMUBIAO SET DATA = 'true' WHERE ID = '" + ID + "'";
         }
         boolean check;
         check = ConnectDB.addContent(sql);
         if (check){
             System.out.println("编辑成功");
         } else {
-            System.out.println("编辑成功");
+            System.out.println("编辑失败");
         }
     }
 }

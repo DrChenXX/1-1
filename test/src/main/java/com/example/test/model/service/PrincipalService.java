@@ -134,6 +134,22 @@ public class PrincipalService implements UserService {
         ));
     }
 
+    public void addPeiyangmubiao(AddPeiyangmubiaoRequest request,boolean ss) {
+        if (request.getFanganid() == "") {
+            System.out.println("未填写培养方案");
+            return;
+        }
+        if (request.getNeirong() == "") {
+            System.out.println("未填写内容");
+            return;
+        }
+        peiyangmubiaoMgr.add(new Peiyangmubiao(
+                request.getID(),
+                request.getFanganid(),
+                request.getNeirong()
+        ));
+    }
+
     public void deletePeiyangmubiao(DeletePeiyangmubiaoRequest request) {
         List<Peiyangmubiao> peiyangmubiaos = peiyangmubiaoMgr.getByPEIYANGFANGANID(request.getFanganid());
         /* String peiyangmubiaoID = "";
@@ -153,7 +169,7 @@ public class PrincipalService implements UserService {
         DeletePeiyangmubiaoRequest request1 = new DeletePeiyangmubiaoRequest(request.getFanganid(),request.getID());
         deletePeiyangmubiao(request1);
         AddPeiyangmubiaoRequest request2 = new AddPeiyangmubiaoRequest(request.getFanganid(),request.getID(),request.getNeirong());
-        addPeiyangmubiao(request2);
+        addPeiyangmubiao(request2,true);
     }
 
     //todo:性能问题
