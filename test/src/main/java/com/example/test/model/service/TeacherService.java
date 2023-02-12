@@ -282,9 +282,14 @@ public class TeacherService implements UserService {
         List<Dangqianmubiao> dangqianmubiaos = dangqianmubiaoMgr.getByDangqiankechengID(courseid);
         List<Task13Kechengmubiao_getResponse> responses = new ArrayList<Task13Kechengmubiao_getResponse>();
         Kecheng kecheng = kechengMgr.getByID(courseid);
+        int i = 0;
         for (Dangqianmubiao dangqianmubiao:dangqianmubiaos) {
             String mubiao = dangqianmubiao.getContent();
-            Task13Kechengmubiao_getResponse res = new Task13Kechengmubiao_getResponse(courseid,mubiao);
+            Task13Kechengmubiao_getResponse res = new Task13Kechengmubiao_getResponse("",mubiao);
+            if(i == 0) {
+                res.setCourseid(courseid);
+                i++;
+            }
             responses.add(res);
         }
         return RestResponse.success("课程目标为：",responses);
